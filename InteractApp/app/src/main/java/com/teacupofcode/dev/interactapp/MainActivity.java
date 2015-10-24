@@ -239,11 +239,11 @@ public class MainActivity extends AppCompatActivity implements
         Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
         if (requestCode == RC_PERM_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")) {
+                if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))&& (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null)) {
                     showSignedInUI();
                 }
-                else {
-                    showSignedOutUI();
+                if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) && (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null)){
+                    onDisconnectClicked();
                 }
             } else {
                 Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
@@ -261,11 +261,11 @@ public class MainActivity extends AppCompatActivity implements
         mShouldResolve = false;
 
         // Show the signed-in UI
-        if (Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")) {
+        if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")) && (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null)) {
             showSignedInUI();
         }
-        else{
-            showSignedOutUI();
+        if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) && (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null)){
+            onDisconnectClicked();
         }
     }
     // [END on_connected]
