@@ -16,6 +16,7 @@
 package com.teacupofcode.dev.interactapp;
 
 import android.Manifest;
+import java.lang.*;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements
     private void updateUI(boolean isSignedIn) {
         if (isSignedIn) {
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-            if (currentPerson != null) {
+            if ((currentPerson != null)) {
                 // Show signed-in user's name
                 String name = currentPerson.getDisplayName();
                 mStatus.setText(getString(R.string.signed_in_fmt, name));
@@ -123,7 +124,9 @@ public class MainActivity extends AppCompatActivity implements
                     String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
                     ((TextView) findViewById(R.id.email)).setText(currentAccount);
                 }
-            } else {
+            }
+
+            else {
                 // If getCurrentPerson returns null there is generally some error with the
                 // configuration of the application (invalid Client ID, Plus API not enabled, etc).
                 Log.w(TAG, getString(R.string.error_null_person));
@@ -236,7 +239,12 @@ public class MainActivity extends AppCompatActivity implements
         Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
         if (requestCode == RC_PERM_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showSignedInUI();
+                if (Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")) {
+                    showSignedInUI();
+                }
+                else {
+                    showSignedOutUI();
+                }
             } else {
                 Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
             }
@@ -253,7 +261,12 @@ public class MainActivity extends AppCompatActivity implements
         mShouldResolve = false;
 
         // Show the signed-in UI
-        showSignedInUI();
+        if (Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")) {
+            showSignedInUI();
+        }
+        else{
+            showSignedOutUI();
+        }
     }
     // [END on_connected]
 
@@ -346,6 +359,7 @@ public class MainActivity extends AppCompatActivity implements
 
         // Show a message to the user that we are signing in.
         mStatus.setText(R.string.signing_in);
+
     }
     // [END on_sign_in_clicked]
 
