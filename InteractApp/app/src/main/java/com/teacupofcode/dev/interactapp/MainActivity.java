@@ -29,7 +29,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.support.design.widget.Snackbar;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.Scopes;
@@ -42,7 +42,6 @@ import com.teacupofcode.dev.interactapp.R;
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener,
-        ActivityCompat.OnRequestPermissionsResultCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
