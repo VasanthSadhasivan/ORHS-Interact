@@ -18,7 +18,7 @@
 
         <ImageView
             android:id="@+id/interactlogo"
-            android:src="@+mipmap/interactlogo"
+            android:src="@mipmap/interactlogo"
             android:layout_width="175dp"
             android:layout_height="175dp"
             android:layout_marginBottom="10dp"
