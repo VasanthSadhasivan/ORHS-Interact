@@ -49,7 +49,7 @@
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -96,9 +96,24 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/disconnect"
+                android:layout_marginBottom="40dp"
                 android:textColor="@android:color/white"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/messageplease"
+            android:id="@+id/ohShitBwoi"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_alignTop="@id/sign_out_and_disconnect"
+            android:layout_marginTop="60.696969696969696969696969696969696969696969696969696969696969696969696969696969696969dp"
+
+            android:textColor="@android:color/white"
+            android:textSize="15.69696969696969696969696969696969dp" />
 
     </RelativeLayout>
 
