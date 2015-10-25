@@ -47,30 +47,22 @@ public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "MainActivity";
-
     /* RequestCode for resolutions involving sign-in */
     private static final int RC_SIGN_IN = 1;
-
     /* RequestCode for resolutions to get GET_ACCOUNTS permission on M */
     private static final int RC_PERM_GET_ACCOUNTS = 2;
-
     /* Keys for persisting instance variables in savedInstanceState */
     private static final String KEY_IS_RESOLVING = "is_resolving";
     private static final String KEY_SHOULD_RESOLVE = "should_resolve";
-
     /* Client for accessing Google APIs */
     private GoogleApiClient mGoogleApiClient;
-
     /* View to display current status (signed-in, signed-out, disconnected, etc) */
     private TextView mStatus;
-
     // [START resolution_variables]
     /* Is there a ConnectionResult resolution in progress? */
     private boolean mIsResolving = false;
-
     /* Should we automatically resolve ConnectionResults when possible? */
     private boolean mShouldResolve = false;
-    // [END resolution_variables]
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,10 +140,7 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    /**
-     * Check if we have the GET_ACCOUNTS permission and request it if we do not.
-     * @return true if we have the permission, false if we do not.
-     */
+
     private boolean checkAccountsPermission() {
         final String perm = Manifest.permission.GET_ACCOUNTS;
         int permissionCheck = ContextCompat.checkSelfPermission(this, perm);
@@ -191,7 +180,6 @@ public class MainActivity extends AppCompatActivity implements
         updateUI(false);
     }
 
-    // [START on_start_on_stop]
     @Override
     protected void onStart() {
         super.onStart();
@@ -203,18 +191,14 @@ public class MainActivity extends AppCompatActivity implements
         super.onStop();
         mGoogleApiClient.disconnect();
     }
-    // [END on_start_on_stop]
 
-    // [START on_save_instance_state]
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
         outState.putBoolean(KEY_SHOULD_RESOLVE, mShouldResolve);
     }
-    // [END on_save_instance_state]
 
-    // [START on_activity_result]
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -230,7 +214,6 @@ public class MainActivity extends AppCompatActivity implements
             mGoogleApiClient.connect();
         }
     }
-    // [END on_activity_result]
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -251,7 +234,6 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    // [START on_connected]
     @Override
     public void onConnected(Bundle bundle) {
         // onConnected indicates that an account was selected on the device, that the selected
@@ -268,7 +250,6 @@ public class MainActivity extends AppCompatActivity implements
             onDisconnectClicked();
         }
     }
-    // [END on_connected]
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -278,7 +259,6 @@ public class MainActivity extends AppCompatActivity implements
         Log.w(TAG, "onConnectionSuspended:" + i);
     }
 
-    // [START on_connection_failed]
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         // Could not connect to Google Play Services.  The user needs to select an account,
@@ -306,7 +286,6 @@ public class MainActivity extends AppCompatActivity implements
             showSignedOutUI();
         }
     }
-    // [END on_connection_failed]
 
     private void showErrorDialog(ConnectionResult connectionResult) {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
@@ -333,7 +312,6 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    // [START on_click]
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -348,9 +326,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
         }
     }
-    // [END on_click]
 
-    // [START on_sign_in_clicked]
     private void onSignInClicked() {
         // User clicked the sign-in button, so begin the sign-in process and automatically
         // attempt to resolve any errors that occur.
@@ -361,9 +337,7 @@ public class MainActivity extends AppCompatActivity implements
         mStatus.setText(R.string.signing_in);
 
     }
-    // [END on_sign_in_clicked]
 
-    // [START on_sign_out_clicked]
     private void onSignOutClicked() {
         // Clear the default account so that GoogleApiClient will not automatically
         // connect in the future.
@@ -374,9 +348,7 @@ public class MainActivity extends AppCompatActivity implements
 
         showSignedOutUI();
     }
-    // [END on_sign_out_clicked]
 
-    // [START on_disconnect_clicked]
     private void onDisconnectClicked() {
         // Revoke all granted permissions and clear the default account.  The user will have
         // to pass the consent screen to sign in again.
@@ -388,5 +360,4 @@ public class MainActivity extends AppCompatActivity implements
 
         showSignedOutUI();
     }
-    // [END on_disconnect_clicked]
 }
