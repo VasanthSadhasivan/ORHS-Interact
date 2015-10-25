@@ -140,7 +140,6 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-
     private boolean checkAccountsPermission() {
         final String perm = Manifest.permission.GET_ACCOUNTS;
         int permissionCheck = ContextCompat.checkSelfPermission(this, perm);
