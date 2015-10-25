@@ -35,20 +35,25 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import com.google.android.gms.plus.model.people.PersonBuffer;
 import com.teacupofcode.dev.interactapp.R;
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+        GoogleApiClient.OnConnectionFailedListener,
+        ResultCallback<People.LoadPeopleResult> {
 
     private static final String TAG = "MainActivity";
     /* RequestCode for resolutions involving sign-in */
-    private static final int RC_SIGN_IN = 1;
+    private static final int RC_SIGN_IN = 0;
     /* RequestCode for resolutions to get GET_ACCOUNTS permission on M */
     private static final int RC_PERM_GET_ACCOUNTS = 2;
     /* Keys for persisting instance variables in savedInstanceState */
@@ -222,10 +227,11 @@ public class MainActivity extends AppCompatActivity implements
         Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
         if (requestCode == RC_PERM_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))&& (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null)) {
+                if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) {
                     showSignedInUI();
+                    Log.w(TAG,"AYy");
                 }
-                if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) && (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null)){
+                else if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")))){
                     onDisconnectClicked();
                 }
             } else {
@@ -239,16 +245,22 @@ public class MainActivity extends AppCompatActivity implements
         // onConnected indicates that an account was selected on the device, that the selected
         // account has granted any requested permissions to our app and that we were able to
         // establish a service connection to Google Play services.
+        Plus.PeopleApi.loadVisible(mGoogleApiClient, null)
+                .setResultCallback(this);
         Log.d(TAG, "onConnected:" + bundle);
         mShouldResolve = false;
-
+        Log.w(TAG, "AYy1");
+        boolean containsEmail=(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"));
+        //boolean personIsSignedIn=(Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null);
         // Show the signed-in UI
-        if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")) && (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null)) {
+        if (containsEmail) {
             showSignedInUI();
+            Log.w(TAG, "AYy2");
+        } else{
+            onSignOutClicked();
+            Log.w(TAG, "AYy3");
         }
-        if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) && (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null)){
-            onDisconnectClicked();
-        }
+        //Log.w(TAG, String.valueOf((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")) ));
     }
 
     @Override
@@ -359,5 +371,21 @@ public class MainActivity extends AppCompatActivity implements
         }
 
         showSignedOutUI();
+    }
+    @Override
+    public void onResult(People.LoadPeopleResult peopleData) {
+        if (peopleData.getStatus().getStatusCode() == CommonStatusCodes.SUCCESS) {
+            PersonBuffer personBuffer = peopleData.getPersonBuffer();
+            try {
+                int count = personBuffer.getCount();
+                for (int i = 0; i < count; i++) {
+                    Log.d(TAG, "Display name: " + personBuffer.get(i).getDisplayName());
+                }
+            } finally {
+                personBuffer.release();
+            }
+        } else {
+            Log.e(TAG, "Error requesting people data: " + peopleData.getStatus());
+        }
     }
 }
