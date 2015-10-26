@@ -17,7 +17,7 @@ package com.teacupofcode.dev.interactapp;
 
 import android.Manifest;
 import java.lang.*;
-
+import com.navdrawer.SimpleSideDrawer;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,6 +31,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.design.widget.Snackbar;
@@ -71,12 +73,17 @@ public class MainActivity extends Activity implements
     private boolean mIsResolving = false;
     /* Should we automatically resolve ConnectionResults when possible? */
     private boolean mShouldResolve = false;
-
+    ImageView menuButton;
+    SimpleSideDrawer slide_me;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        slide_me=new SimpleSideDrawer(this);;
 
+        slide_me.setLeftBehindContentView(R.layout.left_menu);
+
+        menuButton = (ImageView) findViewById(R.id.menu);
         // Restore from saved instance state
         // [START restore_saved_instance_state]
         if (savedInstanceState != null) {
@@ -390,4 +397,9 @@ public class MainActivity extends Activity implements
             Log.e(TAG, "Error requesting people data: " + peopleData.getStatus());
         }
     }
+
+    public void onLeftClick(View view) {
+        slide_me.toggleLeftDrawer();
+    }
+
 }
