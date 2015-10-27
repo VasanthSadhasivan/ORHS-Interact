@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#efefefff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4">
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:id="@+id/menu_events"
+        android:onClick="onLeftClick"
+        android:src="@mipmap/interactlogo"
+        android:layout_alignParentLeft="true"/>
+    <RelativeLayout
+
+        android:layout_margin="15dp"
+        android:background="@drawable/borders"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:id="@+id/event1"
+        android:layout_weight="1">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Break Free Run"
+            android:id="@+id/eventTitle1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Blaa \n blibloop \n blipidiblooblah"
+            android:layout_below="@id/eventTitle1"
+            android:id="@+id/eventInfo1" />
+
+        <Button
+            android:backgroundTint="@color/blue_grey_500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:id="@+id/signup1"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="signup1"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_margin="15dp"
+        android:background="@drawable/borders"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:id="@+id/event2"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="X Event"
+            android:id="@+id/eventTitle2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Blaa \n blibloop \n blipidiblooblah"
+            android:layout_below="@id/eventTitle2"
+            android:id="@+id/eventInfo2" />
+
+        <Button
+            android:backgroundTint="@color/blue_grey_500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:id="@+id/signup2"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="signup2"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_margin="15dp"
+        android:background="@drawable/borders"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:id="@+id/event3"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="X Event"
+            android:id="@+id/eventTitle3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Blaa \n blibloop \n blipidiblooblah"
+            android:layout_below="@id/eventTitle3"
+            android:id="@+id/eventInfo3" />
+
+        <Button
+            android:backgroundTint="@color/blue_grey_500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:id="@+id/signup3"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="signup3"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:background="@color/bottomborder"
+        android:layout_weight="1">
+
+    </RelativeLayout>
+
+</LinearLayout>

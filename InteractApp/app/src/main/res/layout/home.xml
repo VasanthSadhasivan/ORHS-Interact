@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefefff"
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context=".MainActivity">
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:id="@+id/menu_home"
+        android:onClick="onLeftClick"
+        android:src="@mipmap/interactlogo"
+        android:layout_alignParentLeft="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pictureofpeops"
+            android:src="@mipmap/pictureofpeops"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.43" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bottomborder">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Information"
+            android:id="@+id/contactInfoTitle"
+            android:layout_centerHorizontal="true"
+            android:textSize="25dp"
+            android:textColor="@android:color/white"
+            android:layout_above="@+id/sign_out_and_disconnect" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="xxxxxxxxx.com \n (916)-xxx-xxxx \n xxxxxxxx@gmail.com"
+            android:id="@+id/contactInfo"
+            android:textSize="14dp"
+            android:layout_below="@+id/contactInfoTitle"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
