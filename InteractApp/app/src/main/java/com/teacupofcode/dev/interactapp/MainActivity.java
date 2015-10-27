@@ -73,13 +73,14 @@ public class MainActivity extends Activity implements
     private boolean mIsResolving = false;
     /* Should we automatically resolve ConnectionResults when possible? */
     private boolean mShouldResolve = false;
+
     ImageView menuButton;
     SimpleSideDrawer slide_me;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        slide_me=new SimpleSideDrawer(this);;
+        slide_me=new SimpleSideDrawer(this);
 
         slide_me.setLeftBehindContentView(R.layout.left_menu);
 
