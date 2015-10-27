@@ -130,6 +130,10 @@ public class MainActivity extends Activity implements
                 if (checkAccountsPermission()) {
                     String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
                     ((TextView) findViewById(R.id.email)).setText(currentAccount);
+                    Intent i = new Intent(this, Math.class);
+                    i.putExtra("Name", name);
+                    i.putExtra("Email", currentAccount);
+                    startActivity(i);
                 }
             }
 
@@ -139,7 +143,8 @@ public class MainActivity extends Activity implements
                 Log.w(TAG, getString(R.string.error_null_person));
                 mStatus.setText(getString(R.string.signed_in_err));
             }
-
+            Intent i = new Intent(this, Home.class);
+            startActivity(i);
             // Set button visibility
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
