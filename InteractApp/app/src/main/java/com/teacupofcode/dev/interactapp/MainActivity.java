@@ -81,7 +81,7 @@ public class MainActivity extends Activity implements
         setContentView(R.layout.activity_main);
 
 
-        menuButton = (ImageView) findViewById(R.id.menu);
+
         // Restore from saved instance state
         // [START restore_saved_instance_state]
         if (savedInstanceState != null) {

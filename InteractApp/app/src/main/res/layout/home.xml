@@ -22,7 +22,7 @@
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Home"
@@ -32,7 +32,7 @@
                 android:textColor="#fff262" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Events"
                 android:layout_weight="1"
@@ -42,7 +42,7 @@
                 android:textColor="#ffffff" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Hours"
                 android:layout_weight="1"
