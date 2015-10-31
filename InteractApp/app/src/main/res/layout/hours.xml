@@ -6,7 +6,7 @@
     android:background="#efefefff"
     android:orientation="vertical"
     android:weightSum="4"
-    tools:context=".Home">
+    tools:context=".Hours">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -26,18 +26,18 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Home"
-                android:id="@+id/home_home"
-                android:onClick="homeClickedHome"
+                android:onClick="homeClickedHours"
+                android:id="@+id/home_hours"
                 android:background="@color/bottomborder"
-                android:textColor="#fff262" />
+                android:textColor="#ffffff" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Events"
+                android:onClick="eventsClickedHours"
                 android:layout_weight="1"
-                android:onClick="eventsClickedHome"
-                android:id="@+id/events_home"
+                android:id="@+id/events_hours"
                 android:background="@color/bottomborder"
                 android:textColor="#ffffff" />
 
@@ -46,10 +46,10 @@
                 android:layout_height="wrap_content"
                 android:text="Hours"
                 android:layout_weight="1"
-                android:onClick="hoursClickedHome"
-                android:id="@+id/hours_home"
+                android:onClick="hoursClickedHours"
+                android:id="@+id/hours_hours"
                 android:background="@color/bottomborder"
-                android:textColor="#ffffff" />
+                android:textColor="#fff262" />
         </LinearLayout>
     </LinearLayout>
 
@@ -62,20 +62,13 @@
         android:weightSum="1">
 
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Ploop"
-            android:id="@+id/homeTitle" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/pictureofpeops"
-            android:src="@mipmap/pictureofpeops"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.43" />
+            android:text="Volunteer!"
+            android:id="@+id/volunteer"
+            android:onClick="volunteerClicked"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 
@@ -84,28 +77,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/bottomborder">
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contact Information"
-            android:id="@+id/contactInfoTitle"
-            android:layout_centerHorizontal="true"
-            android:textSize="25dp"
-            android:textColor="@android:color/white"
-            android:layout_above="@+id/sign_out_and_disconnect" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text=" xxxxxxxxx.com \n (916)-xxx-xxxx \n xxxxxxxx@gmail.com"
-            android:id="@+id/contactInfo"
-            android:textSize="14dp"
-            android:layout_below="@+id/contactInfoTitle"
-            android:layout_centerHorizontal="true"
-            android:textColor="@android:color/white" />
 
 
     </RelativeLayout>

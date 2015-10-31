@@ -75,14 +75,11 @@ public class MainActivity extends Activity implements
     private boolean mShouldResolve = false;
 
     ImageView menuButton;
-    SimpleSideDrawer slide_me;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        slide_me=new SimpleSideDrawer(this);
 
-        slide_me.setLeftBehindContentView(R.layout.left_menu);
 
         menuButton = (ImageView) findViewById(R.id.menu);
         // Restore from saved instance state
@@ -131,7 +128,7 @@ public class MainActivity extends Activity implements
                 if (checkAccountsPermission()) {
                     String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
                     ((TextView) findViewById(R.id.email)).setText(currentAccount);
-                    Intent i = new Intent(this, Math.class);
+                    Intent i = new Intent(this, Home.class);
                     i.putExtra("Name", name);
                     i.putExtra("Email", currentAccount);
                     startActivity(i);
@@ -144,8 +141,7 @@ public class MainActivity extends Activity implements
                 Log.w(TAG, getString(R.string.error_null_person));
                 mStatus.setText(getString(R.string.signed_in_err));
             }
-            Intent i = new Intent(this, Home.class);
-            startActivity(i);
+
             // Set button visibility
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
@@ -266,9 +262,9 @@ public class MainActivity extends Activity implements
         mShouldResolve = false;
         Log.w(TAG, "AYy1");
         boolean containsEmail=(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"));
-        //boolean personIsSignedIn=(Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null);
+        boolean personIsSignedIn=(Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null);
         // Show the signed-in UI
-        if (containsEmail) {
+        if (containsEmail && personIsSignedIn) {
             showSignedInUI();
             Log.w(TAG, "AYy2");
         } else{
@@ -402,10 +398,6 @@ public class MainActivity extends Activity implements
         } else {
             Log.e(TAG, "Error requesting people data: " + peopleData.getStatus());
         }
-    }
-
-    public void onLeftClick(View view) {
-        slide_me.toggleLeftDrawer();
     }
 
 }
