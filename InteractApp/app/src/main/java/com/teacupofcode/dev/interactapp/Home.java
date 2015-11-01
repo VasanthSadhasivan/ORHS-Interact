@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 /**
  * Created by Vasanth Sadhasivan on 10/26/2015.
@@ -19,7 +20,7 @@ public class Home extends Activity{
     String name; //string name
     String email;
     String phoneNumber;
-
+    int mFlipping = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,6 +38,11 @@ public class Home extends Activity{
         tname = (TextView) findViewById(R.id.homeTitle);
         tname.setText(name);
         contactInfo.setText("xxxxxx.com\n(910)-xxx-xxxx\n" + email);
+        ViewFlipper flipper = (ViewFlipper) findViewById(R.id.flipper1);
+        flipper.startFlipping();
+        mFlipping=1;
+
+
     }
 
     public void homeClickedHome(View view) {

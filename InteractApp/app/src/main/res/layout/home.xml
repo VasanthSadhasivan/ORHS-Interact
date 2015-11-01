@@ -69,13 +69,42 @@
             android:text="Ploop"
             android:id="@+id/homeTitle" />
 
-        <ImageView
-            android:layout_width="match_parent"
+        <ViewFlipper
+            android:id="@+id/flipper1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/pictureofpeops"
-            android:src="@mipmap/pictureofpeops"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.43" />
+            android:flipInterval="3000"
+            android:inAnimation="@anim/slide_in_right"
+            android:outAnimation="@anim/slide_in_left"
+            android:layout_centerInParent="true" >
+
+            <ImageView
+                android:src="@drawable/image1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageView
+                android:src="@drawable/image2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageView
+                android:src="@drawable/image3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageView
+                android:src="@drawable/image4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+
+        </ViewFlipper>
+
     </LinearLayout>
 
 
