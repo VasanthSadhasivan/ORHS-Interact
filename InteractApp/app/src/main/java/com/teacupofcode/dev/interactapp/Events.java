@@ -44,7 +44,7 @@ public class Events extends Activity{
         {
         }
         dates=MySpreadsheetIntegration.dateList;
-        events=MySpreadsheetIntegration.eventList;
+        events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
         Log.w("AYY", dates.get(0));
         setAllViewInfo(events,dates);
     }
@@ -90,9 +90,9 @@ public class Events extends Activity{
         relativeLayout.setId(View.generateViewId());
         relativeLayout.setBackgroundResource(R.drawable.borders);
         RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.FILL_PARENT);
-        rlp.setMargins(15,0,0,0);
+                RelativeLayout.LayoutParams.FILL_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT);
+        rlp.topMargin=15;
         relativeLayout.setLayoutParams(rlp);
         ////////////// TEXT VIEWS //////////////
 

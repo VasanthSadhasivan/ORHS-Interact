@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
@@ -42,6 +43,8 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             }
 
         }
+        //ArrayList<String> returnEvents = MySpreadsheetIntegration.filterEvents(events);
+        //Log.w("AYY", "FINISHED RETURNING:"+returnEvents.get(0));
         return events;
     }
     public static ArrayList<String> getDate(String url) throws IOException, JSONException
@@ -52,7 +55,8 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         ArrayList<String> dateList = new ArrayList<String>();
         for(String a : eventsList)
         {
-            String[] seperatedString = a.split("\\\\s+");
+            String[] seperatedString = a.split(" ");
+            Log.w("AYY", seperatedString[0]);
             for(String i : seperatedString)
             {
                 if(i.contains("/"))
@@ -62,6 +66,28 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
 
         return dateList;
+    }
+
+    public static ArrayList<String> filterEvents(ArrayList<String> listofdata)
+    {
+        String tempString="";
+        ArrayList<String> returnString = new ArrayList<String>();
+        for(String a : listofdata)
+        {
+            tempString="";
+            String[] listString = a.split(" ");
+            ArrayList<String> seperatedString = new ArrayList<String>(Arrays.asList(listString));
+            Log.w("AYY", seperatedString.get(0));
+            for(String i : seperatedString)
+            {
+                if (!(i.contains("/")))
+                    tempString += " "+i;
+            }
+            Log.w("AYY", "TEMPSTRING: "+tempString);
+            returnString.add(tempString);
+
+        }
+        return returnString;
     }
     private String downloadUrl(String urlString) throws IOException {
         InputStream is = null;
