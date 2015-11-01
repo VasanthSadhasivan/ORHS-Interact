@@ -2,24 +2,31 @@ package com.teacupofcode.dev.interactapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import org.json.JSONException;
+import java.io.IOException;
+import java.util.ArrayList;
 
-import com.navdrawer.SimpleSideDrawer;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by Vasanth Sadhasivan on 10/26/2015.
  */
 public class Events extends Activity{
 
-
-    TextView eventTitle1, eventTitle2,eventTitle3, eventInfo1, eventInfo2,eventInfo3;
     String name; //string name
     String email;
+    ArrayList<String> events = new ArrayList<String>();
+    ArrayList<String> dates = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,16 +35,27 @@ public class Events extends Activity{
         Bundle intentData = getIntent().getExtras();
         name=intentData.getString("Name");
         email=intentData.getString("Email");
-        eventInfo1 = (TextView)findViewById(R.id.eventInfo1);
-        eventInfo2 = (TextView)findViewById(R.id.eventInfo2);
-        eventInfo3 = (TextView)findViewById(R.id.eventInfo3);
-        eventTitle1 = (TextView)findViewById(R.id.eventTitle1);
-        eventTitle2 = (TextView)findViewById(R.id.eventTitle2);
-        eventTitle3 = (TextView)findViewById(R.id.eventTitle3);
 
+        Log.w("AYY", "BEBEBEBBE");
 
+        MySpreadsheetIntegration myspreadsheetobject = new MySpreadsheetIntegration();
+        myspreadsheetobject.execute("whatever");
+        while(MySpreadsheetIntegration.dateList==null || MySpreadsheetIntegration.eventList==null)
+        {
+        }
+        dates=MySpreadsheetIntegration.dateList;
+        events=MySpreadsheetIntegration.eventList;
+        Log.w("AYY", dates.get(0));
+        setAllViewInfo(events,dates);
     }
-
+    //Later on, fix the method to have info and location
+    public void setAllViewInfo(ArrayList<String> titleList, ArrayList<String> dateList)
+    {
+        for(int i=0; i<titleList.size(); i++)
+        {
+            generateView(titleList.get(i), "-----", "-----", dateList.get(i));
+        }
+    }
     public void homeClickedEvents(View view) {
         Intent i = new Intent(this, Home.class);
         i.putExtra("Name", name);
@@ -63,5 +81,61 @@ public class Events extends Activity{
     }
 
     public void signup1(View view) {
+    }
+    public  int generateView(String Title, String Info, String Place, String Time)
+    {
+        //Creating Relative Layout Programmatically
+        RelativeLayout relativeLayout = new RelativeLayout(this);
+        //CHANGE LATER
+        relativeLayout.setId(View.generateViewId());
+        relativeLayout.setBackgroundResource(R.drawable.borders);
+        RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.FILL_PARENT);
+        rlp.setMargins(15,0,0,0);
+        relativeLayout.setLayoutParams(rlp);
+        ////////////// TEXT VIEWS //////////////
+
+        TextView titleView = new TextView(this);
+        titleView.setTextAppearance(this, android.R.style.TextAppearance_Large);
+        //CHANGE LATER
+        titleView.setId(View.generateViewId());
+        titleView.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        titleView.setText(Title);
+        TextView infoView = new TextView(this);
+        infoView.setTextAppearance(this, android.R.style.TextAppearance_Small);
+        infoView.setId(View.generateViewId());
+        RelativeLayout.LayoutParams infoLayout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        infoLayout.addRule(RelativeLayout.BELOW, titleView.getId());
+        infoView.setLayoutParams(infoLayout);
+        infoView.setText(Place + "\n" + Time + "\n" + Info);
+
+        //////////////// BUTTON /////////////////
+
+        Button signUpButton =  new Button(this);
+        //signUpButton.getBackground().setColorFilter(
+                //getResources().getColor(R.color.blue_grey_500), PorterDuff.Mode.MULTIPLY);
+        RelativeLayout.LayoutParams buttonLayout = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        buttonLayout.addRule(RelativeLayout.CENTER_VERTICAL);
+        buttonLayout.addRule(RelativeLayout.ALIGN_PARENT_END);
+        signUpButton.setGravity(Gravity.RIGHT);
+        signUpButton.setLayoutParams(buttonLayout);
+        signUpButton.setText("Sign Up");
+        signUpButton.setId(View.generateViewId());
+
+        //////////////Combine Everything///////////
+
+        relativeLayout.addView(titleView);
+        relativeLayout.addView(infoView);
+        relativeLayout.addView(signUpButton);
+        ((LinearLayout) (findViewById(R.id.scrollLayout))).addView(relativeLayout);
+        return signUpButton.getId();
+
     }
 }

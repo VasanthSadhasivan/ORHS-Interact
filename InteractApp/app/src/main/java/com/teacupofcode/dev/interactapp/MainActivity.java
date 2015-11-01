@@ -30,9 +30,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.design.widget.Snackbar;
@@ -57,55 +54,31 @@ public class MainActivity extends Activity implements
         ResultCallback<People.LoadPeopleResult> {
 
     private static final String TAG = "MainActivity";
-    /* RequestCode for resolutions involving sign-in */
     private static final int RC_SIGN_IN = 0;
-    /* RequestCode for resolutions to get GET_ACCOUNTS permission on M */
     private static final int RC_PERM_GET_ACCOUNTS = 2;
-    /* Keys for persisting instance variables in savedInstanceState */
     private static final String KEY_IS_RESOLVING = "is_resolving";
     private static final String KEY_SHOULD_RESOLVE = "should_resolve";
-    /* Client for accessing Google APIs */
     private GoogleApiClient mGoogleApiClient;
-    /* View to display current status (signed-in, signed-out, disconnected, etc) */
     private TextView mStatus;
-    // [START resolution_variables]
-    /* Is there a ConnectionResult resolution in progress? */
     private boolean mIsResolving = false;
-    /* Should we automatically resolve ConnectionResults when possible? */
     private boolean mShouldResolve = false;
 
-    ImageView menuButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        // Restore from saved instance state
-        // [START restore_saved_instance_state]
         if (savedInstanceState != null) {
             mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
             mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
         }
-        // [END restore_saved_instance_state]
 
-        // Set up button click listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
-
-        // Large sign-in
         ((SignInButton) findViewById(R.id.sign_in_button)).setSize(SignInButton.SIZE_WIDE);
-
-        // Start with sign-in button disabled until sign-in either succeeds or fails
         findViewById(R.id.sign_in_button).setEnabled(false);
-
-        // Set up view instances
         mStatus = (TextView) findViewById(R.id.status);
-
-        // [START create_google_api_client]
-        // Build GoogleApiClient with access to basic profile
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -113,7 +86,8 @@ public class MainActivity extends Activity implements
                 .addScope(new Scope(Scopes.PROFILE))
                 .addScope(new Scope(Scopes.EMAIL))
                 .build();
-        // [END create_google_api_client]
+
+
     }
 
     private void updateUI(boolean isSignedIn) {
