@@ -1,7 +1,6 @@
 public class MainActivity
 {
 	TextView mTextView; // Member variable for text view in the layout
-
 @Override
 public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
