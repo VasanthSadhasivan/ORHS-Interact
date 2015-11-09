@@ -15,8 +15,6 @@ import android.widget.TextView;
 import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
 /**
  * Created by Vasanth Sadhasivan on 10/26/2015.
  */
@@ -46,7 +44,7 @@ public class Events extends Activity{
         dates=MySpreadsheetIntegration.dateList;
         events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
         Log.w("AYY", dates.get(0));
-        setAllViewInfo(events,dates);
+        setAllViewInfo(events, dates);
     }
     //Later on, fix the method to have info and location
     public void setAllViewInfo(ArrayList<String> titleList, ArrayList<String> dateList)
@@ -54,6 +52,7 @@ public class Events extends Activity{
         for(int i=0; i<titleList.size(); i++)
         {
             generateView(titleList.get(i), "-----", "-----", dateList.get(i));
+            //generateView(titleList.get(i), "-----", "-----", "====-=-=");
         }
     }
     public void homeClickedEvents(View view) {
@@ -74,14 +73,6 @@ public class Events extends Activity{
 
     }
 
-    public void signup3(View view) {
-    }
-
-    public void signup2(View view) {
-    }
-
-    public void signup1(View view) {
-    }
     public  int generateView(String Title, String Info, String Place, String Time)
     {
         //Creating Relative Layout Programmatically

@@ -55,6 +55,10 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         ArrayList<String> dateList = new ArrayList<String>();
         for(String a : eventsList)
         {
+            if(!(a.contains("/")))
+            {
+                dateList.add("-----");
+            }
             String[] seperatedString = a.split(" ");
             Log.w("AYY", seperatedString[0]);
             for(String i : seperatedString)
@@ -62,6 +66,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
                 if(i.contains("/"))
                     dateList.add(i);
             }
+
         }
 
 
