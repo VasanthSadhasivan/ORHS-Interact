@@ -115,7 +115,7 @@ public class Events extends Activity{
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
         buttonLayout.addRule(RelativeLayout.CENTER_VERTICAL);
         buttonLayout.addRule(RelativeLayout.ALIGN_PARENT_END);
-        signUpButton.setGravity(Gravity.RIGHT);
+        signUpButton.setGravity(Gravity.CENTER);
         signUpButton.setLayoutParams(buttonLayout);
         signUpButton.setText("Sign Up");
         signUpButton.setId(View.generateViewId());
