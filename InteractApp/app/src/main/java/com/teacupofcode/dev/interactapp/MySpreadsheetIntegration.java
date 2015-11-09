@@ -39,7 +39,8 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         {
             if (!(arraydata.getJSONObject(i).getString("label").contains("Name") || arraydata.getJSONObject(i).getString("label").contains("TOTAL") || arraydata.getJSONObject(i).getString("label").equals("")))
             {
-                events.add(arraydata.getJSONObject(i).getString("label"));
+                if(!((arraydata.getJSONObject(i).getString("label")).contains("NAME")))
+                    events.add(arraydata.getJSONObject(i).getString("label"));
             }
 
         }
