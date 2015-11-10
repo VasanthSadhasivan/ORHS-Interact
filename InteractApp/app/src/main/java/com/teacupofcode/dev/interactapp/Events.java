@@ -63,7 +63,7 @@ public class Events extends Activity{
     }
 
     public void hoursClickedEvents(View view) {
-        Intent i = new Intent(this, Hours.class);
+        Intent i = new Intent(this, Info.class);
         i.putExtra("Name", name);
         i.putExtra("Email", email);
         startActivity(i);
