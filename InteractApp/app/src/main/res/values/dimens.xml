@@ -3,5 +3,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="g_top_margin">50dp</dimen>
+    <dimen name="top_margin">90dp</dimen>
+    <dimen name="top_margin2">160dp</dimen>
+    <dimen name="top_margin3">190dp</dimen>
+    <dimen name="top_margin4">375dp</dimen>
+    <dimen name="top_margin5">395dp</dimen>
+    <dimen name="top_margin6">420dp</dimen>
+    <dimen name="top_margin7">430dp</dimen>
+    <dimen name="top_margin8">490dp</dimen>
 </resources>

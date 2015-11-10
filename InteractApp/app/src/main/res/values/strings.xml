@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">Interact App</string>
-    <string name="title_text">Interact App\nOak Ridge High School</string>
+    <string name="title_text">Oak Ridge High School</string>
 
     <!-- Sign-in status messages -->
     <string name="signed_in_fmt">Signed in as: %s</string>
     <string name="signing_in">Signing in…</string>
     <string name="signed_out">Signed out</string>
+    <string name="interact">Interact</string>
     <string name="messageplease">Please use your ORHS Google Account</string>
     <string name="signed_in_err">"Error: please check logs."</string>
     <string name="error_null_person">
