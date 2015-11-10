@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefefff"
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context=".Info">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3"
+            android:background="@color/bottomborder" >
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:onClick="homeClickedHours"
+                android:id="@+id/home_hours"
+                android:background="@color/bottomborder"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Events"
+                android:onClick="eventsClickedHours"
+                android:layout_weight="1"
+                android:id="@+id/events_hours"
+                android:background="@color/bottomborder"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Info"
+                android:layout_weight="1"
+                android:onClick="hoursClickedHours"
+                android:id="@+id/info_info"
+                android:background="@color/bottomborder"
+                android:textColor="#fff262" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
