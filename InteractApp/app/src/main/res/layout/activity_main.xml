@@ -91,10 +91,12 @@
             android:id="@+id/sign_out_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:text="@string/sign_out"
             android:textColor="@android:color/white"
-            android:theme="@style/ThemeOverlay.MyDarkButton" />
+            android:background="@drawable/buttons" />
 
         <Button
             android:id="@+id/disconnect_button"
@@ -102,9 +104,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/disconnect"
-
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:textColor="@android:color/white"
-            android:theme="@style/ThemeOverlay.MyDarkButton" />
+            android:background="@drawable/buttons" />
     </LinearLayout>
 
     <TextView
@@ -121,8 +124,5 @@
 
         android:textColor="@android:color/white"
         android:textSize="15.69696969696969696969696969696969dp" />
-
-
-
 
 </FrameLayout>
