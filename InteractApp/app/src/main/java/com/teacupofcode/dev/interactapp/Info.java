@@ -10,7 +10,7 @@ import android.view.View;
 /**
  * Created by Vasanth Sadhasivan on 10/26/2015.
  */
-public class Info extends Activity{
+public class Info extends Activity {
 
     String name; //string name
     String email;
@@ -21,29 +21,26 @@ public class Info extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info);
         Bundle intentData = getIntent().getExtras();
-        name=intentData.getString("Name");
-        email=intentData.getString("Email");
+        name = intentData.getString("Name");
+        email = intentData.getString("Email");
     }
 
-    public void hoursClickedHours(View view) {
+    public void infoClickedInfo(View view) {
 
     }
 
-    public void homeClickedHours(View view) {
+    public void homeClickedInfo(View view) {
         Intent i = new Intent(this, Home.class);
         i.putExtra("Name", name);
         i.putExtra("Email", email);
         startActivity(i);
     }
 
-    public void eventsClickedHours(View view) {
+    public void eventsClickedInfo(View view) {
         Intent i = new Intent(this, Events.class);
         i.putExtra("Name", name);
         i.putExtra("Email", email);
         startActivity(i);
     }
 
-    public void volunteerClicked(View view) {
-
-    }
 }

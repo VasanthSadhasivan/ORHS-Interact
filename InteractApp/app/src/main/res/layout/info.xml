@@ -26,8 +26,8 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Home"
-                android:onClick="homeClickedHours"
-                android:id="@+id/home_hours"
+                android:onClick="homeClickedInfo"
+                android:id="@+id/home_info"
                 android:background="@color/bottomborder"
                 android:textColor="#ffffff" />
 
@@ -35,9 +35,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Events"
-                android:onClick="eventsClickedHours"
+                android:onClick="eventsClickedInfo"
                 android:layout_weight="1"
-                android:id="@+id/events_hours"
+                android:id="@+id/events_info"
                 android:background="@color/bottomborder"
                 android:textColor="#ffffff" />
 
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="Info"
                 android:layout_weight="1"
-                android:onClick="hoursClickedHours"
+                android:onClick="infoClickedInfo"
                 android:id="@+id/info_info"
                 android:background="@color/bottomborder"
                 android:textColor="#fff262" />

@@ -44,9 +44,9 @@
                 android:layout_height="wrap_content"
                 android:text="Info"
                 android:layout_weight="1"
-                android:onClick="hoursClickedEvents"
+                android:onClick="infoClickedEvents"
 
-                android:id="@+id/hours_events"
+                android:id="@+id/info_events"
                 android:background="@color/bottomborder"
                 android:textColor="#ffffff" />
         </LinearLayout>
