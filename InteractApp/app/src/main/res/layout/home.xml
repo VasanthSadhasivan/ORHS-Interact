@@ -29,7 +29,7 @@
                 android:id="@+id/home_home"
                 android:onClick="homeClickedHome"
                 android:background="@color/bottomborder"
-                android:textColor="#fff262" />
+                android:textColor="@color/highlight" />
 
             <Button
                 android:layout_width="0dp"
@@ -56,7 +56,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="3.25"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:layout_marginBottom="10dp"
@@ -67,9 +67,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Ploop"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:text="G$9"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:id="@+id/homeTitle" />
 
         <ViewFlipper
@@ -114,32 +114,21 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight=".75"
         android:background="@color/bottomborder">
 
-
-
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contact Information"
-            android:id="@+id/contactInfoTitle"
-            android:layout_centerHorizontal="true"
-            android:textSize="25dp"
+            android:paddingLeft="@dimen/buttonpadding"
+            android:paddingRight="@dimen/buttonpadding"
+            android:text="Return"
+            android:id="@+id/button"
+            android:onClick="returnClickedHome"
             android:textColor="@android:color/white"
-            android:layout_above="@+id/sign_out_and_disconnect" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text=" xxxxxxxxx.com \n (916)-xxx-xxxx \n xxxxxxxx@gmail.com"
-            android:id="@+id/contactInfo"
-            android:textSize="14dp"
-            android:layout_below="@+id/contactInfoTitle"
-            android:layout_centerHorizontal="true"
-            android:textColor="@android:color/white" />
-
-
+            android:background="@drawable/buttons"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </LinearLayout>

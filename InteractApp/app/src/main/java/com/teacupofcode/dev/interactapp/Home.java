@@ -45,6 +45,12 @@ public class Home extends Activity{
 
     }
 
+    public void returnClickedHome(View view) {
+        Intent i = new Intent(this, Events.class);
+        i.putExtra("Name", name);
+        i.putExtra("Email", email);
+        startActivity(i);
+    }
     public void homeClickedHome(View view) {
 
     }

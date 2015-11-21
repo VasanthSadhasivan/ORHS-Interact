@@ -49,7 +49,7 @@
                 android:onClick="infoClickedInfo"
                 android:id="@+id/info_info"
                 android:background="@color/bottomborder"
-                android:textColor="#fff262" />
+                android:textColor="@color/highlight" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
