@@ -341,6 +341,7 @@ public class MainActivity extends Activity implements
 
         // Show a message to the user that we are signing in.
         mStatus.setText(R.string.signing_in);
+        noSwitching = false;
 
     }
 
