@@ -51,6 +51,7 @@ public class MainActivity extends Activity implements
         GoogleApiClient.OnConnectionFailedListener,
         ResultCallback<People.LoadPeopleResult> {
 
+
     private static final String TAG = "MainActivity";
     private static final int RC_SIGN_IN = 0;
     private static final int RC_PERM_GET_ACCOUNTS = 2;
@@ -60,7 +61,7 @@ public class MainActivity extends Activity implements
     private TextView mStatus;
     private boolean mIsResolving = false;
     private boolean mShouldResolve = false;
-
+    private boolean noSwitching=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +71,16 @@ public class MainActivity extends Activity implements
             mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
             mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
         }
+        try {
+            Bundle intentData = getIntent().getExtras();
+            if (intentData.containsKey("DontClose")){
+                noSwitching=true;
+
+            }
+        }catch (Exception e){
+            noSwitching=false;
+        }
+
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
@@ -97,7 +108,7 @@ public class MainActivity extends Activity implements
                 mStatus.setText(getString(R.string.signed_in_fmt, name));
 
                 // Show users' email address (which requires GET_ACCOUNTS permission)
-                if (checkAccountsPermission()) {
+                if (checkAccountsPermission() && !(noSwitching)) {
                     String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
                     ((TextView) findViewById(R.id.email)).setText(currentAccount);
                     Intent i = new Intent(this, Home.class);

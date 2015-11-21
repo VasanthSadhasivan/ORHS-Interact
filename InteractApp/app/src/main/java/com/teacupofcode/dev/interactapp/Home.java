@@ -50,6 +50,7 @@ public class Home extends Activity{
         Intent i = new Intent(this, MainActivity.class);
         i.putExtra("Name", name);
         i.putExtra("Email", email);
+        i.putExtra("DontClose", "PLEASSEEE");
         startActivity(i);
     }
     public void homeClickedHome(View view) {
