@@ -62,6 +62,7 @@ public class MainActivity extends Activity implements
     private boolean mIsResolving = false;
     private boolean mShouldResolve = false;
     private boolean noSwitching=false;
+    private String currentAccountEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +75,7 @@ public class MainActivity extends Activity implements
         try {
             Bundle intentData = getIntent().getExtras();
             if (intentData.containsKey("DontClose")){
+                currentAccountEmail = intentData.getString("Email");
                 noSwitching=true;
 
             }
@@ -106,11 +108,11 @@ public class MainActivity extends Activity implements
                 // Show signed-in user's name
                 String name = currentPerson.getDisplayName();
                 mStatus.setText(getString(R.string.signed_in_fmt, name));
-
+                String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
+                ((TextView) findViewById(R.id.email)).setText(currentAccount);
                 // Show users' email address (which requires GET_ACCOUNTS permission)
                 if (checkAccountsPermission() && !(noSwitching)) {
-                    String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
-                    ((TextView) findViewById(R.id.email)).setText(currentAccount);
+
                     Intent i = new Intent(this, Home.class);
                     i.putExtra("Name", name);
                     i.putExtra("Email", currentAccount);
