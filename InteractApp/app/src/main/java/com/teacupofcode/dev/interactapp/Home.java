@@ -34,11 +34,11 @@ public class Home extends Activity{
           //  if (intentData.containsKey("Email"))
                 email = intentData.getString("Email");
        // }
-       /* contactInfo = (TextView) findViewById(R.id.contactInfo);
+       // contactInfo = (TextView) findViewById(R.id.contactInfo);
         tname = (TextView) findViewById(R.id.homeTitle);
         tname.setText(name);
-        contactInfo.setText("xxxxxx.com\n(910)-xxx-xxxx\n" + email);
-        */
+        //contactInfo.setText("xxxxxx.com\n(910)-xxx-xxxx\n" + email);
+
         ViewFlipper flipper = (ViewFlipper) findViewById(R.id.flipper1);
         flipper.startFlipping();
         mFlipping=1;
