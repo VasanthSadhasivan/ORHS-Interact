@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gdata-webmastertools-2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/gdata-webmastertools-2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
