@@ -2,6 +2,7 @@ package com.teacupofcode.dev.interactapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,6 +54,13 @@ public class Home extends Activity{
         i.putExtra("DontClose", "PLEASSEEE");
         startActivity(i);
     }
+
+    public void websiteClickedHome(View view) {
+        Uri uri = Uri.parse("http://www.orhsinteract.wix.com/1516"); // missing 'http://' will cause crashed
+        Intent i = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(i);
+    }
+
     public void homeClickedHome(View view) {
 
     }
