@@ -42,5 +42,7 @@ public class Info extends Activity {
         i.putExtra("Email", email);
         startActivity(i);
     }
+    public void hoursClickedInfo (View view) {
 
+    }
 }

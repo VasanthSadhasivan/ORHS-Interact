@@ -3,7 +3,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efefefff"
+    android:background="#FA93CE"
     android:orientation="vertical"
     android:weightSum="4"
     tools:context=".Info">
@@ -52,4 +52,81 @@
                 android:textColor="@color/highlight" />
         </LinearLayout>
     </LinearLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView1"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="450dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Contact Info:"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="35sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/infoContact" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="(916)-xxx-20xx"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="35sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/phoneNum" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Creators:\nVasanth Sadhasivan\nBernard Zhao\nDustin Nguyen"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="35sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/creatorTitle" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Creators:\nVasanth Sadhasivan\nBernard Zhao\nDustin Nguyen"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="35sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/creatorTitle" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Creators:\nVasanth Sadhasivan\nBernard Zhao\nDustin Nguyen"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="35sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/creatorTitle" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Creators:\nVasanth Sadhasivan\nBernard Zhao\nDustin Nguyen"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="35sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/creatorTitle" />
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
