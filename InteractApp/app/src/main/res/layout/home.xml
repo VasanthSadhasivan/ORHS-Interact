@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="Info"
                 android:layout_weight="1"
-                android:onClick="hoursClickedHome"
+                android:onClick="infoClickedHome"
                 android:id="@+id/info_home"
                 android:background="@color/bottomborder"
                 android:textColor="#ffffff" />
