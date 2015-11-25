@@ -42,7 +42,7 @@ public class WKDetails extends Activity {
 	ArrayList<WorkSheetRow> rows;
 	String[] cols;
 	TextView tv;
-	
+	// Pass Bundle; creates instance; sets text view according to application context
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -67,11 +67,12 @@ public class WKDetails extends Activity {
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
+			// Loading
 			super.onPreExecute();
 			dialog = new Dialog(WKDetails.this);
 			dialog.setTitle("Please wait");
 			TextView tv = new TextView(WKDetails.this.getApplicationContext());
-			tv.setText("Featching records...");
+			tv.setText("Fetching records...");
 			dialog.setContentView(tv);
 			dialog.show();
 		}
@@ -93,6 +94,7 @@ public class WKDetails extends Activity {
 		@Override
 		protected void onPostExecute(Object result) {
 			// TODO Auto-generated method stub
+			// Displays after execution
 			super.onPostExecute(result);
 			if(dialog.isShowing())
 				dialog.cancel();

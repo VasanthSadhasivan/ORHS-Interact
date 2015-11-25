@@ -2,277 +2,277 @@
 <items version="2" >
 
     <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-d08022fc855325c526980a78dbe8fc962146a826.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-spreadsheet-3.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8c6cdc5aa2ff9e7b6a3ab9bbfaaa23538caff4a6">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-spreadsheet-3.0-5fb64cef3317159bccad72348a7895bef2052e07.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-e01a015f3d4650c5b9539020677886e19b5ee013.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-client-1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b8dabe89dcae1a48a5bd16e899b19053193c52cc">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-client-1.0-56226be2cf3b597f730bf4b8ebd8c4b792c1762a.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-11911215f74f35e4cb08b9ef7ce02ef99efa16a2.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-photos-2.0.jar"
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-photos-2.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="1cf44f835d8abf608af03eee2a0f38e74af76793">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-photos-2.0-30d1a7f44cece15b673589b81d0dc5af417e2473.jar" />
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-photos-2.0-1d1d92d49289cde667b1d1cb29b59cbddb3ab113.jar" />
     </item>
     <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-health-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3a3d6840c3f7c51671db21ef55739da2f0c46e09">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-health-2.0-667e5e573e389f1ff118a7ba6bf5f1bf34cc5099.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-calendar-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4696e021cbdb17bb4a777d9895dd2502208abe73">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-calendar-2.0-66ba28ec8d8c4ea2992788113b74d8ebecd4c4b3.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-books-1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="66160cdf78ee8ea230507fabfea6f985be39e04a">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-books-1.0-4cdbc090082dab781e3d97b7b93f457e8012985f.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-blogger-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="7bb18976e74121d73970b2354e3f9ccb7590f946">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-blogger-2.0-26049c0a641bccb7cea77d72d0ad4c38b670b995.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-4baa3866f9de437bc4fcd2c8407142b72c7c1f0a.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-webmastertools-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c9f97f7c6e87292d2913f57b51a6f1e1b6f4020e">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-webmastertools-2.0-46c27c185f2a484a907177f7877f0498315798f3.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-projecthosting-2.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="116020bc07ef1ed24c43bfa0fcf29f8d72434dbc">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-projecthosting-2.1-370df10eb418dfbfb905b0a24e3fe5886971b0bb.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-sidewiki-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8c9b8194c44c4c0d47d4ee9a176c9cda80429af6">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-sidewiki-2.0-ecb55856ae2ab8b03a54910af1063c9d631703f6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Admin\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-3bfe3b02f4ef8526347ac0a2f64729d13647fb1d.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-sites-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="9d38dde59369a6420b7d01225d8625b12e05aa9e">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-sites-2.0-b2a8c9bb2a6508318e4c3daf71ec0cc351a2ac97.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-analytics-2.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b119fd93f087f194b7204d673c0c7f9c54bd492c">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-analytics-2.1-37d09779df85b9a6b35c4f4a1bea57bff2d46fe9.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-eda699e0dd5c0a499efecb5ffc58e0e6c3eaca5a.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-appsforyourdomain-1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="acaa42773bec346a9cde8bd751c8395daa2f6959">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-appsforyourdomain-1.0-a7d7bd80dd22d0e6a3b65ba31b1c33b625115f3d.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-01210f214c6e1daee7ceab6bc025de039bd1ca28.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-codesearch-2.0.jar"
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-codesearch-2.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="5d518f5258ef353b30ff71b8d257687e04b267ac">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-codesearch-2.0-f088550bc4fd3e694932807d1accd2ac815b1564.jar" />
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-codesearch-2.0-4bbfe308827b67830500026c303a73fdca477c66.jar" />
     </item>
     <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-finance-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="cd4469fc0283b7c88c23915844df35958702278b">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-finance-2.0-5e9101ed52ff237f954ddd5687f12c9bfee893d0.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-youtube-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="9b5304603eee6e8947b812c20ccc00feb225a3fc">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-youtube-2.0-08ee7eec4affb667a9361b340375c1c4938f02e8.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-69773008460eeae78c7cce98aa0655ca4615b387.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-docs-3.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c59baf05ae5bcfc03a49565c92fa0f0475897629">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-docs-3.0-54667c5ba9eae2c53f5e1397cb4aba3a40ad1209.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\simple-side-drawer2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5c03f3a39e0eb9ba2f74681d63093341ca9f3e55">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\simple-side-drawer2-d303e6504a84051ac6b5d424c9bab88b4f3c8b8e.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\guava-11.0.2.jar"
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\guava-11.0.2.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="35a3c69e19d72743cac83778aecbee68680f63eb">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\guava-11.0.2-0f4df59fa131e2bc12a5d398eb1be2c33ad9ea7f.jar" />
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\guava-11.0.2-b28e0d9357c8db2e19853b5c9dcfec1056ed0319.jar" />
     </item>
     <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-gtt-2.0.jar"
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-sites-2.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="496e88310db6f84e5c9112c02b0f7caf7fdd3c6f">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-gtt-2.0-1c3921a33e059470df7707717f25cdbbfd68349a.jar" />
+        sha1="9d38dde59369a6420b7d01225d8625b12e05aa9e">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-sites-2.0-ba2b2a8cbbce991eaa2a38e264fcea16423daddc.jar" />
     </item>
     <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-a3ba97d0d92d1c4bccec13a2b3186f9b3d78accf.jar" />
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-c1eb445f156a1fbddead4a2e8dcd4d747bd71ab2.jar" />
     </item>
     <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\mail.jar"
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-gtt-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="496e88310db6f84e5c9112c02b0f7caf7fdd3c6f">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-gtt-2.0-a6656aa81b11418be13d6c4e5c244182480979a0.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\mail.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="e880497affe331a8fae02c84c701fddde8954f18">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\mail-3564cf4a6f08eee373dd4dfce014309dd81e29bd.jar" />
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\mail-deba37cd1fdcc1e80e7b1317a975f857fee5d295.jar" />
     </item>
     <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-base-1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c2a5c4c2ac5b920de749592bc122fcd4ebd0c12c">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-base-1.0-11908c618180d6ae38bbc84ed5b625c94f0edcb8.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6666dd525c3da197e7d07f4f23ef5fc7881a697b">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-051ca0ddca326278df816b62957f7216e4217b19.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-contacts-3.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c18ad34f41a7591b1fec0770ba0fc0300bf5901e">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-contacts-3.0-4608a75fc44b991310e10799e3a84d3e9a199a7c.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-maps-2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="9a62b19b6268b63f69c8452c350f7257540d760e">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-maps-2.0-853f9a379db147ef1e33df5f26d26b357146cff4.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-media-1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e6ae67ce2026e91947174a88432f4cb1cfd8ae12">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-media-1.0-0f22e1aedbbf985f2f053b659bf795e1a4ff2096.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gss_lib_2.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1d6b6a2e4e488453fb0b84a71d4738b294d673ac">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gss_lib_2.2-9fa72decb2bca64c0742879b6aeffa5ebcd082df.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-eb114618d91aa13f3277e9ed2dd33696867311ac.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\gdata-core-1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6ff0dba2ad4e59fdda638b00d6773f3e48b61e16">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-core-1.0-f021dc5bd9d65ddd6712a41ff7c8f5c59f5e3685.jar" />
-    </item>
-    <item
-        jar="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\libs\jsr305.jar"
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\jsr305.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="20d240a736e261ebc3f1e9448cb26fd75ba46154">
-        <dex dex="E:\Documents\GITHUB\App-Dev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\jsr305-4db89c2d40c063eac045ed24f5be85aaa1e7ef07.jar" />
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\jsr305-ddd7973ecfd6a9a3884bb2190deff930f4e2d8d5.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-94868fd024342d82442540135e97cff9f8c2554f.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-sidewiki-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8c9b8194c44c4c0d47d4ee9a176c9cda80429af6">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-sidewiki-2.0-1dc32261c0fe6576d981c72f55ec12053a1adcaf.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-36241e663cddf2dc01e22b1a702c43fb553d11b7.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-837fadcb5a1d230c373b9660ebffcda2a3ee6438.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-maps-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9a62b19b6268b63f69c8452c350f7257540d760e">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-maps-2.0-58a750146b1192922ac060a9c1452a74f456083b.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-blogger-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7bb18976e74121d73970b2354e3f9ccb7590f946">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-blogger-2.0-f49f426146066f19c1dd8ee94c1ed818846e35ac.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-c2915f5a189d8d640acc37562959ad6b8e364482.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-8e6d3c6c744678f0df4ca83fa4897f43472f4387.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-docs-3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c59baf05ae5bcfc03a49565c92fa0f0475897629">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-docs-3.0-b765900be6c7e828561809a59e25164cf30cfb55.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-contacts-3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c18ad34f41a7591b1fec0770ba0fc0300bf5901e">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-contacts-3.0-8172024cd4cbb991bdc7c3ba6a0ea7186c868b7b.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gss_lib_2.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1d6b6a2e4e488453fb0b84a71d4738b294d673ac">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gss_lib_2.2-a03f86bc56795c9c159745c850affa6665bd439a.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-analytics-2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b119fd93f087f194b7204d673c0c7f9c54bd492c">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-analytics-2.1-377cf0706a71f9ee30062f202950e93e02091e9c.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-spreadsheet-3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8c6cdc5aa2ff9e7b6a3ab9bbfaaa23538caff4a6">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-spreadsheet-3.0-467e0e04d5a45868761560742790af22edb4d46d.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-base-1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c2a5c4c2ac5b920de749592bc122fcd4ebd0c12c">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-base-1.0-417b06c18f0b4a6113d9b9fb0c808dd035dc107a.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-db5aee13092e6fa98740b4e0940213aa8dfdcf18.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-webmastertools-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c9f97f7c6e87292d2913f57b51a6f1e1b6f4020e">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-webmastertools-2.0-6d38e86104b745ff8a197bc9dff2f57fa9b4f105.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-calendar-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4696e021cbdb17bb4a777d9895dd2502208abe73">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-calendar-2.0-6c7158ee6cf0c5ef5e4a626af5509d48233297d2.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-health-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3a3d6840c3f7c51671db21ef55739da2f0c46e09">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-health-2.0-31742292ddbbea1a6766a15989875df865fc943c.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-da816e126733388577d2d62eab5fcefb72f19ef0.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-core-1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6ff0dba2ad4e59fdda638b00d6773f3e48b61e16">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-core-1.0-8bf60dec1cef5ffc92ccf3d6431dbf3e264a56ac.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-appsforyourdomain-1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="acaa42773bec346a9cde8bd751c8395daa2f6959">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-appsforyourdomain-1.0-b13013c79a5758466c8eea42ce95292fbbb567a9.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6666dd525c3da197e7d07f4f23ef5fc7881a697b">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-7ad848ac8e07b97927ef02cd5cb83ee88564287c.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\simple-side-drawer2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5c03f3a39e0eb9ba2f74681d63093341ca9f3e55">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\simple-side-drawer2-8e5b765758cc3a64c8b609cdb345c8b32c036d9e.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-finance-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="cd4469fc0283b7c88c23915844df35958702278b">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-finance-2.0-8590eee9dc4ca12609dc96a5b9833eaf96039fe1.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-38ba865ef00ff122cba20fb37807afcae30b2cc0.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-books-1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="66160cdf78ee8ea230507fabfea6f985be39e04a">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-books-1.0-26ef88621c4a0443706d9e038accc6b81d8a25d2.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\classes-d12f0423b5cce209b45346e1537e8384c8308dca.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-client-1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b8dabe89dcae1a48a5bd16e899b19053193c52cc">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-client-1.0-0c042c3bab3dd8c842984fca6c736d419dd0ddac.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-projecthosting-2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="116020bc07ef1ed24c43bfa0fcf29f8d72434dbc">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-projecthosting-2.1-7848b527ea0a853d8270b960e8ac64bd044bc7c1.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-media-1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e6ae67ce2026e91947174a88432f4cb1cfd8ae12">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-media-1.0-bf40697f07aa4b0fed0c82c548b7cf32977751bb.jar" />
+    </item>
+    <item
+        jar="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\libs\gdata-youtube-2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9b5304603eee6e8947b812c20ccc00feb225a3fc">
+        <dex dex="C:\Users\berna\Documents\AppDev\SpreadSheetProject\app\build\intermediates\pre-dexed\debug\gdata-youtube-2.0-df9cdade6f19f0dd2311aed5440ad009d9536c80.jar" />
     </item>
 
 </items>
