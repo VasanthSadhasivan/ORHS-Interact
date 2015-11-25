@@ -4,6 +4,7 @@ import java.lang.*;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -43,6 +44,8 @@ public class Info extends Activity {
         startActivity(i);
     }
     public void hoursClickedInfo (View view) {
-
+        Uri uri = Uri.parse("http://www.orhsinteract.wix.com/1516"); // missing 'http://' will cause crashed
+        Intent i = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(i);
     }
 }
