@@ -55,8 +55,8 @@ public class Home extends Activity{
         startActivity(i);
     }
 
-    public void websiteClickedHome(View view) {
-        Uri uri = Uri.parse("http://www.orhsinteract.wix.com/1516"); // missing 'http://' will cause crashed
+    public void hoursClickedHome(View view) {
+        Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8/edit"); // missing 'http://' will cause crashed
         Intent i = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(i);
     }

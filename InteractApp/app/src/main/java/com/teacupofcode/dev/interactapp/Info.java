@@ -43,8 +43,27 @@ public class Info extends Activity {
         i.putExtra("Email", email);
         startActivity(i);
     }
-    public void hoursClickedInfo (View view) {
-        Uri uri = Uri.parse("http://www.orhsinteract.wix.com/1516"); // missing 'http://' will cause crashed
+
+    public void websiteClickedInfo (View view) {
+        Uri uri = Uri.parse("https://orhsinteract.wix.com/1516");
+        Intent i = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(i);
+    }
+
+    public void joinClickedInfo (View view) {
+        Uri uri = Uri.parse("https://docs.google.com/forms/d/1-ctFeAA4864rmHKsSczlP04mas-20f5n5aDrcX5btbc/viewform");
+        Intent i = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(i);
+    }
+
+    public void githubClickedInfo (View view) {
+        Uri uri = Uri.parse("https://github.com/ORHS-Web-App-Dev");
+        Intent i = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(i);
+    }
+
+    public void resourcesClickedInfo (View view) {
+        Uri uri = Uri.parse("https://drive.google.com/folderview?id=0BwJLvdTM6Ac4UWlqSHlKTGhxRFk&usp=sharing");
         Intent i = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(i);
     }
