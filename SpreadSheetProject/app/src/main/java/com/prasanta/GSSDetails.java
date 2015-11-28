@@ -16,12 +16,10 @@
 package com.prasanta;
 
 import java.util.ArrayList;
-
 import com.pras.SpreadSheet;
 import com.pras.SpreadSheetFactory;
 import com.pras.WorkSheet;
 import com.prasanta.auth.AndroidAuthenticator;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;

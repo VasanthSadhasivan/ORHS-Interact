@@ -82,7 +82,7 @@ public class GSSAct extends Activity {
 
             // Read Spread Sheet list from the server.
 			SpreadSheetFactory factory = SpreadSheetFactory.getInstance(new AndroidAuthenticator(GSSAct.this));
-		    spreadSheets = factory.getSpreadSheet("Hours",true);
+		    spreadSheets = factory.getAllSpreadSheets();
 			return null;
 		}
 		

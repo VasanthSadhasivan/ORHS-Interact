@@ -29,7 +29,7 @@ import com.pras.auth.Authenticator;
  * @author Prasanta Paul
  *
  */
-public class AndroidAuthenticator implements Authenticator {
+public class  AndroidAuthenticator implements Authenticator {
 
 	private final String TAG = "AndroidAuthenticator";
 	Activity activity;
@@ -57,7 +57,7 @@ public class AndroidAuthenticator implements Authenticator {
 		Log.i(TAG, "Num of Matching account: "+ acs.length);
 		
 		if(acs == null || acs.length == 0){
-			Toast.makeText(this.activity.getApplicationContext(), "No Google Account Added...", Toast.LENGTH_LONG).show();
+			//Toast.makeText(this.activity.getApplicationContext(), "No Google Account Added...", Toast.LENGTH_LONG).show();
 			return "";
 		}
 		
