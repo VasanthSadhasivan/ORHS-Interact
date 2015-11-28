@@ -94,14 +94,14 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform (1)" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="gdata-projecthosting-2.1" level="project" />
     <orderEntry type="library" exported="" name="gdata-gtt-meta-2.0" level="project" />
+    <orderEntry type="library" exported="" name="gdata-projecthosting-2.1" level="project" />
     <orderEntry type="library" exported="" name="gdata-contacts-3.0" level="project" />
     <orderEntry type="library" exported="" name="mail" level="project" />
     <orderEntry type="library" exported="" name="gdata-docs-3.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-appsforyourdomain-1.0" level="project" />
-    <orderEntry type="library" exported="" name="gdata-gtt-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-youtube-meta-2.0" level="project" />
+    <orderEntry type="library" exported="" name="gdata-gtt-2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-identity-8.1.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="runner-0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-core-1.0" level="project" />
@@ -118,26 +118,26 @@
     <orderEntry type="library" exported="" name="gdata-maps-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-client-meta-1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-youtube-2.0" level="project" />
-    <orderEntry type="library" exported="" name="gdata-blogger-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-analytics-meta-2.1" level="project" />
+    <orderEntry type="library" exported="" name="gdata-blogger-2.0" level="project" />
     <orderEntry type="library" exported="" name="simple-side-drawer2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="exposed-instrumentation-api-publish-0.2" level="project" />
-    <orderEntry type="library" exported="" name="gdata-photos-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gss_lib_2.2" level="project" />
+    <orderEntry type="library" exported="" name="gdata-photos-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-media-1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-codesearch-2.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit-dep-4.10" level="project" />
-    <orderEntry type="library" exported="" name="gdata-sites-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-maps-meta-2.0" level="project" />
-    <orderEntry type="library" exported="" name="guava-11.0.2" level="project" />
+    <orderEntry type="library" exported="" name="gdata-sites-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-spreadsheet-meta-3.0" level="project" />
+    <orderEntry type="library" exported="" name="guava-11.0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-calendar-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-books-meta-1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-webmastertools-meta-2.0" level="project" />
-    <orderEntry type="library" exported="" name="gdata-sidewiki-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-projecthosting-meta-2.1" level="project" />
+    <orderEntry type="library" exported="" name="gdata-sidewiki-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-spreadsheet-3.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="rules-0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-finance-meta-2.0" level="project" />

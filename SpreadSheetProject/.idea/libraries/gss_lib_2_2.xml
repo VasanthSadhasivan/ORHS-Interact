@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/app/libs/gss_lib_2.2.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/app/libs/gss_lib_2.2.jar!/" />
+    </SOURCES>
   </library>
 </component>

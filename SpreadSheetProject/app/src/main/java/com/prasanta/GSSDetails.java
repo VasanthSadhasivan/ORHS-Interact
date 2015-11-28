@@ -46,7 +46,7 @@ public class GSSDetails extends Activity {
 	int spID = -1;
 	ArrayList<WorkSheet> workSheets;
 	TextView tv;
-	
+	//Pass Bundle; creates instance; formats accordingly
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -71,11 +71,12 @@ public class GSSDetails extends Activity {
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
+			// Loading...
 			super.onPreExecute();
 			dialog = new Dialog(GSSDetails.this);
 			dialog.setTitle("Please wait");
 			TextView tv = new TextView(GSSDetails.this.getApplicationContext());
-			tv.setText("Featching SpreadSheet details...");
+			tv.setText("Fetching SpreadSheet details...");
 			dialog.setContentView(tv);
 			dialog.show();
 		}
@@ -94,6 +95,7 @@ public class GSSDetails extends Activity {
 		@Override
 		protected void onPostExecute(Object result) {
 			// TODO Auto-generated method stub
+			// Displays after execution
 			super.onPostExecute(result);
 			if(dialog.isShowing())
 				dialog.cancel();

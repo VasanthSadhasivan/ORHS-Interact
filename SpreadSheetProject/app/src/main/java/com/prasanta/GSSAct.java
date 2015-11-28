@@ -35,7 +35,7 @@ import com.pras.SpreadSheetFactory;
 import com.prasanta.auth.AndroidAuthenticator;
 
 /**
- * @author Prasanta Paul
+ * @author Vasanth Sadhasivan
  *
  */
 public class GSSAct extends Activity {
@@ -45,6 +45,7 @@ public class GSSAct extends Activity {
 	ListView list;
 	
 	@Override
+	//Pass Bundle; creates instance; formats according to application context
     public void onCreate(Bundle savedInstanceState) 
 	{
         super.onCreate(savedInstanceState);
@@ -66,12 +67,13 @@ public class GSSAct extends Activity {
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
+			// Loading screen
             Log.w("AAYYY", "1");
 			super.onPreExecute();
 			dialog = new Dialog(GSSAct.this);
 			dialog.setTitle("Please wait");
 			TextView tv = new TextView(GSSAct.this.getApplicationContext());
-			tv.setText("Featching SpreadSheet list from your account...");
+			tv.setText("Fetching SpreadSheet list from your account...");
 			dialog.setContentView(tv);
 			dialog.show();
 		}
@@ -82,7 +84,11 @@ public class GSSAct extends Activity {
 
             // Read Spread Sheet list from the server.
 			SpreadSheetFactory factory = SpreadSheetFactory.getInstance(new AndroidAuthenticator(GSSAct.this));
+<<<<<<< HEAD
 		    spreadSheets = factory.getAllSpreadSheets();
+=======
+		    spreadSheets = factory.getAllSpreadSheets(true);
+>>>>>>> 1a0baab8dec5bf803eca9c39c10353cf2f998f24
 			return null;
 		}
 		
@@ -91,6 +97,7 @@ public class GSSAct extends Activity {
             Log.w("AAYYY", "3");
 
             // TODO Auto-generated method stub
+			// Displays after execution
 			super.onPostExecute(result);
 			if(dialog.isShowing())
 				dialog.cancel();

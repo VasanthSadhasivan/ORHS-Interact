@@ -67,7 +67,7 @@ public class MainActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.w("shit","sdkjshdjklasdhjkasdhJKLasdhJKLASDHjkasdjklHASDJKLASDjklh");
         if (savedInstanceState != null) {
             mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
             mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
@@ -102,9 +102,13 @@ public class MainActivity extends Activity implements
     }
 
     private void updateUI(boolean isSignedIn) {
+
         if (isSignedIn) {
+            Log.w("poop","poop");
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+            Log.w("AYY", String.valueOf(currentPerson == null));
             if ((currentPerson != null)) {
+                Log.w("poop","poop1");
                 // Show signed-in user's name
                 String name = currentPerson.getDisplayName();
                 mStatus.setText(getString(R.string.signed_in_fmt, name));
@@ -112,7 +116,7 @@ public class MainActivity extends Activity implements
                 ((TextView) findViewById(R.id.email)).setText(currentAccount);
                 // Show users' email address (which requires GET_ACCOUNTS permission)
                 if (checkAccountsPermission() && !(noSwitching)) {
-
+                    Log.w("poop","poop2");
                     Intent i = new Intent(this, Home.class);
                     i.putExtra("Name", name);
                     i.putExtra("Email", currentAccount);
@@ -145,7 +149,9 @@ public class MainActivity extends Activity implements
     private boolean checkAccountsPermission() {
         final String perm = Manifest.permission.GET_ACCOUNTS;
         int permissionCheck = ContextCompat.checkSelfPermission(this, perm);
+        Log.w(TAG, String.valueOf(permissionCheck));
         if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+
             // We have the permission
             return true;
         } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
@@ -162,6 +168,7 @@ public class MainActivity extends Activity implements
                                     new String[]{perm},
                                     RC_PERM_GET_ACCOUNTS);
                         }
+
                     }).show();
             return false;
         } else {
@@ -223,6 +230,7 @@ public class MainActivity extends Activity implements
         Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
         if (requestCode == RC_PERM_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.w("AAAYY", "lfadsladkslkdaskldjsdklj");
                 if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) {
                     showSignedInUI();
                     Log.w(TAG,"AYy");
@@ -241,23 +249,29 @@ public class MainActivity extends Activity implements
         // onConnected indicates that an account was selected on the device, that the selected
         // account has granted any requested permissions to our app and that we were able to
         // establish a service connection to Google Play services.
-        Plus.PeopleApi.loadVisible(mGoogleApiClient, null)
-                .setResultCallback(this);
+
+        Plus.PeopleApi.loadVisible(mGoogleApiClient, null).setResultCallback(this);
         Log.d(TAG, "onConnected:" + bundle);
         mShouldResolve = false;
         Log.w(TAG, "AYy1");
         boolean containsEmail=(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"));
+        Log.w("AYYY", String.valueOf(containsEmail));
         boolean personIsSignedIn=(Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null);
+        Log.w("AYYYSHit", String.valueOf(personIsSignedIn));
         // Show the signed-in UI
+        //if (containsEmail && personIsSignedIn) {
         if (containsEmail && personIsSignedIn) {
-            showSignedInUI();
-            Log.w(TAG, "AYy2");
-        } else{
-            onSignOutClicked();
-            Log.w(TAG, "AYy3");
+                showSignedInUI();
+                Log.w(TAG, "AYy2");
         }
-        //Log.w(TAG, String.valueOf((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")) ));
+        else
+        {
+            onSignOutClicked();
+                Log.w(TAG, "AYy3");
+        }
     }
+
+
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -273,7 +287,7 @@ public class MainActivity extends Activity implements
         // grant permissions or resolve an error in order to sign in. Refer to the javadoc for
         // ConnectionResult to see possible error codes.
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
-
+        Log.w("AYYblahbklee", String.valueOf(!mIsResolving && mShouldResolve));
         if (!mIsResolving && mShouldResolve) {
             if (connectionResult.hasResolution()) {
                 try {
@@ -291,6 +305,7 @@ public class MainActivity extends Activity implements
             }
         } else {
             // Show the signed-out UI
+            Log.w(TAG, "DUSTINS garbo4");
             showSignedOutUI();
         }
     }
@@ -305,6 +320,7 @@ public class MainActivity extends Activity implements
                         new DialogInterface.OnCancelListener() {
                             @Override
                             public void onCancel(DialogInterface dialog) {
+                                Log.w(TAG, "DUSTINS garbo");
                                 mShouldResolve = false;
                                 showSignedOutUI();
                             }
@@ -315,6 +331,7 @@ public class MainActivity extends Activity implements
                 Toast.makeText(this, errorString, Toast.LENGTH_SHORT).show();
 
                 mShouldResolve = false;
+                Log.w(TAG, "DUSTINS garbo1");
                 showSignedOutUI();
             }
         }
@@ -354,7 +371,7 @@ public class MainActivity extends Activity implements
             Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
             mGoogleApiClient.disconnect();
         }
-
+        Log.w(TAG, "DUSTINS garbo2");
         showSignedOutUI();
     }
 
@@ -366,7 +383,7 @@ public class MainActivity extends Activity implements
             Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient);
             mGoogleApiClient.disconnect();
         }
-
+        Log.w(TAG, "DUSTINS garbo3");
         showSignedOutUI();
     }
     @Override

@@ -52,4 +52,194 @@
                 android:textColor="@color/highlight" />
         </LinearLayout>
     </LinearLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView1"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Interact"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:textSize="35sp"
+            android:textColor="@color/text"
+            android:id="@+id/header" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="15sp"
+            android:textColor="@color/text"
+            android:id="@+id/description" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/aboutinteract"
+            android:src="@mipmap/aboutinteract"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Started Here"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="25sp"
+            android:textColor="@color/text"
+            android:id="@+id/getstarted" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:weightSum="2">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Join"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:id="@+id/joinbutton"
+                android:onClick="joinClickedInfo"
+                android:textColor="@android:color/black"
+                android:background="@drawable/buttons" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Website"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="40dp"
+            android:layout_gravity="center"
+            android:id="@+id/websitebutton"
+            android:onClick="websiteClickedInfo"
+            android:textColor="@android:color/black"
+            android:background="@drawable/buttons" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Behind the Scenes"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="35sp"
+            android:textColor="@color/text"
+            android:id="@+id/header2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/design"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="15sp"
+            android:textColor="@color/text"
+            android:id="@+id/description2" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/aboutWAAD"
+            android:src="@mipmap/aboutwaad"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/links"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="15sp"
+            android:textColor="@color/text"
+            android:id="@+id/links" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:weightSum="2">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Github"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:id="@+id/githubbutton"
+                android:onClick="githubClickedInfo"
+                android:textColor="@android:color/black"
+                android:background="@drawable/buttons" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Resources"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_gravity="center"
+                android:id="@+id/rescourcesbutton"
+                android:onClick="resourcesClickedInfo"
+                android:textColor="@android:color/black"
+                android:background="@drawable/buttons" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Special Thanks to:"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="25sp"
+            android:textColor="@color/text"
+            android:id="@+id/thanks" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vasanth Sadhasivan\nBernard Zhao\nDustin Nguyen\nStephanie Allen"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"
+            android:textColor="@color/text"
+            android:id="@+id/description3" />
+
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
