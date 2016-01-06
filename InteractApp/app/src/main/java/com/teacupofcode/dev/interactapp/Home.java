@@ -5,8 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -21,6 +26,7 @@ public class Home extends Activity{
     String name; //string name
     String email;
     String phoneNumber;
+    TextView currentEvent;
     int mFlipping = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class Home extends Activity{
                 email = intentData.getString("Email");
        // }
        // contactInfo = (TextView) findViewById(R.id.contactInfo);
+        currentEvent = (TextView) findViewById(R.id.currentEvent);
         tname = (TextView) findViewById(R.id.homeTitle);
         tname.setText(name);
         //contactInfo.setText("xxxxxx.com\n(910)-xxx-xxxx\n" + email);
@@ -45,6 +52,14 @@ public class Home extends Activity{
         mFlipping=1;
 
 
+        MySpreadsheetIntegration myspreadsheetobject = new MySpreadsheetIntegration();
+        myspreadsheetobject.execute("whatever");
+        while(MySpreadsheetIntegration.dateList==null || MySpreadsheetIntegration.eventList==null)
+        {
+        }
+        Events.dates=MySpreadsheetIntegration.dateList;
+        Events.events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
+        currentEvent.setText(Events.events.get(0)+ " " + Events.dates.get(0));
     }
 
     public void returnClickedHome(View view) {

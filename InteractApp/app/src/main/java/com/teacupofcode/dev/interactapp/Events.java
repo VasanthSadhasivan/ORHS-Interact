@@ -22,8 +22,8 @@ public class Events extends Activity{
 
     String name; //string name
     String email;
-    ArrayList<String> events = new ArrayList<String>();
-    ArrayList<String> dates = new ArrayList<String>();
+    static ArrayList<String> events = new ArrayList<String>();
+    static ArrayList<String> dates = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,14 @@ public class Events extends Activity{
         dates=MySpreadsheetIntegration.dateList;
         events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
         Log.w("AYY", dates.get(0));
-        setAllViewInfo(events, dates);
+        setAllViewInfo();
     }
     //Later on, fix the method to have info and location
-    public void setAllViewInfo(ArrayList<String> titleList, ArrayList<String> dateList)
+    public void setAllViewInfo()
     {
-        for(int i=0; i<titleList.size(); i++)
+        for(int i=0; i<Events.events.size(); i++)
         {
-            generateView(titleList.get(i), "-----", "-----", dateList.get(i));
+            generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i));
             //generateView(titleList.get(i), "-----", "-----", "====-=-=");
         }
     }
@@ -73,7 +73,7 @@ public class Events extends Activity{
 
     }
 
-    public  int generateView(String Title, String Info, String Place, String Time)
+    public int generateView(String Title, String Info, String Place, String Time)
     {
         //Creating Relative Layout Programmatically
         RelativeLayout relativeLayout = new RelativeLayout(this);
