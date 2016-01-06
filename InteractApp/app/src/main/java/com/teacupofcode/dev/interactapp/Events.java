@@ -25,7 +25,8 @@ public class Events extends Activity{
     String email;
     static ArrayList<String> events = new ArrayList<String>();
     static ArrayList<String> dates = new ArrayList<String>();
-    static Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0"));
+    static ArrayList<String> links = new ArrayList<String>();
+    static Intent browserIntent = new Intent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +45,7 @@ public class Events extends Activity{
         }
         dates=MySpreadsheetIntegration.dateList;
         events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
+        links = MySpreadsheetIntegration.linkList;
         Log.w("AYY", dates.get(0));
         setAllViewInfo();
     }
@@ -52,8 +54,15 @@ public class Events extends Activity{
     {
         for(int i=0; i<Events.events.size(); i++)
         {
-            generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i));
-            //generateView(titleList.get(i), "-----", "-----", "====-=-=");
+            try {
+                generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
+            }
+            catch (IndexOutOfBoundsException e){
+                generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), "https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0");
+            }
+            catch (NullPointerException e){
+                generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), "https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0");
+            }
         }
     }
     public void homeClickedEvents(View view) {
@@ -74,7 +83,7 @@ public class Events extends Activity{
 
     }
 
-    public int generateView(String Title, String Info, String Place, String Time)
+    public int generateView(String Title, String Info, String Place, String Time, final String link)
     {
         //Creating Relative Layout Programmatically
         RelativeLayout relativeLayout = new RelativeLayout(this);
@@ -106,7 +115,8 @@ public class Events extends Activity{
         infoView.setLayoutParams(infoLayout);
         infoView.setText(Place + "\n" + Time + "\n" + Info);
 
-        //////////////// BUTTON /////////////////
+        //////////////// BUTTON ///////////////
+        //
 
         Button signUpButton =  new Button(this);
         //signUpButton.getBackground().setColorFilter(
@@ -122,6 +132,7 @@ public class Events extends Activity{
         signUpButton.setId(View.generateViewId());
         signUpButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                Events.browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
                 startActivity(Events.browserIntent);
             }
         });

@@ -23,6 +23,7 @@ import java.util.*;
 public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
     public static ArrayList<String> dateList;
     public static ArrayList<String> eventList;
+    public static ArrayList<String> linkList;
     public static String url ="https://spreadsheets.google.com/tq?key=1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8";
     public static ArrayList<String> getEvents(String url)  throws IOException, JSONException
     {
@@ -49,6 +50,12 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         //Log.w("AYY", "FINISHED RETURNING:"+returnEvents.get(0));
         return events;
     }
+    public static void generateLinks(){
+        for (String i : MySpreadsheetIntegration.eventList)
+        {
+            MySpreadsheetIntegration.linkList.add((i.split("\\s+"))[(i.split("\\s+")).length-1]);
+        }
+    }
     public static ArrayList<String> getDate(String url) throws IOException, JSONException
     {
         Log.w("AYY", "getDate:1" );
@@ -74,13 +81,24 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
         return dateList;
     }
-
+    public static String removeLastWord(String a)
+    {
+        String returnString="";
+        String[] temp = a.split("\\s+");
+        for(int i=0; i < temp.length-1; i++)
+        {
+            returnString += temp[i]+" ";
+        }
+        return returnString;
+    }
     public static ArrayList<String> filterEvents(ArrayList<String> listofdata)
     {
         String tempString="";
         ArrayList<String> returnString = new ArrayList<String>();
+        MySpreadsheetIntegration.generateLinks();
         for(String a : listofdata)
         {
+            a=MySpreadsheetIntegration.removeLastWord(a);
             tempString="";
             String[] listString = a.split(" ");
             ArrayList<String> seperatedString = new ArrayList<String>(Arrays.asList(listString));
