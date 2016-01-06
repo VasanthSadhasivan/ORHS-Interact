@@ -3,6 +3,7 @@ package com.teacupofcode.dev.interactapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,7 +25,7 @@ public class Events extends Activity{
     String email;
     static ArrayList<String> events = new ArrayList<String>();
     static ArrayList<String> dates = new ArrayList<String>();
-
+    static Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0"));
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -119,7 +120,11 @@ public class Events extends Activity{
         signUpButton.setLayoutParams(buttonLayout);
         signUpButton.setText("Sign Up");
         signUpButton.setId(View.generateViewId());
-
+        signUpButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                startActivity(Events.browserIntent);
+            }
+        });
         //////////////Combine Everything///////////
 
         relativeLayout.addView(titleView);
