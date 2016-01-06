@@ -59,7 +59,7 @@ public class Home extends Activity{
         }
         Events.dates=MySpreadsheetIntegration.dateList;
         Events.events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
-        currentEvent.setText(Events.events.get(0)+ " " + Events.dates.get(0));
+        currentEvent.setText("Upcoming Event:\n" + Events.events.get(0)+ " " + Events.dates.get(0));
     }
 
     public void returnClickedHome(View view) {
