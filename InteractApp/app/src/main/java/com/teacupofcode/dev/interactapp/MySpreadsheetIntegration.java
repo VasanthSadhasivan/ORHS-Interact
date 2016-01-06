@@ -23,7 +23,7 @@ import java.util.*;
 public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
     public static ArrayList<String> dateList;
     public static ArrayList<String> eventList;
-    public static ArrayList<String> linkList;
+    public static ArrayList<String> linkList=new ArrayList<String>();
     public static String url ="https://spreadsheets.google.com/tq?key=1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ";
     public static ArrayList<String> getEvents(String url)  throws IOException, JSONException
     {
@@ -48,11 +48,17 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         }
         //ArrayList<String> returnEvents = MySpreadsheetIntegration.filterEvents(events);
         //Log.w("AYY", "FINISHED RETURNING:"+returnEvents.get(0));
+        Log.w("Dustin is a fagboi", events.get(0));
         return events;
+
     }
     public static void generateLinks(){
+        Log.w("DUSTIN IS A FAGBOI", MySpreadsheetIntegration.eventList.get(0));
         for (String i : MySpreadsheetIntegration.eventList)
         {
+            Log.w("DUSTIN IS A FAGBOI", ""+(i.split("\\s+")).length);
+            Log.w("DUSTIN IS A FAGBOI", (i.split("\\s+"))[(i.split("\\s+")).length-1]);
+
             MySpreadsheetIntegration.linkList.add((i.split("\\s+"))[(i.split("\\s+")).length-1]);
         }
     }
@@ -112,6 +118,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             returnString.add(tempString);
 
         }
+        Log.w("AYYY",returnString.get(0));
         return returnString;
     }
     private String downloadUrl(String urlString) throws IOException {
