@@ -78,7 +78,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             Log.w("AYY", seperatedString[0]);
             for(String i : seperatedString)
             {
-                if(i.contains("/"))
+                if(i.contains("/") && !(i.contains("http")))
                     dateList.add(i);
             }
 
