@@ -59,7 +59,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             Log.w("DUSTIN IS A FAGBOI", ""+(i.split("\\s+")).length);
             Log.w("DUSTIN IS A FAGBOI", (i.split("\\s+"))[(i.split("\\s+")).length-1]);
 
-            MySpreadsheetIntegration.linkList.add((i.split("\\s+"))[(i.split("\\s+")).length-1]);
+            MySpreadsheetIntegration.linkList.add((i.split("\\s+"))[(i.split("\\s+")).length - 1]);
         }
     }
     public static ArrayList<String> getDate(String url) throws IOException, JSONException
@@ -74,12 +74,14 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             {
                 dateList.add("-----");
             }
-            String[] seperatedString = a.split(" ");
+            String[] seperatedString = a.split("\\s+");
             Log.w("AYY", seperatedString[0]);
             for(String i : seperatedString)
             {
-                if(i.contains("/") && !(i.contains("http")))
+                if(i.contains("/") && !(i.contains("http"))) {
                     dateList.add(i);
+                    break;
+                }
             }
 
         }
