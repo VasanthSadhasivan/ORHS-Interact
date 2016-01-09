@@ -59,6 +59,7 @@ public class MainActivity extends Activity implements
     private static final String KEY_SHOULD_RESOLVE = "should_resolve";
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatus;
+    private boolean flag=true;
     private boolean mIsResolving = false;
     private boolean mShouldResolve = false;
     private boolean noSwitching=false;
@@ -136,7 +137,12 @@ public class MainActivity extends Activity implements
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
             // Show signed-out message and clear email field
-            mStatus.setText(R.string.signed_out);
+            if(flag){
+                mStatus.setText("Signed out" );
+                flag = false;
+            }
+            else
+                mStatus.setText("Not an ORHS account\nSigned out" );
             ((TextView) findViewById(R.id.email)).setText("");
 
             // Set button visibility
@@ -237,8 +243,12 @@ public class MainActivity extends Activity implements
                 }
                 else if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")))){
                     onDisconnectClicked();
+                    Log.w("blahblah", "blah");
+                    mStatus.setText("Not an ORHS account");
                 }
             } else {
+                Log.w("blahblah", "blah1");
+                mStatus.setText("Not an ORHS account");
                 Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
             }
         }
@@ -266,6 +276,7 @@ public class MainActivity extends Activity implements
         }
         else
         {
+            mStatus.setText("Not an ORHS account \n Signed Out");
             onSignOutClicked();
                 Log.w(TAG, "AYy3");
         }
