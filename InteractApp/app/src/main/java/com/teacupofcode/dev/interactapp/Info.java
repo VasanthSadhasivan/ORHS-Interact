@@ -73,7 +73,7 @@ public class Info extends Activity {
 
     public void aboutClickedInfo (View view) {
         counter++;
-        if (counter>10) {
+        if (counter>9) {
             img.setImageResource(R.mipmap.aboutwaad);
 
         }
