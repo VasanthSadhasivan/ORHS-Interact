@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 /**
  * Created by Vasanth Sadhasivan on 10/26/2015.
@@ -15,7 +16,8 @@ public class Info extends Activity {
 
     String name; //string name
     String email;
-
+    int counter = 0;
+    ImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -24,6 +26,7 @@ public class Info extends Activity {
         Bundle intentData = getIntent().getExtras();
         name = intentData.getString("Name");
         email = intentData.getString("Email");
+        img= (ImageView) findViewById(R.id.aboutWAAD);
     }
 
     public void infoClickedInfo(View view) {
@@ -66,5 +69,13 @@ public class Info extends Activity {
         Uri uri = Uri.parse("https://drive.google.com/folderview?id=0BwJLvdTM6Ac4UWlqSHlKTGhxRFk&usp=sharing");
         Intent i = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(i);
+    }
+
+    public void aboutClickedInfo (View view) {
+        counter++;
+        if (counter>10) {
+            img.setImageResource(R.mipmap.aboutwaad);
+
+        }
     }
 }

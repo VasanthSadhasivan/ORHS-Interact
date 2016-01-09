@@ -128,8 +128,8 @@
     <orderEntry type="library" exported="" name="gdata-maps-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-client-meta-1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-youtube-2.0" level="project" />
-    <orderEntry type="library" exported="" name="gdata-analytics-meta-2.1" level="project" />
     <orderEntry type="library" exported="" name="gdata-blogger-2.0" level="project" />
+    <orderEntry type="library" exported="" name="gdata-analytics-meta-2.1" level="project" />
     <orderEntry type="library" exported="" name="simple-side-drawer2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="exposed-instrumentation-api-publish-0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-photos-meta-2.0" level="project" />
