@@ -70,19 +70,11 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         ArrayList<String> dateList = new ArrayList<String>();
         for(String a : eventsList)
         {
-            if(!(a.contains("/")))
-            {
-                dateList.add("-----");
-            }
+
             String[] seperatedString = a.split("\\s+");
             Log.w("AYY", seperatedString[0]);
-            for(String i : seperatedString)
-            {
-                if(i.contains("/") && !(i.contains("http"))) {
-                    dateList.add(i);
-                    break;
-                }
-            }
+            dateList.add(seperatedString[seperatedString.length-2]);
+
 
         }
 
@@ -101,9 +93,11 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
     }
     public static ArrayList<String> filterEvents(ArrayList<String> listofdata)
     {
+        //listofdata is made up of title + date + link
         String tempString="";
         ArrayList<String> returnString = new ArrayList<String>();
         MySpreadsheetIntegration.generateLinks();
+        //"AAA AA BBB".split(" ")-->"AAA", "AA", "BBB"
         for(String a : listofdata)
         {
             a=MySpreadsheetIntegration.removeLastWord(a);
@@ -113,12 +107,15 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             Log.w("AYY", seperatedString.get(0));
             for(String i : seperatedString)
             {
-                if (!(i.contains("/")))
+                if (!(i==seperatedString.get(seperatedString.size()-1)))
+
                     tempString += " "+i;
+                else
+                    break;
             }
             Log.w("AYY", "TEMPSTRING: "+tempString);
             returnString.add(tempString);
-
+            Log.w("Fucking stupid", tempString);
         }
         Log.w("AYYY",returnString.get(0));
         return returnString;
