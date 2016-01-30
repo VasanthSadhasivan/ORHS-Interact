@@ -37,15 +37,17 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         Log.w("AYY", "getEvents:4");
         for(int i=0; i<arraydata.length(); i++)
         {
-            if (!(arraydata.getJSONObject(i).getString("label").contains("Name") || arraydata.getJSONObject(i).getString("label").contains("TOTAL") || arraydata.getJSONObject(i).getString("label").equals("")))
+            //NOTE: KUSH FILTER 420
+            /*if (!(arraydata.getJSONObject(i).getString("label").contains("Name") || arraydata.getJSONObject(i).getString("label").contains("TOTAL") || arraydata.getJSONObject(i).getString("label").equals("")))
             {
                 if(!((arraydata.getJSONObject(i).getString("label")).contains("NAME")))
                     events.add(arraydata.getJSONObject(i).getString("label"));
-            }
-
+            }*/
+            events.add(arraydata.getJSONObject(i).getString("label"));
         }
         //ArrayList<String> returnEvents = MySpreadsheetIntegration.filterEvents(events);
         //Log.w("AYY", "FINISHED RETURNING:"+returnEvents.get(0));
+        Log.w("GS9",""+arraydata.length());
         Log.w("Dustin is a fagboi", events.get(0));
         return events;
 
@@ -71,7 +73,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
             String[] seperatedString = a.split("\\s+");
             Log.w("AYY", seperatedString[0]);
-            dateList.add(seperatedString[seperatedString.length-2]);
+            dateList.add(seperatedString[seperatedString.length-1]);
 
 
         }
