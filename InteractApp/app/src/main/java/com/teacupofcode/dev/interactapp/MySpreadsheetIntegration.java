@@ -43,12 +43,15 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
                 if(!((arraydata.getJSONObject(i).getString("label")).contains("NAME")))
                     events.add(arraydata.getJSONObject(i).getString("label"));
             }*/
+            Log.w("Dustino", arraydata.getJSONObject(i).getString("label"));
             events.add(arraydata.getJSONObject(i).getString("label"));
+
         }
         //ArrayList<String> returnEvents = MySpreadsheetIntegration.filterEvents(events);
         //Log.w("AYY", "FINISHED RETURNING:"+returnEvents.get(0));
+        Log.w("Vasanth", events.get(0));
         Log.w("GS9",""+arraydata.length());
-        Log.w("Dustin is a fagboi", events.get(0));
+        Log.w("Vasanth", events.get(0));
         return events;
 
     }
