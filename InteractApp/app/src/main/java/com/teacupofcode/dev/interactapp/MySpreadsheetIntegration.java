@@ -1,15 +1,7 @@
 package com.teacupofcode.dev.interactapp;
 
-import com.google.gdata.client.spreadsheet.*;
-import com.google.gdata.data.spreadsheet.*;
-import com.google.gdata.util.*;
-/**
- * Created by Vasanth Sadhasivan on 10/30/2015.
- */
-
 import android.os.AsyncTask;
 import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -20,11 +12,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
+
+/**
+ * Created by Vasanth Sadhasivan on 10/30/2015.
+ */
+
+
 public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
     public static ArrayList<String> dateList;
     public static ArrayList<String> eventList;
     public static ArrayList<String> linkList=new ArrayList<String>();
-    public static String url ="https://spreadsheets.google.com/tq?key=1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ";
+    public static String url ="https://spreadsheets.google.com/tq?key=1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8";
     public static ArrayList<String> getEvents(String url)  throws IOException, JSONException
     {
         MySpreadsheetIntegration data = new MySpreadsheetIntegration();
@@ -113,7 +111,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
                 else
                     break;
             }
-            Log.w("AYY", "TEMPSTRING: "+tempString);
+            Log.w("AYY", "TEMPSTRING: " + tempString);
             returnString.add(tempString);
             Log.w("Fucking stupid", tempString);
         }

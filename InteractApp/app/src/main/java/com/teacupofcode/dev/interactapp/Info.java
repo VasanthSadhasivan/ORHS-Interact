@@ -75,7 +75,6 @@ public class Info extends Activity {
         counter++;
         if (counter>9) {
             img.setImageResource(R.mipmap.aboutwaad);
-
         }
     }
 }
