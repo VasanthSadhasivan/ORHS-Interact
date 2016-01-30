@@ -22,7 +22,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
     public static ArrayList<String> dateList;
     public static ArrayList<String> eventList;
     public static ArrayList<String> linkList=new ArrayList<String>();
-    public static String url ="https://spreadsheets.google.com/tq?key=1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8";
+    public static String url ="https://spreadsheets.google.com/tq?key=1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ";
     public static ArrayList<String> getEvents(String url)  throws IOException, JSONException
     {
         MySpreadsheetIntegration data = new MySpreadsheetIntegration();
