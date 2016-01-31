@@ -54,7 +54,11 @@ public class Events extends Activity{
     {
         for(int i=0; i<Events.events.size(); i++)
         {
+<<<<<<< HEAD
 
+=======
+            Log.w("GS9", ""+events.get(i));
+>>>>>>> 8239315348dcdddd839741ea421bd786abdd8d4c
             try {
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
             }
