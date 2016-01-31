@@ -55,15 +55,15 @@ public class Events extends Activity{
         for(int i=0; i<Events.events.size(); i++)
         {
             Log.w("GS9", ""+events.get(i));
-            try {
-                generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
-            }
-            catch (IndexOutOfBoundsException e){
+            //try {
+            generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
+            //}
+            /*catch (IndexOutOfBoundsException e){
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), "https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0");
             }
             catch (NullPointerException e){
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), "https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0");
-            }
+            }*/
         }
     }
     public void homeClickedEvents(View view) {
