@@ -43,10 +43,10 @@ public class Events extends Activity{
         while(MySpreadsheetIntegration.dateList==null || MySpreadsheetIntegration.eventList==null)
         {
         }
-        dates=MySpreadsheetIntegration.dateList;
-        events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
-        links = MySpreadsheetIntegration.linkList;
-        Log.w("AYY", dates.get(0));
+        Events.dates=MySpreadsheetIntegration.dateList;
+        Events.events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
+        Events.links = MySpreadsheetIntegration.linkList;
+        Log.w("DateList", Events.dates.get(0));
         setAllViewInfo();
     }
     //Later on, fix the method to have info and location
@@ -54,6 +54,7 @@ public class Events extends Activity{
     {
         for(int i=0; i<Events.events.size(); i++)
         {
+
             try {
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
             }
