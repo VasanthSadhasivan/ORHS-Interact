@@ -58,16 +58,23 @@ public class Events extends Activity{
 
 =======
             Log.w("GS9", ""+events.get(i));
+<<<<<<< HEAD
 >>>>>>> 8239315348dcdddd839741ea421bd786abdd8d4c
             try {
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
             }
             catch (IndexOutOfBoundsException e){
+=======
+            //try {
+            generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
+            //}
+            /*catch (IndexOutOfBoundsException e){
+>>>>>>> 15c485e11335ab564c82e534fc322050128cb550
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), "https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0");
             }
             catch (NullPointerException e){
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), "https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0");
-            }
+            }*/
         }
     }
     public void homeClickedEvents(View view) {
