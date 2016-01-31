@@ -50,7 +50,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         //ArrayList<String> returnEvents = MySpreadsheetIntegration.filterEvents(events);
         //Log.w("AYY", "FINISHED RETURNING:"+returnEvents.get(0));
         Log.w("Vasanth", events.get(0));
-        Log.w("GS9",""+arraydata.length());
+        Log.w("DustinSuan",""+arraydata.length());
         Log.w("Vasanth", events.get(0));
         return events;
 
