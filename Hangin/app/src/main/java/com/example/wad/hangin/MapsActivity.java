@@ -20,17 +20,36 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
+import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
-{
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MapsActivity extends FragmentActivity implements
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
 
 
     /* GOOGLE API VARIABLES */
-    /***************************************************/
-    /***************************************************/
     /***************************************************/
     private boolean mResolvingError = false;
     private GoogleApiClient mGoogleApiClient;
@@ -45,20 +64,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private TextView mLatitudeText;
     private TextView mLongitudeText;
     /***************************************************/
-    /***************************************************/
-    /***************************************************/
     /* GOOGLE API VARIABLES END */
 
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> cf44399dc329bdd6e628ac4b9f2fb7f7def027c0
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
         // Create an instance of GoogleAPIClient.
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -70,6 +86,62 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Check for errors on create
         mResolvingError = savedInstanceState != null
                 && savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
+        setUpMapIfNeeded();
+    }
+
+
+/********GOOGLE MAPS SHIT**********/
+@Override
+    protected void onResume() {
+        super.onResume();
+        setUpMapIfNeeded();
+    }
+
+    public void changeType(View view)
+    {
+        if(mMap.getMapType() == GoogleMap.MAP_TYPE_NORMAL)
+        {
+            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        }
+        else
+            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+    }
+
+    private void setUpMapIfNeeded() {
+        // Do a null check to confirm that we have not already instantiated the map.
+        if (mMap == null) {
+            // Try to obtain the map from the SupportMapFragment.
+            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                    .getMap();
+            // Check if we were successful in obtaining the map.
+            if (mMap != null) {
+                setUpMap();
+            }
+        }
+    }
+
+    private void setUpMap() {
+        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        mMap.setMyLocationEnabled(true);
+
+
+    }
+    /**********GOOGLE MAPS SHIT END********/
+
+    /*****ACTIVITY METHODS*****/
+    public void onSearch(View w) throws IOException {
+        String location_input = ((EditText) findViewById(R.id.LocationSearch)).getText().toString();
+        ArrayList<Address> address_list = null;
+        if (location_input != null || !location_input.isEmpty()){
+            Geocoder geocoder = new Geocoder(this);
+            List<Address> temp_list = geocoder.getFromLocationName(location_input,1);
+            address_list = new ArrayList<>(temp_list.size());
+            address_list.addAll(temp_list);
+        }
+        Address main_address = address_list.get(0);
+        LatLng latlng_of_address = new LatLng(main_address.getLatitude(),main_address.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(latlng_of_address).title("Marker"));
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(latlng_of_address));
     }
 
 
@@ -79,24 +151,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-    /***************************************************/
-    /***************************************************/
-    /***************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*
     * On opening the Map, it should center at your last known location
+<<<<<<< HEAD
     *
+=======
+>>>>>>> cf44399dc329bdd6e628ac4b9f2fb7f7def027c0
     */
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        // Add a marker in Sydney and move the camera
-        //LatLng whereyouat = new LatLng(location.getLatitude(), location.getLongitude());
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
 
 
 
@@ -209,8 +283,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     /** End of Google API Shit **/
 
-    /***************************************************/
-    /***************************************************/
-    /***************************************************/
 
 }
