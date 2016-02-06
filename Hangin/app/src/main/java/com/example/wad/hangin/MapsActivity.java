@@ -27,6 +27,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     /* GOOGLE API VARIABLES */
+    /***************************************************/
+    /***************************************************/
+    /***************************************************/
     private boolean mResolvingError = false;
     private GoogleApiClient mGoogleApiClient;
     // Request code to use when launching the resolution activity
@@ -35,8 +38,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final String DIALOG_ERROR = "dialog_error";
     // Bool to track whether the app is already resolving an error
     private static final String STATE_RESOLVING_ERROR = "resolving_error";
+    /***************************************************/
+    /***************************************************/
+    /***************************************************/
+    /* GOOGLE API VARIABLES END */
 
 
+
+
+
+
+
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,21 +71,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+
+
+
+
+
+
+    /***************************************************/
+    /***************************************************/
+    /***************************************************/
 
     /*
     * On opening the Map, it should center at your last known location
-    *
-    *
-    * 
     */
 
     @Override
@@ -188,4 +198,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onSaveInstanceState(outState);
         outState.putBoolean(STATE_RESOLVING_ERROR, mResolvingError);
     }
+    /** End of Google API Shit **/
+
+    /***************************************************/
+    /***************************************************/
+    /***************************************************/
+
 }
