@@ -43,10 +43,10 @@ public class Events extends Activity{
         while(MySpreadsheetIntegration.dateList==null || MySpreadsheetIntegration.eventList==null)
         {
         }
-        dates=MySpreadsheetIntegration.dateList;
-        events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
-        links = MySpreadsheetIntegration.linkList;
-        Log.w("AYY", dates.get(0));
+        Events.dates=MySpreadsheetIntegration.dateList;
+        Events.events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
+        Events.links = MySpreadsheetIntegration.linkList;
+        Log.w("AYY", Events.dates.get(0));
         setAllViewInfo();
     }
     //Later on, fix the method to have info and location
@@ -55,16 +55,16 @@ public class Events extends Activity{
         Log.w("GS99",""+ Events.events.size());
         for(int i=0; i<Events.events.size(); i++)
         {
-            Log.w("GS9", ""+events.get(i));
-            try {
-                generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
-            }
-            catch (IndexOutOfBoundsException e){
+            Log.w("GS9", ""+Events.events.get(i));
+            //try {
+            generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), Events.links.get(i));
+            //}
+            /*catch (IndexOutOfBoundsException e){
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), "https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0");
             }
             catch (NullPointerException e){
                 generateView(Events.events.get(i), "-----", "-----", Events.dates.get(i), "https://docs.google.com/spreadsheets/d/1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ/edit#gid=0");
-            }
+            }*/
         }
     }
     public void homeClickedEvents(View view) {

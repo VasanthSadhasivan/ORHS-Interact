@@ -33,7 +33,8 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         Log.w("AYY", "getEvents:2"+url);
         JSONObject jsonObject = data.getJSONObject(jsonData);
         Log.w("AYY", "getEvents:3"+url);
-        JSONArray arraydata=jsonObject.getJSONArray("cols");
+        //NOTE: Changed cols to rows
+        JSONArray arraydata=jsonObject.getJSONArray("rows");
         Log.w("AYY", "getEvents:4");
         for(int i=0; i<arraydata.length(); i++)
         {
@@ -43,8 +44,9 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
                 if(!((arraydata.getJSONObject(i).getString("label")).contains("NAME")))
                     events.add(arraydata.getJSONObject(i).getString("label"));
             }*/
-            Log.w("Dustino", arraydata.getJSONObject(i).getString("label"));
-            events.add(arraydata.getJSONObject(i).getString("label"));
+            //NOTE CHANGED label to v
+            Log.w("Dustino", arraydata.getJSONObject(i).getString("v"));
+            events.add(arraydata.getJSONObject(i).getString("v"));
 
         }
         //ArrayList<String> returnEvents = MySpreadsheetIntegration.filterEvents(events);
