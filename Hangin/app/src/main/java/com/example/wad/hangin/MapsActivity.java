@@ -155,8 +155,26 @@ public class MapsActivity extends FragmentActivity implements
 
     /*
     * On opening the Map, it should center at your last known location
+<<<<<<< HEAD
+    *
+    *
+    *
+=======
+>>>>>>> 705c64898b2f3cd55003b39513f1004895899666
     */
 
+<<<<<<< HEAD
+=======
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        // Add a marker in Sydney and move the camera
+        //LatLng whereyouat = new LatLng(location.getLatitude(), location.getLongitude());
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+>>>>>>> 95142d70c58461162e613a234a3128813a3d8f33
 
 
 
