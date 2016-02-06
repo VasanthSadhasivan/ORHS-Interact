@@ -52,6 +52,7 @@ public class Events extends Activity{
     //Later on, fix the method to have info and location
     public void setAllViewInfo()
     {
+        Log.w("GS99",""+ Events.events.size());
         for(int i=0; i<Events.events.size(); i++)
         {
             Log.w("GS9", ""+events.get(i));
