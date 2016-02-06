@@ -50,13 +50,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     * On opening the Map, it should center at your last known location
     *
     *
-    * 
+    *
     */
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         // Add a marker in Sydney and move the camera
         //LatLng whereyouat = new LatLng(location.getLatitude(), location.getLongitude());
         LatLng sydney = new LatLng(-34, 151);
