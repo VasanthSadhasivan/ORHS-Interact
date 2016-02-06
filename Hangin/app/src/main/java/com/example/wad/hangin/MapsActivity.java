@@ -60,17 +60,11 @@ public class MapsActivity extends FragmentActivity implements
     // Bool to track whether the app is already resolving an error
     private static final String STATE_RESOLVING_ERROR = "resolving_error";
     // Exactly what it sounds like
-    private Location mLastLocation;
-    private TextView mLatitudeText;
-    private TextView mLongitudeText;
     /***************************************************/
     /* GOOGLE API VARIABLES END */
 
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> cf44399dc329bdd6e628ac4b9f2fb7f7def027c0
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +115,6 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
         mMap.setMyLocationEnabled(true);
 
 
@@ -166,10 +159,7 @@ public class MapsActivity extends FragmentActivity implements
 
     /*
     * On opening the Map, it should center at your last known location
-<<<<<<< HEAD
     *
-=======
->>>>>>> cf44399dc329bdd6e628ac4b9f2fb7f7def027c0
     */
 
 
@@ -179,12 +169,6 @@ public class MapsActivity extends FragmentActivity implements
     public void onConnected(Bundle connectionHint) {
         // Connected to Google Play services!
         // The good stuff goes here.
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-        if (mLastLocation != null) {
-            mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-            mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
-        }
 
     }
 
