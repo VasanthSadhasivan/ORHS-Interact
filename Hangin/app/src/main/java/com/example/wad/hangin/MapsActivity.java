@@ -5,8 +5,10 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -38,15 +40,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final String DIALOG_ERROR = "dialog_error";
     // Bool to track whether the app is already resolving an error
     private static final String STATE_RESOLVING_ERROR = "resolving_error";
+    // Exactly what it sounds like
+    private Location mLastLocation;
+    private TextView mLatitudeText;
+    private TextView mLongitudeText;
     /***************************************************/
     /***************************************************/
     /***************************************************/
     /* GOOGLE API VARIABLES END */
-
-
-
-
-
 
 
     
@@ -66,6 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     .addApi(LocationServices.API)
                     .build();
         }
+        //Check for errors on create
         mResolvingError = savedInstanceState != null
                 && savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
     }
@@ -83,12 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /*
     * On opening the Map, it should center at your last known location
-<<<<<<< HEAD
     *
-    *
-    *
-=======
->>>>>>> 705c64898b2f3cd55003b39513f1004895899666
     */
 
     @Override
@@ -108,6 +105,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnected(Bundle connectionHint) {
         // Connected to Google Play services!
         // The good stuff goes here.
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null) {
+            mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+            mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+        }
+
     }
 
     @Override
