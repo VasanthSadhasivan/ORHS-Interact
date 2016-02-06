@@ -138,25 +138,6 @@ public class MapsActivity extends FragmentActivity implements
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
     * On opening the Map, it should center at your last known location
     *
@@ -267,5 +248,5 @@ public class MapsActivity extends FragmentActivity implements
     }
     /** End of Google API Shit **/
 
-
+ 
 }
