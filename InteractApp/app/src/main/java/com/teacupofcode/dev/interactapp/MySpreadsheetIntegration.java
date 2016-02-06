@@ -36,6 +36,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         //NOTE: Changed cols to rows
         JSONArray arraydata=jsonObject.getJSONArray("rows");
         Log.w("AYY", "getEvents:4");
+        Log.w("Array_Data", arraydata.getJSONObject(0).getJSONArray("v").toString());
         for(int i=0; i<arraydata.length(); i++)
         {
             //NOTE: KUSH FILTER 420
@@ -45,8 +46,9 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
                     events.add(arraydata.getJSONObject(i).getString("label"));
             }*/
             //NOTE CHANGED label to v
-            Log.w("Dustino", arraydata.getJSONObject(i).getString("v"));
-            events.add(arraydata.getJSONObject(i).getString("v"));
+
+            Log.w("Dustino", arraydata.getJSONObject(i).getString("c"));
+            events.add(arraydata.getJSONObject(i).getString("c"));
 
         }
         //ArrayList<String> returnEvents = MySpreadsheetIntegration.filterEvents(events);
