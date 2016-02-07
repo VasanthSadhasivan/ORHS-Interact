@@ -67,10 +67,6 @@ public class MapsActivity extends FragmentActivity implements
     /* GOOGLE API VARIABLES END */
 
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> cf44399dc329bdd6e628ac4b9f2fb7f7def027c0
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,10 +162,6 @@ public class MapsActivity extends FragmentActivity implements
 
     /*
     * On opening the Map, it should center at your last known location
-<<<<<<< HEAD
-    *
-=======
->>>>>>> cf44399dc329bdd6e628ac4b9f2fb7f7def027c0
     */
 
 
