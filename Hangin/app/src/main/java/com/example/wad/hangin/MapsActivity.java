@@ -5,10 +5,16 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
-import android.support.v4.app.FragmentActivity;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -16,38 +22,23 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import android.location.Address;
-import android.location.Geocoder;
-import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+
+//TODO: Implement Persistent Search : https://github.com/Quinny898/PersistentSearch
+
 
 public class MapsActivity extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
-
+    private ArrayList<Marker> list_of_markers = new ArrayList<Marker>();
 
     /* GOOGLE API VARIABLES */
     /***************************************************/
@@ -60,13 +51,14 @@ public class MapsActivity extends FragmentActivity implements
     // Bool to track whether the app is already resolving an error
     private static final String STATE_RESOLVING_ERROR = "resolving_error";
     // Exactly what it sounds like
-    private Location mLastLocation;
-    private TextView mLatitudeText;
-    private TextView mLongitudeText;
     /***************************************************/
     /* GOOGLE API VARIABLES END */
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 54195d54002283f55b84af4ba98b99f2f94b02a9
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +101,7 @@ public class MapsActivity extends FragmentActivity implements
             // Try to obtain the map from the SupportMapFragment.
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
+            setUpMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
@@ -117,16 +110,55 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+
+            mMap.setMyLocationEnabled(true);
+        addMarkerToCurrentLocation();
+
+
+    }
+    private void addMarkerToCurrentLocation() {
+        // Enable MyLocation Layer of Google Map
         mMap.setMyLocationEnabled(true);
 
+        // Get LocationManager object from System Service LOCATION_SERVICE
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+        // Create a criteria object to retrieve provider
+        Criteria criteria = new Criteria();
+
+        // Get the name of the best provider
+        String provider = locationManager.getBestProvider(criteria, true);
+
+        // Get Current Location
+        Location myLocation = locationManager.getLastKnownLocation(provider);
+
+        //set map type
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        // Get latitude of the current location
+        double latitude = myLocation.getLatitude();
+
+        // Get longitude of the current location
+        double longitude = myLocation.getLongitude();
+
+        // Create a LatLng object for the current location
+        LatLng latLng = new LatLng(latitude, longitude);
+
+        // Show the current location in Google Map
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+        // Zoom in the Google Map
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
+        //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!"));
     }
     /**********GOOGLE MAPS SHIT END********/
 
     /*****ACTIVITY METHODS*****/
     public void onSearch(View w) throws IOException {
+
+
         String location_input = ((EditText) findViewById(R.id.LocationSearch)).getText().toString();
+        Log.w("ayy bb", location_input);
         ArrayList<Address> address_list = null;
         if (location_input != null || !location_input.isEmpty()){
             Geocoder geocoder = new Geocoder(this);
@@ -136,32 +168,18 @@ public class MapsActivity extends FragmentActivity implements
         }
         Address main_address = address_list.get(0);
         LatLng latlng_of_address = new LatLng(main_address.getLatitude(),main_address.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(latlng_of_address).title("Marker"));
+        list_of_markers.add(mMap.addMarker(new MarkerOptions().position(latlng_of_address).title("Marker")));
+        list_of_markers.get(0).remove();
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latlng_of_address));
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
     * On opening the Map, it should center at your last known location
+<<<<<<< HEAD
+=======
+    *
+>>>>>>> 54195d54002283f55b84af4ba98b99f2f94b02a9
     */
 
 
@@ -171,12 +189,6 @@ public class MapsActivity extends FragmentActivity implements
     public void onConnected(Bundle connectionHint) {
         // Connected to Google Play services!
         // The good stuff goes here.
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-        if (mLastLocation != null) {
-            mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-            mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
-        }
 
     }
 
@@ -275,5 +287,7 @@ public class MapsActivity extends FragmentActivity implements
     }
     /** End of Google API Shit **/
 
+
+    /*GET JSON SHIAT*/
 
 }
