@@ -3,4 +3,6 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_friends">FriendsActivity</string>
     <string name="friendstoolbartext">Friends</string>
+    <string name="title_activity_history">HistoryActivity</string>
+    <string name="historytoolbartext">History</string>
 </resources>
