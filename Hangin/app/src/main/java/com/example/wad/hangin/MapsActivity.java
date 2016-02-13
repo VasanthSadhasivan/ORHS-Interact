@@ -13,8 +13,10 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -53,7 +55,7 @@ public class MapsActivity extends FragmentActivity implements
     private static final String DIALOG_ERROR = "dialog_error";
     // Bool to track whether the app is already resolving an error
     private static final String STATE_RESOLVING_ERROR = "resolving_error";
-    // Exactly what it sounds like
+
     /***************************************************/
     /* GOOGLE API VARIABLES END */
 
@@ -71,7 +73,6 @@ public class MapsActivity extends FragmentActivity implements
                     .addApi(LocationServices.API)
                     .build();
         }
-        //Check for errors on create
 
         mResolvingError = savedInstanceState != null
                 && savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
@@ -81,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements
 
 /********GOOGLE MAPS SHIT**********/
 @Override
-    protected void onResume() {
+    protected void onResume(){
         super.onResume();
         setUpMapIfNeeded();
     }
@@ -124,8 +125,6 @@ public class MapsActivity extends FragmentActivity implements
         // Get LocationManager object from System Service LOCATION_SERVICE
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-
-
         // Create a criteria object to retrieve provider
         Criteria criteria = new Criteria();
 
@@ -140,8 +139,8 @@ public class MapsActivity extends FragmentActivity implements
 
         //Checks permission for location
         if (locationManager != null) {
-            if (ActivityCompat.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                    || ActivityCompat.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 // Get latitude of the current location
                 double latitude = myLocation.getLatitude();
 
