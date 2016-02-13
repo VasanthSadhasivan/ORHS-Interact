@@ -44,6 +44,7 @@ public class MapsActivity extends FragmentActivity implements
 
     private GoogleMap mMap;
     private ArrayList<Marker> list_of_markers = new ArrayList<Marker>();
+    private static final String TAG ="MapsActivity";
 
     /* GOOGLE API VARIABLES */
     /***************************************************/
@@ -55,10 +56,8 @@ public class MapsActivity extends FragmentActivity implements
     private static final String DIALOG_ERROR = "dialog_error";
     // Bool to track whether the app is already resolving an error
     private static final String STATE_RESOLVING_ERROR = "resolving_error";
-
     /***************************************************/
     /* GOOGLE API VARIABLES END */
-
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,15 +78,9 @@ public class MapsActivity extends FragmentActivity implements
     }
 
 
-<<<<<<< HEAD
 /********GOOGLE MAPS SHIT**********/
 @Override
-    protected void onResume(){
-=======
-    /********GOOGLE MAPS SHIT**********/
-    @Override
     protected void onResume() {
->>>>>>> cef94637eaefd280f188c7871239dc0809c32763
         super.onResume();
         setUpMapIfNeeded();
     }
@@ -114,7 +107,7 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     private void setUpMap() {
-
+        //ANOTHER COPY EXISTS IN addMarkerToCurrentLocation()
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -126,12 +119,12 @@ public class MapsActivity extends FragmentActivity implements
             return;
         }
         mMap.setMyLocationEnabled(true);
-        addMarkerToCurrentLocation();
+        setUpCurrentLocation();
 
 
     }
 
-    private void addMarkerToCurrentLocation() {
+    private void setUpCurrentLocation() {
         // Enable MyLocation Layer of Google Map
         mMap.setMyLocationEnabled(true);
 
@@ -145,6 +138,8 @@ public class MapsActivity extends FragmentActivity implements
         String provider = locationManager.getBestProvider(criteria, true);
 
         // Get Current Location
+        Location myLocation = locationManager.getLastKnownLocation(provider);
+        //ANOTHER COPY EXISTS IN setUpMap()
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -155,42 +150,23 @@ public class MapsActivity extends FragmentActivity implements
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        Location myLocation = locationManager.getLastKnownLocation(provider);
+        // Get latitude of the current location
+        double latitude = myLocation.getLatitude();
 
-        //set map type
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        // Get longitude of the current location
+        double longitude = myLocation.getLongitude();
 
+        // Create a LatLng object for the current location
+        LatLng latLng = new LatLng(latitude, longitude);
 
+        // Show the current location in Google Map
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
-
-        //Checks permission for location
-        if (locationManager != null) {
-<<<<<<< HEAD
-            if (ContextCompat.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                    || ContextCompat.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-=======
-            if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                    || ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
->>>>>>> cef94637eaefd280f188c7871239dc0809c32763
-                // Get latitude of the current location
-                double latitude = myLocation.getLatitude();
-
-                // Get longitude of the current location
-                double longitude = myLocation.getLongitude();
-
-                // Create a LatLng object for the current location
-                LatLng latLng = new LatLng(latitude, longitude);
-
-                // Show the current location in Google Map
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
-                // Zoom in the Google Map
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
-                //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!"));
-            }
-        }
-
+        // Zoom in the Google Map
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
+        //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!"));
     }
+
     /**********GOOGLE MAPS SHIT END********/
 
     /*****ACTIVITY METHODS*****/
