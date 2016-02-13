@@ -1,16 +1,19 @@
 package com.example.wad.hangin;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -69,6 +72,7 @@ public class MapsActivity extends FragmentActivity implements
                     .build();
         }
         //Check for errors on create
+
         mResolvingError = savedInstanceState != null
                 && savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
         setUpMapIfNeeded();
@@ -120,6 +124,8 @@ public class MapsActivity extends FragmentActivity implements
         // Get LocationManager object from System Service LOCATION_SERVICE
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+
+
         // Create a criteria object to retrieve provider
         Criteria criteria = new Criteria();
 
@@ -132,21 +138,28 @@ public class MapsActivity extends FragmentActivity implements
         //set map type
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        // Get latitude of the current location
-        double latitude = myLocation.getLatitude();
+        //Checks permission for location
+        if (locationManager != null) {
+            if (ActivityCompat.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                // Get latitude of the current location
+                double latitude = myLocation.getLatitude();
 
-        // Get longitude of the current location
-        double longitude = myLocation.getLongitude();
+                // Get longitude of the current location
+                double longitude = myLocation.getLongitude();
 
-        // Create a LatLng object for the current location
-        LatLng latLng = new LatLng(latitude, longitude);
+                // Create a LatLng object for the current location
+                LatLng latLng = new LatLng(latitude, longitude);
 
-        // Show the current location in Google Map
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                // Show the current location in Google Map
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
-        // Zoom in the Google Map
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
-        //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!"));
+                // Zoom in the Google Map
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
+                //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!"));
+            }
+        }
+
     }
     /**********GOOGLE MAPS SHIT END********/
 
