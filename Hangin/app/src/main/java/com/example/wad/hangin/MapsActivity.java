@@ -59,9 +59,8 @@ public class MapsActivity extends FragmentActivity implements
     /***************************************************/
     /* GOOGLE API VARIABLES END */
 
-
-
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -80,20 +79,23 @@ public class MapsActivity extends FragmentActivity implements
     }
 
 
+<<<<<<< HEAD
 /********GOOGLE MAPS SHIT**********/
 @Override
     protected void onResume(){
+=======
+    /********GOOGLE MAPS SHIT**********/
+    @Override
+    protected void onResume() {
+>>>>>>> cef94637eaefd280f188c7871239dc0809c32763
         super.onResume();
         setUpMapIfNeeded();
     }
 
-    public void changeType(View view)
-    {
-        if(mMap.getMapType() == GoogleMap.MAP_TYPE_NORMAL)
-        {
+    public void changeType(View view) {
+        if (mMap.getMapType() == GoogleMap.MAP_TYPE_NORMAL) {
             mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        }
-        else
+        } else
             mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
 
@@ -113,11 +115,22 @@ public class MapsActivity extends FragmentActivity implements
 
     private void setUpMap() {
 
-            mMap.setMyLocationEnabled(true);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
         addMarkerToCurrentLocation();
 
 
     }
+
     private void addMarkerToCurrentLocation() {
         // Enable MyLocation Layer of Google Map
         mMap.setMyLocationEnabled(true);
@@ -132,15 +145,33 @@ public class MapsActivity extends FragmentActivity implements
         String provider = locationManager.getBestProvider(criteria, true);
 
         // Get Current Location
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         Location myLocation = locationManager.getLastKnownLocation(provider);
 
         //set map type
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
+
+
+
         //Checks permission for location
         if (locationManager != null) {
+<<<<<<< HEAD
             if (ContextCompat.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     || ContextCompat.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+=======
+            if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+>>>>>>> cef94637eaefd280f188c7871239dc0809c32763
                 // Get latitude of the current location
                 double latitude = myLocation.getLatitude();
 
@@ -171,7 +202,7 @@ public class MapsActivity extends FragmentActivity implements
         ArrayList<Address> address_list = null;
         if (location_input != null || !location_input.isEmpty()){
             Geocoder geocoder = new Geocoder(this);
-            List<Address> temp_list = geocoder.getFromLocationName(location_input,1);
+            List<Address> temp_list = geocoder.getFromLocationName(location_input,5);
             address_list = new ArrayList<>(temp_list.size());
             address_list.addAll(temp_list);
         }
@@ -185,7 +216,6 @@ public class MapsActivity extends FragmentActivity implements
 
     /*
     * On opening the Map, it should center at your last known location
-    *
     */
 
 
