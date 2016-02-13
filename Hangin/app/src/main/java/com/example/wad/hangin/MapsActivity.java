@@ -126,7 +126,6 @@ public class MapsActivity extends FragmentActivity implements
 
     private void setUpCurrentLocation() {
         // Enable MyLocation Layer of Google Map
-        mMap.setMyLocationEnabled(true);
 
         // Get LocationManager object from System Service LOCATION_SERVICE
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
