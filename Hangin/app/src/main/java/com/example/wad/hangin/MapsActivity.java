@@ -48,6 +48,7 @@ public class MapsActivity extends FragmentActivity implements
 
     /* GOOGLE API VARIABLES */
     /***************************************************/
+    LocationManager locationManager;
     private boolean mResolvingError = false;
     private GoogleApiClient mGoogleApiClient;
     // Request code to use when launching the resolution activity
@@ -74,12 +75,13 @@ public class MapsActivity extends FragmentActivity implements
 
         mResolvingError = savedInstanceState != null
                 && savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         setUpMapIfNeeded();
     }
 
 
 /********GOOGLE MAPS SHIT**********/
-@Override
+    @Override
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
@@ -109,13 +111,6 @@ public class MapsActivity extends FragmentActivity implements
     private void setUpMap() {
         //ANOTHER COPY EXISTS IN addMarkerToCurrentLocation()
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         mMap.setMyLocationEnabled(true);
@@ -123,47 +118,67 @@ public class MapsActivity extends FragmentActivity implements
 
 
     }
+    private Location getLastKnownLocation() {
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            Location l = locationManager.getLastKnownLocation(provider);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            }
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null
+                    || l.getAccuracy() < bestLocation.getAccuracy()) {
+                bestLocation = l;
+            }
+        }
+        if (bestLocation == null) {
+            return null;
+        }
+        return bestLocation;
+    }
 
     private void setUpCurrentLocation() {
         // Enable MyLocation Layer of Google Map
 
         // Get LocationManager object from System Service LOCATION_SERVICE
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        // Create a criteria object to retrieve provider
-        Criteria criteria = new Criteria();
-
-        // Get the name of the best provider
-        String provider = locationManager.getBestProvider(criteria, true);
-
-        // Get Current Location
-        Location myLocation = locationManager.getLastKnownLocation(provider);
-        //ANOTHER COPY EXISTS IN setUpMap()
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+        if(!locationManager.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER ))
+        {
+            Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS );
+            startActivity(myIntent);
         }
-        // Get latitude of the current location
-        double latitude = myLocation.getLatitude();
+        else {
+            // Create a criteria object to retrieve provider
+            Criteria criteria = new Criteria();
 
-        // Get longitude of the current location
-        double longitude = myLocation.getLongitude();
+            // Get the name of the best provider
+            String provider = locationManager.getBestProvider(criteria, true);
 
-        // Create a LatLng object for the current location
-        LatLng latLng = new LatLng(latitude, longitude);
+            // Get Current Location
+            Location myLocation = getLastKnownLocation();
+            //ANOTHER COPY EXISTS IN setUpMap()
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            // Get latitude of the current location
+            double latitude = myLocation.getLatitude();
 
-        // Show the current location in Google Map
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            // Get longitude of the current location
+            double longitude = myLocation.getLongitude();
 
-        // Zoom in the Google Map
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
-        //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!"));
+            // Create a LatLng object for the current location
+            LatLng latLng = new LatLng(latitude, longitude);
+
+            // Show the current location in Google Map
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+            // Zoom in the Google Map
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
+            //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!"));
+        }
     }
 
     /**********GOOGLE MAPS SHIT END********/
