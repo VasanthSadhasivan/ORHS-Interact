@@ -17,6 +17,8 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -39,7 +41,7 @@ import java.util.List;
 //TODO: Implement Persistent Search : https://github.com/Quinny898/PersistentSearch
 
 
-public class MapsActivity extends FragmentActivity implements
+public class MapsActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
@@ -76,6 +78,8 @@ public class MapsActivity extends FragmentActivity implements
         mResolvingError = savedInstanceState != null
                 && savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
         setUpMapIfNeeded();
     }
 
