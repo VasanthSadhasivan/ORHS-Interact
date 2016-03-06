@@ -12,10 +12,15 @@
     <output url="file://$MODULE_DIR$/build" />
     <output-test url="file://$MODULE_DIR$/build" />
     <exclude-output />
+<<<<<<< HEAD
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+=======
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
+>>>>>>> 1b9483b046ee23decae4bb05ba39dbb2075eb985
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
