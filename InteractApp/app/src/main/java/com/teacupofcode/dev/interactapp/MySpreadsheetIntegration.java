@@ -22,64 +22,76 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
     public static ArrayList<String> dateList;
     public static ArrayList<String> eventList;
     public static ArrayList<String> linkList=new ArrayList<String>();
+    public final static String TAG = "MySpreadsheetI";
     public static String url ="https://spreadsheets.google.com/tq?key=1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ";
     public static ArrayList<String> getEvents(String url)  throws IOException, JSONException
     {
         MySpreadsheetIntegration data = new MySpreadsheetIntegration();
         ArrayList<String> events = new ArrayList<String>();
         //String jsonData = data.downloadUrl("https://spreadsheets.google.com/tq?key=1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8");
-        Log.w("AYY", "getEvents:1"+url);
         String jsonData = data.downloadUrl(url);
-        Log.w("AYY", "getEvents:2"+url);
-        JSONObject jsonObject = data.getJSONObject(jsonData);
-        Log.w("AYY", "getEvents:3"+url);
-        //NOTE: Changed cols to rows
-        JSONArray arraydata=jsonObject.getJSONArray("rows");
-        Log.w("AYY", "getEvents:4");
-        Log.w("Array_Data", arraydata.getJSONObject(0).getJSONArray("v").toString());
-        for(int i=0; i<arraydata.length(); i++)
-        {
-            //NOTE: KUSH FILTER 420
-            /*if (!(arraydata.getJSONObject(i).getString("label").contains("Name") || arraydata.getJSONObject(i).getString("label").contains("TOTAL") || arraydata.getJSONObject(i).getString("label").equals("")))
-            {
-                if(!((arraydata.getJSONObject(i).getString("label")).contains("NAME")))
-                    events.add(arraydata.getJSONObject(i).getString("label"));
-            }*/
-            //NOTE CHANGED label to v
 
-            Log.w("Dustino", arraydata.getJSONObject(i).getString("c"));
-            events.add(arraydata.getJSONObject(i).getString("c"));
+
+        JSONObject jsonObject = data.getJSONObject(jsonData);
+
+
+
+
+
+        JSONObject table=jsonObject.getJSONObject("table");
+        JSONArray rows = table.getJSONArray("rows");
+        JSONObject arraydata_object = rows.getJSONObject(0);
+        Log.w(TAG, "arraydata_object"+ arraydata_object.toString());
+        JSONArray arraydata = arraydata_object.getJSONArray("c");
+        for (int i=0; i<arraydata.length(); i++)
+        {
+            try{
+                Log.w(TAG, arraydata.getJSONObject(i).getString("v") + "label");
+            }
+            catch (JSONException e)
+            {
+                continue;
+            }
 
         }
-        //ArrayList<String> returnEvents = MySpreadsheetIntegration.filterEvents(events);
-        //Log.w("AYY", "FINISHED RETURNING:"+returnEvents.get(0));
-        Log.w("Vasanth", events.get(0));
-        Log.w("DustinSuan",""+arraydata.length());
-        Log.w("Vasanth", events.get(0));
+        Log.w(TAG, arraydata.length()+"");
+        for(int i=0; i<arraydata.length(); i++) {
+            try {
+                if( arraydata.getJSONObject(i).getString("v") != null && arraydata.getJSONObject(i).getString("v") != "null" && arraydata.getJSONObject(i) != null && arraydata.getJSONObject(i).getString("v") != "") {
+                    Log.w(TAG, arraydata.getJSONObject(i).getString("v") + " inside for loop");
+                    events.add(arraydata.getJSONObject(i).getString("v"));
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            catch (JSONException e){
+                continue;
+            }
+
+        }
+        Log.w(TAG, events.get(0) +" events.get(0)");
+        Log.w(TAG,""+events.size() +" events.get(0)");
         return events;
 
     }
     public static void generateLinks(){
-        Log.w("DUSTIN IS A FAGBOI", MySpreadsheetIntegration.eventList.get(0));
+        Log.w(TAG, MySpreadsheetIntegration.eventList.get(0));
         for (String i : MySpreadsheetIntegration.eventList)
         {
-            Log.w("DUSTIN IS A FAGBOI", ""+(i.split("\\s+")).length);
-            Log.w("DUSTIN IS A FAGBOI", (i.split("\\s+"))[(i.split("\\s+")).length-1]);
-
             MySpreadsheetIntegration.linkList.add((i.split("\\s+"))[(i.split("\\s+")).length - 1]);
         }
     }
     public static ArrayList<String> getDate(String url) throws IOException, JSONException
     {
-        Log.w("AYY", "getDate:1" );
         ArrayList<String> eventsList = getEvents(url);
-        Log.w("AYY", "getDate:"+eventsList.get(0));
         ArrayList<String> dateList = new ArrayList<String>();
         for(String a : eventsList)
         {
 
             String[] seperatedString = a.split("\\s+");
-            Log.w("AYY", seperatedString[0]);
+            Log.w(TAG, seperatedString[0]);
             dateList.add(seperatedString[seperatedString.length-1]);
 
 
@@ -108,10 +120,10 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         for(String a : listofdata)
         {
             a=MySpreadsheetIntegration.removeLastWord(a);
-            tempString="";
+            /*tempString="";
             String[] listString = a.split(" ");
             ArrayList<String> seperatedString = new ArrayList<String>(Arrays.asList(listString));
-            Log.w("AYY", seperatedString.get(0));
+            Log.w(TAG, seperatedString.get(0));
             for(String i : seperatedString)
             {
                 if (!(i==seperatedString.get(seperatedString.size()-1)))
@@ -120,11 +132,12 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
                 else
                     break;
             }
-            Log.w("AYY", "TEMPSTRING: " + tempString);
+            Log.w(TAG, "TEMPSTRING: " + tempString);
             returnString.add(tempString);
-            Log.w("Fucking stupid", tempString);
+            Log.w(TAG, tempString);*/
+            returnString.add(a);
         }
-        Log.w("AYYY",returnString.get(0));
+        Log.w(TAG,returnString.get(0));
         return returnString;
     }
     private String downloadUrl(String urlString) throws IOException {
@@ -138,9 +151,9 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
             // Starts the query
-            Log.w("AYY","CONN>CONECT");
+            Log.w(TAG, "CONN>CONECT");
             conn.connect();
-            Log.w("AYY", "CONN>DONE");
+            Log.w(TAG, "CONN>DONE");
             int responseCode = conn.getResponseCode();
             is = conn.getInputStream();
 
@@ -156,11 +169,14 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
     protected JSONObject getJSONObject(String result) {
         // remove the unnecessary parts from the response and construct a JSON
         JSONObject table=null;
-        int start = result.indexOf("{", result.indexOf("{") + 1);
+        int start = result.indexOf("{", 0);
         int end = result.lastIndexOf("}");
         String jsonResponse = result.substring(start, end);
+
         try {
-            table = new JSONObject(jsonResponse);
+
+            table = new JSONObject(jsonResponse+"}");
+            Log.w(TAG, "JSONDATA " + jsonResponse + " AYY");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -196,10 +212,10 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             MySpreadsheetIntegration.dateList=MySpreadsheetIntegration.getDate(MySpreadsheetIntegration.url);
             MySpreadsheetIntegration.eventList=MySpreadsheetIntegration.getEvents(MySpreadsheetIntegration.url);
         } catch (IOException e) {
-            Log.w("AYYY","POOP");
+            Log.w(TAG,"POOP");
             e.printStackTrace();
         } catch (JSONException e) {
-            Log.w("AYYY","POOP1");
+            Log.w(TAG,"POOP1");
             e.printStackTrace();
         }
         return "HI";
