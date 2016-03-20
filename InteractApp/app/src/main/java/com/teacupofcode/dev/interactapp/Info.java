@@ -4,6 +4,7 @@ import java.lang.*;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.ImageView;
  * Created by Vasanth Sadhasivan on 10/26/2015.
  */
 public class Info extends Activity {
-
+    MediaPlayer mPlayer;
     String name; //string name
     String email;
     int counter = 0;
@@ -27,6 +28,7 @@ public class Info extends Activity {
         name = intentData.getString("Name");
         email = intentData.getString("Email");
         img= (ImageView) findViewById(R.id.aboutWAAD);
+        mPlayer = MediaPlayer.create(this,R.raw.tonymontana);
     }
 
     public void infoClickedInfo(View view) {
@@ -74,6 +76,7 @@ public class Info extends Activity {
     public void aboutClickedInfo (View view) {
         counter++;
         if (counter>9) {
+            mPlayer.start();
             img.setImageResource(R.mipmap.aboutwaad);
         }
     }
