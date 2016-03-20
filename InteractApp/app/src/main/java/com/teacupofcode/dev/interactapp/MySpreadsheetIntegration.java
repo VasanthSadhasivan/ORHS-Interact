@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * Created by Vasanth Sadhasivan on 10/30/2015.
+ * Created by VasanthSadhasivan on 10/30/2015.
  */
 
 
@@ -45,7 +45,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         JSONObject linkdata_object  = rows.getJSONObject(1);
         Log.w(TAG, "arraydata_object"+ arraydata_object.toString());
         Log.w(TAG, "linkdata_object"+ arraydata_object.toString());
-        JSONArray linkdata = arraydata_object.getJSONArray("c");
+        JSONArray linkdata = linkdata_object.getJSONArray("c");
         JSONArray arraydata = arraydata_object.getJSONArray("c");
 
         Log.w(TAG, arraydata.length()+"");
