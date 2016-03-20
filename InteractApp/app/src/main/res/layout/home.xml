@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#efefefff"
     android:orientation="vertical"
-    android:weightSum="4"
+    android:weightSum="3.75"
     tools:context=".Home">
 
     <LinearLayout
@@ -56,7 +56,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3.4"
+        android:layout_weight="3.75"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         >
@@ -108,7 +108,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="#A0000000"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -137,11 +138,10 @@
 
 
     <LinearLayout
+        android:gravity="bottom"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".6"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:weightSum="2"
         android:background="@color/bottomborder">
 
@@ -150,26 +150,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Return"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
             android:id="@+id/returnbutton"
             android:onClick="returnClickedHome"
             android:textColor="@android:color/white"
             android:layout_centerVertical="true"
-            android:background="@drawable/buttons" />
+            android:background="@color/bottomborder" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Hours"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
+
             android:id="@+id/hoursbutton"
             android:onClick="hoursClickedHome"
             android:textColor="@android:color/white"
             android:layout_centerVertical="true"
-            android:background="@drawable/buttons" />
+            android:background="@color/bottomborder" />
+
     </LinearLayout>
 
 </LinearLayout>
