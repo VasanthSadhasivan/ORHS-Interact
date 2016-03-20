@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Interact App</string>
+    <string name="app_name">ORHS Interact</string>
     <string name="title_text">Oak Ridge High School</string>
 
     <!-- Sign-in status messages -->
