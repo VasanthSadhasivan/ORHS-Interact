@@ -219,6 +219,31 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Developers:"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            android:id="@+id/developers" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vasanth Sadhasivan\nBernard Zhao\nDustin Nguyen\nORHS WAD Club\n"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:id="@+id/devdescription" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Special Thanks to:"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
@@ -231,7 +256,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vasanth Sadhasivan\nBernard Zhao\nDustin Nguyen\nStephanie Allen\nORHS WAD Club\nShri Shankar\n"
+            android:text="Stephanie Allen\nShri Shankar\n"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
