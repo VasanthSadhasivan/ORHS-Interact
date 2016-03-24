@@ -1,1 +1,101 @@
-{"project_info":{"project_id":"interactapp-93b7b","project_number":"265844943048","name":"InteractApp"},"client":[{"client_info":{"mobilesdk_app_id":"1:265844943048:android:e041fbac5cc4a038","client_id":"android:com.teacupofcode.dev.interactapp","client_type":1,"android_client_info":{"package_name":"com.teacupofcode.dev.interactapp"}},"oauth_client":[{"client_id":"265844943048-uet6m3rjbtg3l3phajr94i8rd7c907vt.apps.googleusercontent.com","client_type":1,"android_info":{"package_name":"com.teacupofcode.dev.interactapp","certificate_hash":"f99a03197e1b0b3f47bc0e4f558d9b8b063947c9"}}],"api_key":[],"services":{"analytics_service":{"status":1},"cloud_messaging_service":{"status":1,"apns_config":[]},"appinvite_service":{"status":1,"other_platform_oauth_client":[]},"google_signin_service":{"status":2},"ads_service":{"status":1}}}],"client_info":[],"ARTIFACT_VERSION":"1"}
+{
+  "project_info": {
+    "project_id": "interactapp-3c7c1",
+    "project_number": "948343105147",
+    "name": "interactapp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948343105147:android:e041fbac5cc4a038",
+        "client_id": "android:com.teacupofcode.dev.interactapp",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.teacupofcode.dev.interactapp",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948343105147-ub0q9bnhc5highsau9b5it3ufsi926ct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teacupofcode.dev.interactapp",
+            "certificate_hash": "E4B0831A080B2697F595F3F6A2A1993ECADFC54D"
+          }
+        },
+        {
+          "client_id": "948343105147-9k1nc1g3ghq9d034q27u0a540suknqck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948343105147:android:b638bb77a5e79c69",
+        "client_id": "android:com.teacupofcode.ved.interactapp",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.teacupofcode.ved.interactapp",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948343105147-9urcqp58vj103jnd66f1g7fuq4ok6oej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teacupofcode.ved.interactapp",
+            "certificate_hash": "825CA8C58DE4717A7493088DD2704D9C892BE169"
+          }
+        },
+        {
+          "client_id": "948343105147-9k1nc1g3ghq9d034q27u0a540suknqck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
