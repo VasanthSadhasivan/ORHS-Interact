@@ -1,6 +1,7 @@
 package com.example.wad.hangin;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
@@ -12,11 +13,15 @@ import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -39,12 +44,13 @@ import java.util.List;
 //TODO: Implement Persistent Search : https://github.com/Quinny898/PersistentSearch
 
 
-public class MapsActivity extends FragmentActivity implements
+public class MapsActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
     private ArrayList<Marker> list_of_markers = new ArrayList<Marker>();
-    private static final String TAG ="MapsActivity";
+    private static final String TAG = "MapsActivity";
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
 
     /* GOOGLE API VARIABLES */
     /***************************************************/
@@ -56,6 +62,7 @@ public class MapsActivity extends FragmentActivity implements
     private static final String DIALOG_ERROR = "dialog_error";
     // Bool to track whether the app is already resolving an error
     private static final String STATE_RESOLVING_ERROR = "resolving_error";
+
     /***************************************************/
     /* GOOGLE API VARIABLES END */
     @Override
@@ -63,6 +70,8 @@ public class MapsActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
         // Create an instance of GoogleAPIClient.
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -78,11 +87,63 @@ public class MapsActivity extends FragmentActivity implements
     }
 
 
-/********GOOGLE MAPS SHIT**********/
-@Override
-    protected void onResume() {
+    /********GOOGLE MAPS SHIT**********/
+
+
+    @Override
+    public void onResume(){
         super.onResume();
-        setUpMapIfNeeded();
+        try {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                //ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},MY_PERMISSIONS_REQUEST_LOCATION );
+                return;
+            }
+            // Enable MyLocation Layer of Google Map
+
+            // Get LocationManager object from System Service LOCATION_SERVICE
+            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+
+            // Create a criteria object to retrieve provider
+            Criteria criteria = new Criteria();
+
+            // Get the name of the best provider
+            String provider = locationManager.getBestProvider(criteria, true);
+
+            // Get Current Location
+            Location myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+
+            myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            //ANOTHER COPY EXISTS IN setUpMap()
+
+            // Get latitude of the current location
+            double latitude = myLocation.getLatitude();
+
+            // Get longitude of the current location
+            double longitude = myLocation.getLongitude();
+
+            // Create a LatLng object for the current location
+            LatLng latLng = new LatLng(latitude, longitude);
+
+            // Show the current location in Google Map
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+            // Zoom in the Google Map
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
+        }catch (NullPointerException e) {
+
+            Log.w("AYY","SHITA");
+
+        }
+
+        // put your code here...
     }
 
     public void changeType(View view) {
@@ -93,12 +154,13 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     private void setUpMapIfNeeded() {
+        Log.w("SHUIAT","SHIT");
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
-            setUpMap();
+
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
@@ -125,50 +187,77 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     private void setUpCurrentLocation() {
-        // Enable MyLocation Layer of Google Map
+        try {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                //ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},MY_PERMISSIONS_REQUEST_LOCATION );
+                return;
+            }
+            // Enable MyLocation Layer of Google Map
 
-        // Get LocationManager object from System Service LOCATION_SERVICE
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+            // Get LocationManager object from System Service LOCATION_SERVICE
+            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        // Create a criteria object to retrieve provider
-        Criteria criteria = new Criteria();
 
-        // Get the name of the best provider
-        String provider = locationManager.getBestProvider(criteria, true);
+            // Create a criteria object to retrieve provider
+            Criteria criteria = new Criteria();
 
-        // Get Current Location
-        Location myLocation = locationManager.getLastKnownLocation(provider);
-        //ANOTHER COPY EXISTS IN setUpMap()
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+            // Get the name of the best provider
+            String provider = locationManager.getBestProvider(criteria, true);
+
+            // Get Current Location
+            Location myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+
+            myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            //ANOTHER COPY EXISTS IN setUpMap()
+
+            // Get latitude of the current location
+            double latitude = myLocation.getLatitude();
+
+            // Get longitude of the current location
+            double longitude = myLocation.getLongitude();
+
+            // Create a LatLng object for the current location
+            LatLng latLng = new LatLng(latitude, longitude);
+
+            // Show the current location in Google Map
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+            // Zoom in the Google Map
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
+        }catch (NullPointerException e) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Location Services Not Active");
+            builder.setMessage("Please enable Location Services and GPS");
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // Show location settings when the user acknowledges the alert dialog
+                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(intent);
+                }
+            });
+            Dialog alertDialog = builder.create();
+            alertDialog.setCanceledOnTouchOutside(false);
+            alertDialog.show();
+
         }
-        // Get latitude of the current location
-        double latitude = myLocation.getLatitude();
 
-        // Get longitude of the current location
-        double longitude = myLocation.getLongitude();
-
-        // Create a LatLng object for the current location
-        LatLng latLng = new LatLng(latitude, longitude);
-
-        // Show the current location in Google Map
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
-        // Zoom in the Google Map
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
-        //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!"));
     }
+
+
 
     /**********GOOGLE MAPS SHIT END********/
 
     /*****ACTIVITY METHODS*****/
+
     public void onSearch(View w) throws IOException {
 
 
