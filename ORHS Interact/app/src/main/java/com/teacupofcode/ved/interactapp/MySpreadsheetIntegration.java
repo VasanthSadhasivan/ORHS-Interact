@@ -100,8 +100,6 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             String[] seperatedString = a.split("\\s+");
             Log.w(TAG, seperatedString[0]);
             dateList.add(seperatedString[seperatedString.length-1]);
-
-
         }
 
 
