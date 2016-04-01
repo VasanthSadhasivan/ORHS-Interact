@@ -60,7 +60,7 @@ public class MapsActivity extends FragmentActivity implements
         }
 
 
-        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+/*        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -75,8 +75,9 @@ public class MapsActivity extends FragmentActivity implements
                 // TODO: Handle the error.
                 Log.i(TAG, "An error occurred: " + status);
             }
-        });
+        });*/
     }
+
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

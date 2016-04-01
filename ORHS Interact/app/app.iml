@@ -82,14 +82,11 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.1.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.4.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jacoco" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaResources" />
@@ -111,21 +108,20 @@
     <orderEntry type="library" exported="" name="gdata-projecthosting-2.1" level="project" />
     <orderEntry type="library" exported="" name="gdata-contacts-3.0" level="project" />
     <orderEntry type="library" exported="" name="mail" level="project" />
-    <orderEntry type="library" exported="" name="play-services-appindexing-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-docs-3.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-appsforyourdomain-1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-youtube-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-gtt-2.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-identity-8.1.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="runner-0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-finance-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-core-1.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-base-8.4.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-measurement-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-webmastertools-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-contacts-meta-3.0" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-calendar-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-analytics-2.1" level="project" />
-    <orderEntry type="library" exported="" name="play-services-analytics-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-client-1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-books-1.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.1.0" level="project" />
@@ -140,7 +136,6 @@
     <orderEntry type="library" exported="" scope="TEST" name="exposed-instrumentation-api-publish-0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-photos-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-media-1.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-codesearch-2.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit-dep-4.10" level="project" />
     <orderEntry type="library" exported="" name="gdata-maps-meta-2.0" level="project" />
@@ -148,10 +143,10 @@
     <orderEntry type="library" exported="" name="gdata-spreadsheet-meta-3.0" level="project" />
     <orderEntry type="library" exported="" name="guava-11.0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-calendar-meta-2.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-plus-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-books-meta-1.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-measurement-8.1.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-base-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-webmastertools-meta-2.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-identity-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-sidewiki-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-projecthosting-meta-2.1" level="project" />
     <orderEntry type="library" exported="" name="gdata-spreadsheet-3.0" level="project" />
@@ -163,7 +158,6 @@
     <orderEntry type="library" exported="" scope="TEST" name="uiautomator-v18-2.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-health-2.0" level="project" />
     <orderEntry type="library" exported="" name="jsr305" level="project" />
-    <orderEntry type="library" exported="" name="play-services-ads-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-blogger-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-sidewiki-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-photos-2.0" level="project" />
@@ -173,7 +167,7 @@
     <orderEntry type="library" exported="" name="gdata-sites-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-health-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-base-1.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-basement-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-codesearch-meta-2.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-plus-8.1.0" level="project" />
   </component>
 </module>

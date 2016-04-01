@@ -41,6 +41,7 @@ public class MainActivity extends Activity implements
 
 
     private static final String TAG = "MainActivity";
+    private static final int GET_ACCOUNTS = 3;
     private static final int RC_SIGN_IN = 0;
     private static final int RC_PERM_GET_ACCOUNTS = 2;
     private static final String KEY_IS_RESOLVING = "is_resolving";
@@ -86,6 +87,7 @@ public class MainActivity extends Activity implements
                 .addScope(new Scope(Scopes.PROFILE))
                 .addScope(new Scope(Scopes.EMAIL))
                 .build();
+        checkAccountsPermission();
 
 
     }
@@ -235,11 +237,10 @@ public class MainActivity extends Activity implements
                     mStatus.setText("Not an ORHS account");
                 }
             } else {
-                Log.w("blahblah", "blah1");
-                mStatus.setText("Not an ORHS account");
                 Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
             }
         }
+
     }
 
     @Override
@@ -247,6 +248,7 @@ public class MainActivity extends Activity implements
         // onConnected indicates that an account was selected on the device, that the selected
         // account has granted any requested permissions to our app and that we were able to
         // establish a service connection to Google Play services.
+
 
         Plus.PeopleApi.loadVisible(mGoogleApiClient, null).setResultCallback(this);
         Log.d(TAG, "onConnected:" + bundle);
