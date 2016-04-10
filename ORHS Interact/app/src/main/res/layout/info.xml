@@ -71,7 +71,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:textSize="35sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/header" />
         <TextView
             android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:textSize="15sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/description" />
 
         <ImageView
@@ -103,7 +103,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:textSize="25sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/getstarted" />
 
         <LinearLayout
@@ -124,7 +124,7 @@
                 android:layout_gravity="center"
                 android:id="@+id/joinbutton"
                 android:onClick="joinClickedInfo"
-                android:textColor="#ffffff"
+                android:textColor="@color/text"
                 android:background="@drawable/buttons" />
 
         <Button
@@ -137,7 +137,7 @@
             android:layout_gravity="center"
             android:id="@+id/websitebutton"
             android:onClick="websiteClickedInfo"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:background="@drawable/buttons" />
 
         </LinearLayout>
@@ -148,7 +148,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:textSize="35sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/header2" />
         <TextView
             android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:textSize="15sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/description2" />
 
         <ImageView
@@ -180,7 +180,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:textSize="15sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/links" />
         <LinearLayout
             android:layout_width="fill_parent"
@@ -200,7 +200,7 @@
                 android:layout_gravity="center"
                 android:id="@+id/githubbutton"
                 android:onClick="githubClickedInfo"
-                android:textColor="#ffffff"
+                android:textColor="@color/text"
                 android:background="@drawable/buttons" />
 
             <Button
@@ -213,7 +213,7 @@
                 android:layout_gravity="center"
                 android:id="@+id/rescourcesbutton"
                 android:onClick="resourcesClickedInfo"
-                android:textColor="#ffffff"
+                android:textColor="@color/text"
                 android:background="@drawable/buttons" />
 
         </LinearLayout>
@@ -227,7 +227,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:textSize="25sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/developers" />
         <TextView
             android:layout_width="wrap_content"
@@ -238,9 +238,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-
             android:textSize="20sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/devdescription" />
         <TextView
             android:layout_width="wrap_content"
@@ -252,7 +251,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:textSize="25sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/thanks" />
         <TextView
             android:layout_width="wrap_content"
@@ -263,16 +262,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-
             android:textSize="20sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:id="@+id/description3" />
         <TextView
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
+            android:textColor="@color/text"
             android:textSize="6sp"
             android:text="Randeep 'The Beast from the East' Chana"
             />
