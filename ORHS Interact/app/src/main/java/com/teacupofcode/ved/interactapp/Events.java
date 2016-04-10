@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -92,7 +94,7 @@ public class Events extends Activity{
         RelativeLayout relativeLayout = new RelativeLayout(this);
         //CHANGE LATER
         relativeLayout.setId(View.generateViewId());
-        relativeLayout.setBackgroundResource(R.color.bottomborder);
+        relativeLayout.setBackgroundResource(R.drawable.borders);
         RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT);
@@ -101,18 +103,26 @@ public class Events extends Activity{
         ////////////// TEXT VIEWS //////////////
 
         TextView titleView = new TextView(this);
-        titleView.setTextColor(Color.WHITE);
-        titleView.setBackgroundResource(R.color.bottomborder);
-        titleView.setTextAppearance(this, android.R.style.TextAppearance_Large);
+        titleView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.text));
+        titleView.setBackgroundResource(R.color.background2);
+        if (Build.VERSION.SDK_INT < 23) {
+            titleView.setTextAppearance(getApplicationContext(), android.R.style.TextAppearance_Large);
+        } else {
+            titleView.setTextAppearance(android.R.style.TextAppearance_Large);
+        }
         //CHANGE LATER
         titleView.setId(View.generateViewId());
         titleView.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         titleView.setText(Title);
-        titleView.setTextColor(Color.WHITE);
+        titleView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.text));
         TextView infoView = new TextView(this);
-        infoView.setTextAppearance(this, android.R.style.TextAppearance_Small);
+        if (Build.VERSION.SDK_INT < 23) {
+            infoView.setTextAppearance(getApplicationContext(), android.R.style.TextAppearance_Small);
+        } else {
+            infoView.setTextAppearance(android.R.style.TextAppearance_Small);
+        }
         infoView.setId(View.generateViewId());
         RelativeLayout.LayoutParams infoLayout = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -120,13 +130,13 @@ public class Events extends Activity{
         infoLayout.addRule(RelativeLayout.BELOW, titleView.getId());
         infoView.setLayoutParams(infoLayout);
         infoView.setText(Place + "\n" + Time + "\n" + Info);
-        infoView.setTextColor(Color.WHITE);
+        infoView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.text));
 
         //////////////// BUTTON ///////////////
         //
 
         Button signUpButton =  new Button(this);
-        signUpButton.setBackgroundResource(R.drawable.buttons);
+        signUpButton.setBackgroundResource(R.drawable.alternativebuttons);
         //signUpButton.getBackground().setColorFilter(
                 //getResources().getColor(R.color.blue_grey_500), PorterDuff.Mode.MULTIPLY);
         RelativeLayout.LayoutParams buttonLayout = new RelativeLayout.LayoutParams(
@@ -137,14 +147,15 @@ public class Events extends Activity{
         signUpButton.setGravity(Gravity.CENTER);
         signUpButton.setLayoutParams(buttonLayout);
         signUpButton.setText("Sign Up");
-        signUpButton.setTextColor(Color.WHITE);
+        signUpButton.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.text));
         signUpButton.setId(View.generateViewId());
-        signUpButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Events.browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
                 startActivity(Events.browserIntent);
             }
         });
+        relativeLayout.setPadding(20, 10, 30, 10);
         //////////////Combine Everything///////////
 
         relativeLayout.addView(titleView);
