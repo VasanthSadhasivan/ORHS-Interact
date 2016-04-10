@@ -110,8 +110,8 @@ public class Events extends Activity{
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         titleView.setText(Title);
+        titleView.setTextColor(Color.WHITE);
         TextView infoView = new TextView(this);
-        infoView.setTextColor(Color.WHITE);
         infoView.setTextAppearance(this, android.R.style.TextAppearance_Small);
         infoView.setId(View.generateViewId());
         RelativeLayout.LayoutParams infoLayout = new RelativeLayout.LayoutParams(
@@ -120,6 +120,7 @@ public class Events extends Activity{
         infoLayout.addRule(RelativeLayout.BELOW, titleView.getId());
         infoView.setLayoutParams(infoLayout);
         infoView.setText(Place + "\n" + Time + "\n" + Info);
+        infoView.setTextColor(Color.WHITE);
 
         //////////////// BUTTON ///////////////
         //
@@ -136,6 +137,7 @@ public class Events extends Activity{
         signUpButton.setGravity(Gravity.CENTER);
         signUpButton.setLayoutParams(buttonLayout);
         signUpButton.setText("Sign Up");
+        signUpButton.setTextColor(Color.WHITE);
         signUpButton.setId(View.generateViewId());
         signUpButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
