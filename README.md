@@ -5,3 +5,6 @@ Shoutouts to the boiz Naveen, Vasanth, Jackary, and Randeep
 Visit us in Allen's room on Tuesdays at lunch.
 
 -Bernard Zhao
+Cofounder of Web and App Development Club
+
+Keep it 100
