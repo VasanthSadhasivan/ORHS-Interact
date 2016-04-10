@@ -132,7 +132,7 @@ public class MainActivity extends Activity implements
                 flag = false;
             }
             else
-                mStatus.setText("Not an ORHS account\nSigned out" );
+                mStatus.setText("Error\nSigned out" );
             ((TextView) findViewById(R.id.email)).setText("");
 
             // Set button visibility
