@@ -95,6 +95,7 @@ public class Events extends Activity{
         //CHANGE LATER
         relativeLayout.setId(View.generateViewId());
         relativeLayout.setBackgroundResource(R.drawable.borders);
+        relativeLayout.setBackgroundColor(getResources().getColor(R.color.background2);
         RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT);
