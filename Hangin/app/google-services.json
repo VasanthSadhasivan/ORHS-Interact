@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_id": "hangin-300ea",
+    "project_number": "794231168283",
+    "name": "hangin"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794231168283:android:41a10aaad0b42e54",
+        "client_id": "android:com.example.wad.hangin",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.example.wad.hangin",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794231168283-m8nf6avjmafk5it8m800c8u8t0g1oios.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wad.hangin",
+            "certificate_hash": "E4B0831A080B2697F595F3F6A2A1993ECADFC54D"
+          }
+        },
+        {
+          "client_id": "794231168283-uph96rpdcimqrbh1meurrthsdmfksin6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
