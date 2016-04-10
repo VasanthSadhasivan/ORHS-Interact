@@ -104,17 +104,17 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="gdata-projecthosting-2.1" level="project" />
     <orderEntry type="library" exported="" name="gdata-gtt-meta-2.0" level="project" />
-    <orderEntry type="library" exported="" name="mail" level="project" />
+    <orderEntry type="library" exported="" name="gdata-projecthosting-2.1" level="project" />
     <orderEntry type="library" exported="" name="gdata-contacts-3.0" level="project" />
+    <orderEntry type="library" exported="" name="mail" level="project" />
     <orderEntry type="library" exported="" name="gdata-docs-3.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-appsforyourdomain-1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-youtube-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-gtt-2.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="runner-0.2" level="project" />
-    <orderEntry type="library" exported="" name="gdata-finance-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-core-1.0" level="project" />
+    <orderEntry type="library" exported="" name="gdata-finance-2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-measurement-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-webmastertools-2.0" level="project" />
@@ -140,8 +140,8 @@
     <orderEntry type="library" exported="" scope="TEST" name="junit-dep-4.10" level="project" />
     <orderEntry type="library" exported="" name="gdata-sites-2.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-maps-meta-2.0" level="project" />
-    <orderEntry type="library" exported="" name="guava-11.0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-spreadsheet-meta-3.0" level="project" />
+    <orderEntry type="library" exported="" name="guava-11.0.2" level="project" />
     <orderEntry type="library" exported="" name="gdata-calendar-meta-2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-plus-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-books-meta-1.0" level="project" />
@@ -165,8 +165,8 @@
     <orderEntry type="library" exported="" name="multidex-1.0.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.1" level="project" />
     <orderEntry type="library" exported="" name="gdata-sites-meta-2.0" level="project" />
-    <orderEntry type="library" exported="" name="gdata-base-1.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-health-meta-2.0" level="project" />
+    <orderEntry type="library" exported="" name="gdata-base-1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-basement-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="gdata-codesearch-meta-2.0" level="project" />
   </component>
