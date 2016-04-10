@@ -65,7 +65,6 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             catch (JSONException e){
                 continue;
             }
-
         }
         for(int i=0; i<linkdata.length(); i++) {
             try {
@@ -81,7 +80,6 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             catch (JSONException e){
                 continue;
             }
-
         }
         Log.w(TAG, events.get(0) +" events.get(0)");
         Log.w(TAG,""+events.size() +" events.get(0)");

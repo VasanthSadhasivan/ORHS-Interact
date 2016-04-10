@@ -1,7 +1,10 @@
 package com.teacupofcode.ved.interactapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -89,7 +92,7 @@ public class Events extends Activity{
         RelativeLayout relativeLayout = new RelativeLayout(this);
         //CHANGE LATER
         relativeLayout.setId(View.generateViewId());
-        relativeLayout.setBackgroundResource(R.drawable.borders);
+        relativeLayout.setBackgroundResource(R.color.bottomborder);
         RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT);
@@ -98,6 +101,8 @@ public class Events extends Activity{
         ////////////// TEXT VIEWS //////////////
 
         TextView titleView = new TextView(this);
+        titleView.setTextColor(Color.WHITE);
+        titleView.setBackgroundResource(R.color.bottomborder);
         titleView.setTextAppearance(this, android.R.style.TextAppearance_Large);
         //CHANGE LATER
         titleView.setId(View.generateViewId());
@@ -106,6 +111,7 @@ public class Events extends Activity{
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         titleView.setText(Title);
         TextView infoView = new TextView(this);
+        infoView.setTextColor(Color.WHITE);
         infoView.setTextAppearance(this, android.R.style.TextAppearance_Small);
         infoView.setId(View.generateViewId());
         RelativeLayout.LayoutParams infoLayout = new RelativeLayout.LayoutParams(
@@ -119,6 +125,7 @@ public class Events extends Activity{
         //
 
         Button signUpButton =  new Button(this);
+        signUpButton.setBackgroundResource(R.drawable.buttons);
         //signUpButton.getBackground().setColorFilter(
                 //getResources().getColor(R.color.blue_grey_500), PorterDuff.Mode.MULTIPLY);
         RelativeLayout.LayoutParams buttonLayout = new RelativeLayout.LayoutParams(
