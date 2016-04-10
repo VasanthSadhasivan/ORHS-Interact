@@ -6,4 +6,5 @@
     <color name="text">#000000</color>
     <color name="bottomborder">#333333</color>
     <color name="highlight">#FFFF99</color>
+    <color name="background2">#D2D2D2</color>
 </resources>
