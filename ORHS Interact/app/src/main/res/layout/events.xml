@@ -78,14 +78,6 @@
         android:background="@color/bottomborder"
         android:layout_weight="1">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/imageView"
-            android:src="@mipmap/interactlogo_yellow"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
     </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
