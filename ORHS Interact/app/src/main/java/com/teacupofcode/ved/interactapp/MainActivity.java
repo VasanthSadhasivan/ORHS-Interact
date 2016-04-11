@@ -132,7 +132,7 @@ public class MainActivity extends Activity implements
                 flag = false;
             }
             else
-                mStatus.setText("Error\nSigned out" );
+                mStatus.setText("Not an ORHS account \nSigned out" );
             ((TextView) findViewById(R.id.email)).setText("");
 
             // Set button visibility
@@ -266,7 +266,10 @@ public class MainActivity extends Activity implements
         }
         else
         {
-            mStatus.setText("Not an ORHS account \n Signed Out");
+            if(!containsEmail)
+                mStatus.setText("Not an ORHS account \n Signed Out");
+            else
+                mStatus.setText("Error \n Signed Out");
             onSignOutClicked();
                 Log.w(TAG, "AYy3");
         }
