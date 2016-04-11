@@ -127,12 +127,12 @@ public class MainActivity extends Activity implements
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
             // Show signed-out message and clear email field
-            if(flag){
+            /*if(flag){
                 mStatus.setText("Signed out" );
                 flag = false;
             }
             else
-                mStatus.setText("Not an ORHS account \nSigned out" );
+                mStatus.setText("Not an ORHS account \nSigned out" );*/
             ((TextView) findViewById(R.id.email)).setText("");
 
             // Set button visibility
@@ -266,8 +266,10 @@ public class MainActivity extends Activity implements
         }
         else
         {
-            if(!containsEmail)
+            if(!containsEmail) {
+                Log.w(TAG, "MIGOS");
                 mStatus.setText("Not an ORHS account \n Signed Out");
+            }
             else
                 mStatus.setText("Error \n Signed Out");
             onSignOutClicked();
