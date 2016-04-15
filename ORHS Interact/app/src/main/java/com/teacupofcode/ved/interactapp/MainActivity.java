@@ -249,33 +249,37 @@ public class MainActivity extends Activity implements
         // account has granted any requested permissions to our app and that we were able to
         // establish a service connection to Google Play services.
 
-
-        Plus.PeopleApi.loadVisible(mGoogleApiClient, null).setResultCallback(this);
-        Log.d(TAG, "onConnected:" + bundle);
-        mShouldResolve = false;
-        Log.w(TAG, "AYy1");
-        boolean containsEmail=(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"));
-        Log.w("AYYY", String.valueOf(containsEmail));
-        boolean personIsSignedIn=(Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null);
-        Log.w("AYYYSHit", String.valueOf(personIsSignedIn));
-        // Show the signed-in UI
-        //if (containsEmail && personIsSignedIn) {
-        if (containsEmail && personIsSignedIn) {
+        try {
+            Plus.PeopleApi.loadVisible(mGoogleApiClient, null).setResultCallback(this);
+            Log.d(TAG, "onConnected:" + bundle);
+            mShouldResolve = false;
+            Log.w(TAG, "AYy1");
+            boolean containsEmail = (Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"));
+            Log.w("AYYY", String.valueOf(containsEmail));
+            boolean personIsSignedIn = (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null);
+            Log.w("AYYYSHit", String.valueOf(personIsSignedIn));
+            // Show the signed-in UI
+            //if (containsEmail && personIsSignedIn) {
+            if (containsEmail && personIsSignedIn) {
                 showSignedInUI();
                 Log.w(TAG, "AYy2");
-        }
-        else
-        {
-            if(!containsEmail) {
-                Log.w(TAG, "MIGOS");
-                mStatus.setText("Not an ORHS account \n Signed Out");
-            }
-            else
-                mStatus.setText("Error \n Signed Out");
-            onSignOutClicked();
+            } else {
+                if (!containsEmail) {
+                    Log.w(TAG, "MIGOS");
+                    mStatus.setText("Not an ORHS account \n Signed Out");
+                } else
+                    mStatus.setText("Error \n Signed Out");
+                onSignOutClicked();
                 Log.w(TAG, "AYy3");
+            }
+        }catch(SecurityException e)
+        {
+            
         }
     }
+
+
+
 
 
 
