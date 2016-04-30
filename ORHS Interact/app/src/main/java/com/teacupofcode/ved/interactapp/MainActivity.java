@@ -99,13 +99,8 @@ public class MainActivity extends Activity implements
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
             Log.w("AYY", String.valueOf(currentPerson == null));
             if ((currentPerson != null)) {
-                Log.w("poop","poop1");
-                // Show signed-in user's name
-                String name = currentPerson.getDisplayName();
-                mStatus.setText(getString(R.string.signed_in_fmt, name));
                 String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
-                ((TextView) findViewById(R.id.email)).setText(currentAccount);
-                // Show users' email address (which requires GET_ACCOUNTS permission)
+                String name = currentPerson.getDisplayName();
                 if (checkAccountsPermission() && !(noSwitching)) {
                     Log.w("poop","poop2");
                     Intent i = new Intent(this, Home.class);
@@ -113,6 +108,20 @@ public class MainActivity extends Activity implements
                     i.putExtra("Email", currentAccount);
                     startActivity(i);
                 }
+                Log.w("poop", "poop1");
+                // Show signed-in user's name
+
+                mStatus.setText(getString(R.string.signed_in_fmt, name));
+
+                ((TextView) findViewById(R.id.email)).setText(currentAccount);
+                // Show users' email address (which requires GET_ACCOUNTS permission)
+                /*if (checkAccountsPermission() && !(noSwitching)) {
+                    Log.w("poop","poop2");
+                    Intent i = new Intent(this, Home.class);
+                    i.putExtra("Name", name);
+                    i.putExtra("Email", currentAccount);
+                    startActivity(i);
+                }*/
             }
 
             else {
@@ -274,7 +283,7 @@ public class MainActivity extends Activity implements
             }
         }catch(SecurityException e)
         {
-            
+
         }
     }
 
