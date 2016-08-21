@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.w("shit","sdkjshdjklasdhjkasdhJKLasdhJKLASDHjkasdjklHASDJKLASDjklh");
+
         if (savedInstanceState != null) {
             mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
             mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
