@@ -26,20 +26,15 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
     public static String url ="https://spreadsheets.google.com/tq?key=1OYHhpeWnWCF_35foMF-R8oPha012UGDSBo1Q1aVUVJM";
     //public static String url ="https://spreadsheets.google.com/tq?key=1aoUbUIIQtmj2aubTwQF4XskgaESBlrMdzmli7IPzEcQ";
-    public static ArrayList<String> getEventsSetLinks(String url)  throws IOException, JSONException
-    {
+
+    public static ArrayList<String> getEventsSetLinks(String url)  throws IOException, JSONException {
         MySpreadsheetIntegration data = new MySpreadsheetIntegration();
         ArrayList<String> events = new ArrayList<String>();
         ArrayList<String> links = new ArrayList<String>();
         //String jsonData = data.downloadUrl("https://spreadsheets.google.com/tq?key=1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8");
         String jsonData = data.downloadUrl(url);
 
-
         JSONObject jsonObject = data.getJSONObject(jsonData);
-
-
-
-
 
         JSONObject table=jsonObject.getJSONObject("table");
         JSONArray rows = table.getJSONArray("rows");
@@ -53,7 +48,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         Log.w(TAG, arraydata.length()+"");
         for(int i=0; i<arraydata.length(); i++) {
             try {
-                if( arraydata.getJSONObject(i).getString("v") != null && arraydata.getJSONObject(i).getString("v") != "null" && arraydata.getJSONObject(i) != null && arraydata.getJSONObject(i).getString("v") != "") {
+                if (arraydata.getJSONObject(i).getString("v") != null && arraydata.getJSONObject(i).getString("v") != "null" && arraydata.getJSONObject(i) != null && arraydata.getJSONObject(i).getString("v") != "") {
                     Log.w(TAG, arraydata.getJSONObject(i).getString("v") + " inside for loop");
                     events.add(arraydata.getJSONObject(i).getString("v"));
                 }
@@ -88,8 +83,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
     }
 
-    public static ArrayList<String> getDate(String url) throws IOException, JSONException
-    {
+    public static ArrayList<String> getDate(String url) throws IOException, JSONException {
         ArrayList<String> eventsList = getEventsSetLinks(url);
         ArrayList<String> dateList = new ArrayList<String>();
         for(String a : eventsList)
@@ -103,8 +97,8 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
         return dateList;
     }
-    public static String removeLastWord(String a)
-    {
+
+    public static String removeLastWord(String a) {
         String returnString="";
         String[] temp = a.split("\\s+");
         for(int i=0; i < temp.length-1; i++)
@@ -113,8 +107,8 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         }
         return returnString;
     }
-    public static ArrayList<String> filterEvents(ArrayList<String> listofdata)
-    {
+
+    public static ArrayList<String> filterEvents(ArrayList<String> listofdata) {
         //listofdata is made up of title + date + link
         String tempString="";
         ArrayList<String> returnString = new ArrayList<String>();

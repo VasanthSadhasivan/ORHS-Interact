@@ -1,22 +1,22 @@
-
 package com.teacupofcode.ved.interactapp;
 
 import android.Manifest;
-import java.lang.*;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.design.widget.Snackbar;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.Scopes;
@@ -39,41 +39,57 @@ public class MainActivity extends Activity implements
         GoogleApiClient.OnConnectionFailedListener,
         ResultCallback<People.LoadPeopleResult> {
 
-
     private static final String TAG = "MainActivity";
     private static final int GET_ACCOUNTS = 3;
     private static final int RC_SIGN_IN = 0;
     private static final int RC_PERM_GET_ACCOUNTS = 2;
     private static final String KEY_IS_RESOLVING = "is_resolving";
     private static final String KEY_SHOULD_RESOLVE = "should_resolve";
+    private static final String I_S = "is_true";
+    private static final String NAME = "pop_pp";
+    private static final String EMAIL = "email";
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatus;
-    private boolean flag=true;
+    private boolean is=false;
     private boolean mIsResolving = false;
     private boolean mShouldResolve = false;
     private boolean noSwitching=false;
     private String currentAccountEmail;
+    private String currentAccount;
+    private String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >20)
+            setTheme(R.style.AppThemeV21);
+        Bundle bundle = Main2Activity.getBundle();
+        /*if (bundle != null) {
+            Log.v("1", "FACK");
+            currentAccount = bundle.getString(Main2Activity.KEY3);
+            name = bundle.getString(Main2Activity.KEY2);
+            Intent i = new Intent(this, Main2Activity.class);
+            i.putExtra("Name", name);
+            i.putExtra("Email", currentAccount);
+            startActivity(i);
+            return;
+        }*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        if (savedInstanceState != null) {
+        Log.w("shit","sdkjshdjklasdhjkasdhJKLasdhJKLASDHjkasdjklHASDJKLASDjklh");
+       /* if (savedInstanceState != null) {
+            Log.v(TAG, "HELLA SHITTY");
             mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
             mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
-        }
+        }*/
         try {
             Bundle intentData = getIntent().getExtras();
             if (intentData.containsKey("DontClose")){
                 currentAccountEmail = intentData.getString("Email");
                 noSwitching=true;
-
             }
         }catch (Exception e){
             noSwitching=false;
         }
-
-
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
@@ -88,8 +104,33 @@ public class MainActivity extends Activity implements
                 .addScope(new Scope(Scopes.EMAIL))
                 .build();
         checkAccountsPermission();
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
 
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mGoogleApiClient.disconnect();
     }
 
     private void updateUI(boolean isSignedIn) {
@@ -99,11 +140,11 @@ public class MainActivity extends Activity implements
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
             Log.w("AYY", String.valueOf(currentPerson == null));
             if ((currentPerson != null)) {
-                String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
-                String name = currentPerson.getDisplayName();
+                currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
+                name = currentPerson.getDisplayName();
                 if (checkAccountsPermission() && !(noSwitching)) {
                     Log.w("poop","poop2");
-                    Intent i = new Intent(this, Home.class);
+                    Intent i = new Intent(this, Main2Activity.class);
                     i.putExtra("Name", name);
                     i.putExtra("Email", currentAccount);
                     startActivity(i);
@@ -194,22 +235,21 @@ public class MainActivity extends Activity implements
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mGoogleApiClient.connect();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mGoogleApiClient.disconnect();
-    }
-
-    @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
         outState.putBoolean(KEY_SHOULD_RESOLVE, mShouldResolve);
+        super.onSaveInstanceState(outState);
+        Log.v(TAG, "SHITTY");
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        // Always call the superclass so it can restore the view hierarchy
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.v(TAG, "HELLA SHITTY");
+        // Restore state members from saved instance
+        mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
+        mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
     }
 
     @Override
@@ -268,7 +308,6 @@ public class MainActivity extends Activity implements
             boolean personIsSignedIn = (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null);
             Log.w("AYYYSHit", String.valueOf(personIsSignedIn));
             // Show the signed-in UI
-            //if (containsEmail && personIsSignedIn) {
             if (containsEmail && personIsSignedIn) {
                 showSignedInUI();
                 Log.w(TAG, "AYy2");
@@ -286,11 +325,6 @@ public class MainActivity extends Activity implements
 
         }
     }
-
-
-
-
-
 
     @Override
     public void onConnectionSuspended(int i) {
