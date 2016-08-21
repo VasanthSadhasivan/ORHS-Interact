@@ -8,53 +8,6 @@
     android:weightSum="4"
     tools:context=".Main2Activity">
 
-    <!--<LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <LinearLayout
-            android:id="@+id/bar_info"
-            android:transitionName="bar"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="3"
-            android:background="@color/bottomborder" >
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:onClick="homeClicked"
-                android:id="@+id/home_info"
-                android:background="@color/bottomborder"
-                android:textColor="#ffffff" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Events"
-                android:onClick="eventsClicked"
-                android:layout_weight="1"
-                android:id="@+id/events_info"
-                android:background="@color/bottomborder"
-                android:textColor="#ffffff" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Info"
-                android:layout_weight="1"
-                android:onClick="infoClickedInfo"
-                android:id="@+id/info_info"
-                android:background="@color/bottomborder"
-                android:textColor="@color/highlight" />
-        </LinearLayout>
-    </LinearLayout>
--->
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollView1"
         android:fillViewport="false"
@@ -124,7 +77,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:id="@+id/joinbutton"
                 android:onClick="joinClickedInfo"
                 android:textColor="@color/text"
@@ -137,7 +90,7 @@
             android:text="Website"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="40dp"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:id="@+id/websitebutton"
             android:textColor="@color/text"
             android:background="@drawable/alternativebuttons" />
@@ -199,7 +152,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:id="@+id/githubbutton"
                 android:textColor="@color/text"
                 android:background="@drawable/alternativebuttons" />
@@ -211,7 +164,7 @@
                 android:text="Resources"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="40dp"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:id="@+id/rescourcesbutton"
                 android:textColor="@color/text"
                 android:background="@drawable/alternativebuttons" />
@@ -232,7 +185,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vasanth Sadhasivan\nBernard Zhao\nDustin Nguyen\nORHS WAD Club\n"
+            android:text="Vasanth Sadhasivan\nNaveen Gopalan\nBernard Zhao\nDustin Nguyen\nORHS WAD Club\n"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp"

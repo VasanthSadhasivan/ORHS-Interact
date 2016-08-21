@@ -2,9 +2,12 @@ package com.teacupofcode.ved.interactapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -31,6 +34,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
@@ -57,9 +61,6 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
         emailH = intentData.getString("Email");
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab.setBackgroundColor(getResources().getColor(R.color.background));
-        fab.setRippleColor(getResources().getColor(R.color.highlight));
         //Set up the ViewPagerAdapter.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFragment(HomeFrag.newInstance(1), "Home");
@@ -73,6 +74,8 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.background));
+
+
     }
 
    @Override
@@ -103,28 +106,6 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main2, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onClick(View v) {
 
     }
@@ -141,6 +122,12 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public HomeFrag() { }
+
+        @Override
+        public void onActivityCreated(Bundle poop){
+            super.onActivityCreated(poop);
+            new LoadProfileImage().execute();
+        }
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -179,7 +166,22 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
             mFlipping=1;
             return rootView;
         }
+        private class LoadProfileImage extends AsyncTask<String, Void, Bitmap> {
 
+            public LoadProfileImage() {
+            }
+
+            protected Bitmap doInBackground(String... urls) {
+                while(MainActivity.profilePic == null){
+
+                }
+                return MainActivity.profilePic;
+            }
+
+            protected void onPostExecute(Bitmap result) {
+                ((ImageView) getActivity().findViewById(R.id.profilePic)).setImageBitmap(result);
+            }
+        }
     }
 
     public static class Events extends Fragment {
@@ -194,9 +196,9 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         public Events() { }
 
         @Override
-        public void onAttach(Context context) {
-            super.onAttach(context);
-            mContext = context;
+        public void onActivityCreated(Bundle savedInstanceState){
+            super.onActivityCreated(savedInstanceState);
+            setAllViewInfo();
         }
 
         public static Events newInstance(int sectionNumber) {
@@ -220,13 +222,12 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
             Events.events=MySpreadsheetIntegration.filterEvents(MySpreadsheetIntegration.eventList);
             Events.links = MySpreadsheetIntegration.linkList;
             Log.w("AYY", Events.dates.get(0));
-            setAllViewInfo();
             return rootView;
         }
 
         //Later on, fix the method to have info and location
        public void setAllViewInfo() {
-            Log.w("GS99",""+ Events.events.size());
+            Log.w("GS99", "" + Events.events.size());
             for(int i=0; i<Events.events.size(); i++) {
                 Log.w("GS9", ""+Events.events.get(i));
                 //try {
@@ -238,8 +239,7 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
             //Creating Relative Layout Programmatically
             //LayoutInflater inflater = LayoutInflater.from(getContext());
             //RelativeLayout relativeLayout = (RelativeLayout)inflater.inflate(R.layout.events, (LinearLayout)(getActivity().findViewById(R.id.scrollLayout)), false);
-            this.onAttach(getContext());
-            RelativeLayout relativeLayout = new RelativeLayout(mContext);
+            RelativeLayout relativeLayout = new RelativeLayout(getActivity());
             //CHANGE LATER
             relativeLayout.setId(View.generateViewId());
             relativeLayout.setBackgroundResource(R.drawable.borders);
@@ -446,4 +446,6 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
             return null;*/
         }
     }
+
+
 }

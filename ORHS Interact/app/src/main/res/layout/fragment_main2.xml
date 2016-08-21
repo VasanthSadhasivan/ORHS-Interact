@@ -122,13 +122,21 @@
             android:textSize="50sp"
             android:textColor="@android:color/white"
             android:id="@+id/homeTitle" />
-
+        <ImageView
+            android:layout_below="@id/homeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/profilePic"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="G$9"
-            android:layout_marginTop="225dp"
+            android:layout_marginTop="250dp"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
@@ -140,7 +148,6 @@
 
 
     <LinearLayout
-        android:gravity="bottom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -151,24 +158,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Return"
+            android:text="RETURN"
             android:id="@+id/returnbutton"
             android:onClick="returnClickedHome"
             android:textColor="@android:color/white"
-            android:layout_centerVertical="true"
-            android:background="@color/bottomborder" />
+            android:padding="10dp"
+            android:background="@color/bottomborder"
+            android:gravity="center"
+/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Hours"
-
+            android:text="HOURS"
             android:id="@+id/hoursbutton"
             android:onClick="hoursClickedHome"
             android:textColor="@android:color/white"
-            android:layout_centerVertical="true"
-            android:background="@color/bottomborder" />
+            android:padding="10dp"
+            android:background="@color/bottomborder"
+            android:gravity="center"
+/>
 
     </LinearLayout>
 

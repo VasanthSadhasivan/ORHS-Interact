@@ -6,6 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +21,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +38,8 @@ import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import com.google.android.gms.plus.model.people.PersonBuffer;
 
+import java.io.InputStream;
+
 /**
  * Created by Vasanth Sadhasivan on 10/30/2015.
  */
@@ -38,7 +48,7 @@ public class MainActivity extends Activity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         ResultCallback<People.LoadPeopleResult> {
-
+    public static Bitmap profilePic = null;
     private static final String TAG = "MainActivity";
     private static final int GET_ACCOUNTS = 3;
     private static final int RC_SIGN_IN = 0;
@@ -60,27 +70,10 @@ public class MainActivity extends Activity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (Build.VERSION.SDK_INT >20)
-            setTheme(R.style.AppThemeV21);
+        setTheme(R.style.AppThemeV21);
         Bundle bundle = Main2Activity.getBundle();
-        /*if (bundle != null) {
-            Log.v("1", "FACK");
-            currentAccount = bundle.getString(Main2Activity.KEY3);
-            name = bundle.getString(Main2Activity.KEY2);
-            Intent i = new Intent(this, Main2Activity.class);
-            i.putExtra("Name", name);
-            i.putExtra("Email", currentAccount);
-            startActivity(i);
-            return;
-        }*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.w("shit","sdkjshdjklasdhjkasdhJKLasdhJKLASDHjkasdjklHASDJKLASDjklh");
-       /* if (savedInstanceState != null) {
-            Log.v(TAG, "HELLA SHITTY");
-            mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
-            mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
-        }*/
         try {
             Bundle intentData = getIntent().getExtras();
             if (intentData.containsKey("DontClose")){
@@ -138,8 +131,14 @@ public class MainActivity extends Activity implements
         if (isSignedIn) {
             Log.w("poop","poop");
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+
             Log.w("AYY", String.valueOf(currentPerson == null));
             if ((currentPerson != null)) {
+                String personPhotoUrl = currentPerson.getImage().getUrl();
+                personPhotoUrl = personPhotoUrl.substring(0,
+                        personPhotoUrl.length() - 2)
+                        + 350;
+                new LoadProfileImage().execute(personPhotoUrl);
                 currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
                 name = currentPerson.getDisplayName();
                 if (checkAccountsPermission() && !(noSwitching)) {
@@ -455,5 +454,50 @@ public class MainActivity extends Activity implements
             Log.e(TAG, "Error requesting people data: " + peopleData.getStatus());
         }
     }
+    /**
+     * Background Async task to load user profile picture from url
+     * */
+    private class LoadProfileImage extends AsyncTask<String, Void, Bitmap> {
 
+        public LoadProfileImage() {
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+        public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
+            int targetWidth = 350;
+            int targetHeight = 350;
+            Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
+                    targetHeight,Bitmap.Config.ARGB_8888);
+
+            Canvas canvas = new Canvas(targetBitmap);
+            Path path = new Path();
+            path.addCircle(((float) targetWidth - 1) / 2,
+                    ((float) targetHeight - 1) / 2,
+                    (Math.min(((float) targetWidth),
+                            ((float) targetHeight)) / 2),
+                    Path.Direction.CCW);
+
+            canvas.clipPath(path);
+            Bitmap sourceBitmap = scaleBitmapImage;
+            canvas.drawBitmap(sourceBitmap,
+                    new Rect(0, 0, sourceBitmap.getWidth(),
+                            sourceBitmap.getHeight()),
+                    new Rect(0, 0, targetWidth, targetHeight), null);
+            return targetBitmap;
+        }
+        protected void onPostExecute(Bitmap result) {
+            MainActivity.profilePic = getRoundedShape(result);
+        }
+    }
 }
