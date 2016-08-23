@@ -1,13 +1,22 @@
 <resources>
-    <style name="AppThemeV21" parent="@android:style/Theme.Material.Light.NoActionBar.TranslucentDecor"/>
-
-    <style name="AppTheme.NoActionBarV21" parent="@android:style/Theme.Material.NoActionBar.TranslucentDecor">
-        <item name="android:windowTranslucentStatus">true</item>
+    <style name="AppThemeV21" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:navigationBarColor">@color/launch_status</item>
+        <item name="android:colorPrimaryDark">@color/bottomborder</item>
     </style>
 
-    <style name="AppTheme.LauncherV21" parent="AppTheme">
+    <style name="AppTheme.NoActionBarV21" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:navigationBarColor">@color/launch_status</item>
+        <item name="android:colorPrimaryDark">@color/bottomborder</item>
+
+    </style>
+
+
+    <style name="AppTheme.LauncherV21" parent="AppThemeV21">
+        <item name="android:colorPrimaryDark">@color/bottomborder</item>
         <item name="android:windowBackground">@drawable/launch_screen</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">false</item>
+        <item name="android:navigationBarColor">@color/launch_status</item>
     </style>
+
 </resources>

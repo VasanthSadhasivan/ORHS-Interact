@@ -5,7 +5,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:weightSum="4"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/launch">
 
     <ImageView
         android:id="@+id/splash"
@@ -22,7 +23,8 @@
         android:scaleType="centerCrop"
         android:layout_height="fill_parent"
         android:src="@mipmap/interactbackground_80lightness"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="@color/launch" />
 
     <TextView
         android:layout_width="wrap_content"
