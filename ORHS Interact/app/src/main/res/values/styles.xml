@@ -3,10 +3,19 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"/>
 
+    <style name="AppThemeV21" parent="@android:style/Theme.Material.Light.NoActionBar.TranslucentDecor"/>
+
+    <style name="AppTheme.NoActionBarV21" parent="@android:style/Theme.Material.NoActionBar.TranslucentDecor"/>
+
+    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
+    <item name="tabBackground">@color/bottomborder</item>
+    </style>
+
     <style name="AppTheme.Launcher" parent="AppTheme">
         <item name="android:windowBackground">@drawable/launch_screen</item>
+        <item name="android:statusBarColor">@color/launch_status</item>
         <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <!-- Activity with no Title -->
@@ -22,9 +31,7 @@
 
     <style name="Theme.AppCompat.Dark" parent="Theme.AppCompat.NoActionBar"/>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.NoActionBar">
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

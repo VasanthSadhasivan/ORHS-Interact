@@ -54,7 +54,7 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >20)
-            setTheme(R.style.AppTheme_NoActionBarV21);
+            setTheme(R.style.AppThemeV21);
         main2 = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
@@ -74,8 +74,6 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.background));
-
-
     }
 
    @Override
@@ -85,10 +83,6 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         savedState.putBundle(KEY1, savedState);
         savedState.putString(KEY2, nameH);
         savedState.putString(KEY3, emailH);
-    }
-
-    public static Bundle getBundle(){
-        return main2;
     }
 
     public void returnClickedHome(View view) {
@@ -109,7 +103,6 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
     public void onClick(View v) {
 
     }
-
 
     public static class HomeFrag extends Fragment {
         TextView tname;

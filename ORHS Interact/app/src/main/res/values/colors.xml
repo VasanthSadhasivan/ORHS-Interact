@@ -8,4 +8,6 @@
     <color name="background2">#D2D2D2</color>
     <color name="text">#000000</color>
     <color name="background3">#C6C6C6</color>
+    <color name="launch">#1c1c1c</color>
+    <color name="launch_status">#292929</color>
 </resources>
