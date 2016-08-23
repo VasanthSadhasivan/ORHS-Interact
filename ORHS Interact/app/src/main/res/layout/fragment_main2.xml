@@ -7,56 +7,7 @@
     android:orientation="vertical"
     android:weightSum="3.75"
     tools:context=".Main2Activity">
-<!--
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
 
-        <LinearLayout
-            android:id="@+id/bar_home"
-            android:transitionName="bar"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="3"
-            android:elevation="4dp"
-            android:background="@color/bottomborder" >
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:id="@+id/home_home"
-                android:transitionName="home"
-                android:onClick="homeClickedHome"
-                android:background="@color/bottomborder"
-                android:textColor="@color/highlight" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Events"
-                android:layout_weight="1"
-                android:onClick="eventsClicked"
-                android:id="@+id/events_home"
-                android:background="@color/bottomborder"
-                android:textColor="#ffffff" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Info"
-                android:layout_weight="1"
-                android:onClick="infoClicked"
-                android:id="@+id/info_home"
-                android:background="@color/bottomborder"
-                android:textColor="#ffffff" />
-        </LinearLayout>
-    </LinearLayout>
--->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -75,7 +26,6 @@
             android:layout_centerInParent="true">
 
             <ImageView
-
                 android:src="@drawable/image1"
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"

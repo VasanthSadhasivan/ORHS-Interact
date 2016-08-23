@@ -73,10 +73,16 @@ public class MainActivity extends Activity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppThemeV21);
-        Bundle bundle = Main2Activity.getBundle();
+        if(Build.VERSION.SDK_INT >20)
+            setTheme(R.style.AppThemeV21);
+        else
+            setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState != null){
+            mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
+            mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
+        }
         try {
             Bundle intentData = getIntent().getExtras();
             if (intentData.containsKey("DontClose")){
@@ -101,6 +107,7 @@ public class MainActivity extends Activity implements
                 .addScope(new Scope(Scopes.EMAIL))
                 .build();
         checkAccountsPermission();
+        Log.v(TAG ,"SHITTY0");
     }
 
     @Override
@@ -110,28 +117,27 @@ public class MainActivity extends Activity implements
     }
 
     @Override
-    protected void onRestart(){
-        super.onRestart();
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
+        Log.v(TAG ,"SHITTY2");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         mGoogleApiClient.disconnect();
+        Log.v(TAG ,"SHITTY5");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
+        outState.putBoolean(KEY_SHOULD_RESOLVE, mShouldResolve);
+        super.onSaveInstanceState(outState);
+        Log.v(TAG, "SHITTY");
     }
 
     private void updateUI(boolean isSignedIn) {
-
         if (isSignedIn) {
             Log.w("poop","poop");
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
@@ -239,24 +245,6 @@ public class MainActivity extends Activity implements
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
-        outState.putBoolean(KEY_SHOULD_RESOLVE, mShouldResolve);
-        super.onSaveInstanceState(outState);
-        Log.v(TAG, "SHITTY");
-    }
-
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        // Always call the superclass so it can restore the view hierarchy
-        super.onRestoreInstanceState(savedInstanceState);
-        Log.v(TAG, "HELLA SHITTY");
-        // Restore state members from saved instance
-        mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
-        mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
-    }
-
-    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(TAG, "onActivityResult:" + requestCode + ":" + resultCode + ":" + data);
@@ -273,8 +261,7 @@ public class MainActivity extends Activity implements
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
         if (requestCode == RC_PERM_GET_ACCOUNTS) {
