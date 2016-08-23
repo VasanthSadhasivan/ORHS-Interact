@@ -9,8 +9,10 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -21,6 +23,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -83,6 +86,7 @@ public class MainActivity extends Activity implements
         }catch (Exception e){
             noSwitching=false;
         }
+        hideShit();
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
@@ -230,6 +234,7 @@ public class MainActivity extends Activity implements
     }
 
     private void showSignedOutUI() {
+        showShit();
         updateUI(false);
     }
 
@@ -424,6 +429,7 @@ public class MainActivity extends Activity implements
             mGoogleApiClient.disconnect();
         }
         Log.w(TAG, "DUSTINS garbo2");
+        showShit();
         showSignedOutUI();
     }
 
@@ -436,6 +442,7 @@ public class MainActivity extends Activity implements
             mGoogleApiClient.disconnect();
         }
         Log.w(TAG, "DUSTINS garbo3");
+        showShit();
         showSignedOutUI();
     }
     @Override
@@ -499,5 +506,40 @@ public class MainActivity extends Activity implements
         protected void onPostExecute(Bitmap result) {
             MainActivity.profilePic = getRoundedShape(result);
         }
+    }
+    public void hideShit(){
+        findViewById(R.id.main_layout).setBackgroundColor(Color.BLACK);
+        findViewById(R.id.sign_in_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.sign_out_and_disconnect).setVisibility(View.INVISIBLE);
+        findViewById(R.id.sign_out_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.disconnect_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.interactbackground).setVisibility(View.INVISIBLE);
+        findViewById(R.id.textView).setVisibility(View.INVISIBLE);
+        findViewById(R.id.title_text).setVisibility(View.INVISIBLE);
+        findViewById(R.id.interactlogo).setVisibility(View.INVISIBLE);
+        findViewById(R.id.status).setVisibility(View.INVISIBLE);
+        findViewById(R.id.email).setVisibility(View.INVISIBLE);
+        findViewById(R.id.sign_in_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.sign_out_and_disconnect).setVisibility(View.INVISIBLE);
+        findViewById(R.id.ohShitBwoi).setVisibility(View.INVISIBLE);
+        findViewById(R.id.splash).setVisibility(View.VISIBLE);
+
+    }
+    public void showShit(){
+        findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+        findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.interactbackground).setVisibility(View.INVISIBLE);
+        findViewById(R.id.textView).setVisibility(View.INVISIBLE);
+        findViewById(R.id.title_text).setVisibility(View.INVISIBLE);
+        findViewById(R.id.interactlogo).setVisibility(View.INVISIBLE);
+        findViewById(R.id.status).setVisibility(View.INVISIBLE);
+        findViewById(R.id.email).setVisibility(View.INVISIBLE);
+        findViewById(R.id.sign_in_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.sign_out_and_disconnect).setVisibility(View.INVISIBLE);
+        findViewById(R.id.ohShitBwoi).setVisibility(View.INVISIBLE);
+        findViewById(R.id.splash).setVisibility(View.VISIBLE);
+
     }
 }

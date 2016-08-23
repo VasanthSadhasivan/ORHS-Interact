@@ -164,8 +164,7 @@
             android:textColor="@android:color/white"
             android:padding="10dp"
             android:background="@color/bottomborder"
-            android:gravity="center"
-/>
+            android:gravity="center" />
 
         <Button
             android:layout_width="0dp"
@@ -177,8 +176,7 @@
             android:textColor="@android:color/white"
             android:padding="10dp"
             android:background="@color/bottomborder"
-            android:gravity="center"
-/>
+            android:gravity="center" />
 
     </LinearLayout>
 

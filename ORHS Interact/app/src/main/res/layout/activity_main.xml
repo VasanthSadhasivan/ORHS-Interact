@@ -8,6 +8,14 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/splash"
+        android:adjustViewBounds="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/interactlogo"
+        android:layout_gravity="center" />
+
+    <ImageView
         android:id="@+id/interactbackground"
         android:adjustViewBounds="true"
         android:layout_width="wrap_content"
@@ -125,5 +133,4 @@
 
         android:textColor="@android:color/white"
         android:textSize="15.69696969696969696969696969696969dp" />
-
 </FrameLayout>
