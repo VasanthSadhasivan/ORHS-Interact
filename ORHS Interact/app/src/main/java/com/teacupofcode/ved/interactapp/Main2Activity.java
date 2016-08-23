@@ -55,7 +55,7 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
-        main2 = savedInstanceState;
+        //main2 = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Bundle intentData = getIntent().getExtras();
