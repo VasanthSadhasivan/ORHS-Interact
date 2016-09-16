@@ -12,8 +12,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,8 +21,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,17 +49,12 @@ public class MainActivity extends Activity implements
         ResultCallback<People.LoadPeopleResult> {
     public static Bitmap profilePic = null;
     private static final String TAG = "MainActivity";
-    private static final int GET_ACCOUNTS = 3;
     private static final int RC_SIGN_IN = 0;
     private static final int RC_PERM_GET_ACCOUNTS = 2;
     private static final String KEY_IS_RESOLVING = "is_resolving";
     private static final String KEY_SHOULD_RESOLVE = "should_resolve";
-    private static final String I_S = "is_true";
-    private static final String NAME = "pop_pp";
-    private static final String EMAIL = "email";
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatus;
-    private boolean is=false;
     private boolean mIsResolving = false;
     private boolean mShouldResolve = false;
     private boolean noSwitching=false;
@@ -510,7 +501,6 @@ public class MainActivity extends Activity implements
         findViewById(R.id.sign_out_and_disconnect).setVisibility(View.INVISIBLE);
         findViewById(R.id.ohShitBwoi).setVisibility(View.INVISIBLE);
         findViewById(R.id.splash).setVisibility(View.VISIBLE);
-
     }
     public void showShit(){
         findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
@@ -527,6 +517,5 @@ public class MainActivity extends Activity implements
         findViewById(R.id.sign_out_and_disconnect).setVisibility(View.INVISIBLE);
         findViewById(R.id.ohShitBwoi).setVisibility(View.INVISIBLE);
         findViewById(R.id.splash).setVisibility(View.VISIBLE);
-
     }
 }

@@ -1,15 +1,11 @@
 package com.teacupofcode.ved.interactapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +18,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -34,9 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 /**
  * Whole ducking implementation created by Naveen Gopalan.
@@ -44,18 +36,14 @@ import java.util.zip.Inflater;
 public class Main2Activity extends AppCompatActivity implements TabLayout.OnClickListener{
 
     static SectionsPagerAdapter mSectionsPagerAdapter;
-    private ViewPager mViewPager;
     static String nameH, emailH;
-    static final String KEY1 = "KEY";
     static final String KEY2 = "hey2";
     static final String KEY3 = "oop";
-    static Bundle main2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
-        //main2 = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Bundle intentData = getIntent().getExtras();
@@ -67,20 +55,19 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         mSectionsPagerAdapter.addFragment(Events.newInstance(2), "Events");
         mSectionsPagerAdapter.addFragment(Info.newInstance(3), "Info");
         //Set up ViewPager.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(3);
         //Set up TabLayout.
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.background));
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.background));
     }
 
    @Override
     protected void onSaveInstanceState(Bundle savedState){
         super.onSaveInstanceState(savedState);
         Log.v("2", "FACK");
-        savedState.putBundle(KEY1, savedState);
         savedState.putString(KEY2, nameH);
         savedState.putString(KEY3, emailH);
     }
@@ -90,11 +77,13 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         i.putExtra("Name", nameH);
         i.putExtra("Email", emailH);
         i.putExtra("DontClose", "PLEASSEEE");
+        //showShit();
         startActivity(i);
     }
 
     public void hoursClickedHome(View view) {
-        Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8/edit"); // missing 'http://' will cause crashed
+        //15-16 ORHS URL Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8/edit"); // missing 'http://' will cause crashed
+        Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/13CkOpYGJA3V6fOwlli6XAu133F7TptnIW-eZjFhDZjc/"); // missing 'http://' will cause crashed
         Intent i = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(i);
     }
@@ -179,7 +168,6 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
 
     public static class Events extends Fragment {
 
-        private Context mContext;
         static ArrayList<String> events = new ArrayList<>();
         static ArrayList<String> dates = new ArrayList<>();
         static ArrayList<String> links = new ArrayList<>();
@@ -230,14 +218,12 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
 
         public int generateView(String Title, String Info, String Place, String Time, final String link) {
             //Creating Relative Layout Programmatically
-            //LayoutInflater inflater = LayoutInflater.from(getContext());
-            //RelativeLayout relativeLayout = (RelativeLayout)inflater.inflate(R.layout.events, (LinearLayout)(getActivity().findViewById(R.id.scrollLayout)), false);
             RelativeLayout relativeLayout = new RelativeLayout(getActivity());
             //CHANGE LATER
             relativeLayout.setId(View.generateViewId());
             relativeLayout.setBackgroundResource(R.drawable.borders);
             RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.FILL_PARENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.MATCH_PARENT);
             rlp.topMargin=15;
             relativeLayout.setLayoutParams(rlp);
@@ -359,7 +345,7 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
                     startActivity(i1);
                     break;
                 case R.id.websitebutton:
-                    Uri uri2 = Uri.parse("https://orhsinteract.wix.com/1516");
+                    Uri uri2 = Uri.parse("https://orhsinteract.com");
                     Intent i2 = new Intent(Intent.ACTION_VIEW, uri2);
                     startActivity(i2);
                     break;
@@ -401,17 +387,6 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         @Override
         public Fragment getItem(int position) {
             return mFragmentList.get(position);
-            /*switch (position) {
-                case 0:
-                    return (new HomeFrag());
-                case 1:
-                    return (new Events());
-                case 2:
-                    return (new Info());
-            }
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).*/
-            //return HomeFrag.newInstance(position + 1);
         }
 
         public void addFragment(Fragment fragment, String title) {
@@ -428,17 +403,7 @@ public class Main2Activity extends AppCompatActivity implements TabLayout.OnClic
         @Override
         public CharSequence getPageTitle(int position) {
             return mTitle.get(position);
-            /*switch (position) {
-                case 0:
-                    return "Home";
-                case 1:
-                    return "Events";
-                case 2:
-                    return "Info";
-            }
-            return null;*/
         }
     }
-
 
 }
