@@ -8,8 +8,8 @@ android {
         minSdkVersion 18
         multiDexEnabled true
         targetSdkVersion 23
-        versionCode 68
-        versionName "68.0"
+        versionCode 69
+        versionName "69.0"
     }
     buildTypes {
         release {

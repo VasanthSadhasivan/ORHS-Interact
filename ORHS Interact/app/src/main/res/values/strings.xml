@@ -30,7 +30,7 @@
 
     <!-- Info -->
     <string name="description">Interact is a service club for young people in Oak Ridge who want to join together to tackle the issues in their community that they care most about. Through Interact, you can carry out hands-on service projects, make new connections, develop leadership skills, and have fun!</string>
-    <string name="design">This app was designed by the Oak Ridge Web and App Development Club in 2015.</string>
+    <string name="design">This app was designed by Vasanth Sadhasivan as a member of the Oak Ridge Web and App Development Club in 2015.</string>
     <string name="links">This is an open sourced project, and all of the source code can be found on Github. Make sure to check out WAD Club and its other projects or contribute yourself here:</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="action_settings">Settings</string>

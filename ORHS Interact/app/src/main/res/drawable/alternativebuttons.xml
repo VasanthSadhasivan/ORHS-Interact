@@ -10,8 +10,8 @@
             <corners
                 android:radius="6dp" />
             <padding
-                android:top="12dp"
-                android:bottom="12dp" />
+                android:top="5dp"
+                android:bottom="5dp" />
         </shape>
     </item>
     <item >
@@ -22,8 +22,8 @@
             <corners
                 android:radius="6dp" />
             <padding
-                android:top="12dp"
-                android:bottom="12dp" />
+                android:top="5dp"
+                android:bottom="5dp" />
         </shape>
     </item>
 </selector>
