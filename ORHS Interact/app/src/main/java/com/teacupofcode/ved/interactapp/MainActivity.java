@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
         emailH = intentData.getString("Email");
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main2, container, false);
+            View rootView = inflater.inflate(R.layout.home, container, false);
             MySpreadsheetIntegration myspreadsheetobject = new MySpreadsheetIntegration();
             myspreadsheetobject.execute("whatever");
             while(MySpreadsheetIntegration.eventList==null)

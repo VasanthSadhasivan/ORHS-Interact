@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.os.AsyncTask;
@@ -69,7 +68,7 @@ public class LoginActivity extends Activity implements
         else
             setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         if (savedInstanceState != null){
             mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
             mShouldResolve = savedInstanceState.getBoolean(KEY_SHOULD_RESOLVE);
@@ -208,7 +207,7 @@ public class LoginActivity extends Activity implements
         } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
             // Need to show permission rationale, display a snackbar and then request
             // the permission again when the snackbar is dismissed.
-            Snackbar.make(findViewById(R.id.main_layout),
+            Snackbar.make(findViewById(R.id.main_layout2),
                     R.string.contacts_permission_rationale,
                     Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new View.OnClickListener() {
@@ -326,7 +325,7 @@ public class LoginActivity extends Activity implements
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         // Could not connect to Google Play Services.  The user needs to select an account,
         // grant permissions or resolve an error in order to sign in. Refer to the javadoc for
         // ConnectionResult to see possible error codes.
@@ -432,8 +431,9 @@ public class LoginActivity extends Activity implements
         mStatus.setText("");
         showSignedOutUI();
     }
+
     @Override
-    public void onResult(People.LoadPeopleResult peopleData) {
+    public void onResult(@NonNull People.LoadPeopleResult peopleData) {
         if (peopleData.getStatus().getStatusCode() == CommonStatusCodes.SUCCESS) {
             PersonBuffer personBuffer = peopleData.getPersonBuffer();
             try {
@@ -448,6 +448,7 @@ public class LoginActivity extends Activity implements
             Log.e(TAG, "Error requesting people data: " + peopleData.getStatus());
         }
     }
+
     /**
      * Background Async task to load user profile picture from url
      * */
@@ -483,10 +484,9 @@ public class LoginActivity extends Activity implements
                     Path.Direction.CCW);
 
             canvas.clipPath(path);
-            Bitmap sourceBitmap = scaleBitmapImage;
-            canvas.drawBitmap(sourceBitmap,
-                    new Rect(0, 0, sourceBitmap.getWidth(),
-                            sourceBitmap.getHeight()),
+            canvas.drawBitmap(scaleBitmapImage,
+                    new Rect(0, 0, scaleBitmapImage.getWidth(),
+                            scaleBitmapImage.getHeight()),
                     new Rect(0, 0, targetWidth, targetHeight), null);
             return targetBitmap;
         }
@@ -496,37 +496,11 @@ public class LoginActivity extends Activity implements
     }
 
     public void hideShit(){
-        findViewById(R.id.main_layout).setBackgroundColor(Color.BLACK);
-        findViewById(R.id.sign_in_button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.sign_out_and_disconnect).setVisibility(View.INVISIBLE);
-        findViewById(R.id.sign_out_button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.disconnect_button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.interactbackground).setVisibility(View.INVISIBLE);
-        findViewById(R.id.textView).setVisibility(View.INVISIBLE);
-        findViewById(R.id.title_text).setVisibility(View.INVISIBLE);
-        findViewById(R.id.interactlogo).setVisibility(View.INVISIBLE);
-        findViewById(R.id.status).setVisibility(View.INVISIBLE);
-        findViewById(R.id.email).setVisibility(View.INVISIBLE);
-        findViewById(R.id.sign_in_button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.sign_out_and_disconnect).setVisibility(View.INVISIBLE);
-        findViewById(R.id.ohShitBwoi).setVisibility(View.INVISIBLE);
-        findViewById(R.id.splash).setVisibility(View.VISIBLE);
+        findViewById(R.id.main_layout).setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.launch_screen));
+        findViewById(R.id.main_layout2).setVisibility(View.INVISIBLE);
     }
 
     public void showShit(){
-        findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-        findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
-        findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
-        findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
-        findViewById(R.id.interactbackground).setVisibility(View.VISIBLE);
-        findViewById(R.id.textView).setVisibility(View.VISIBLE);
-        findViewById(R.id.title_text).setVisibility(View.VISIBLE);
-        findViewById(R.id.interactlogo).setVisibility(View.VISIBLE);
-        findViewById(R.id.status).setVisibility(View.VISIBLE);
-        findViewById(R.id.email).setVisibility(View.VISIBLE);
-        findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-        findViewById(R.id.sign_out_and_disconnect).setVisibility(View.INVISIBLE);
-        findViewById(R.id.ohShitBwoi).setVisibility(View.VISIBLE);
-        findViewById(R.id.splash).setVisibility(View.INVISIBLE);
+        findViewById(R.id.main_layout2).setVisibility(View.VISIBLE);
     }
 }

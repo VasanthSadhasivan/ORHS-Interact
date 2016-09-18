@@ -2,7 +2,6 @@ package com.teacupofcode.ved.interactapp;
 
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Admin on 9/15/2016.

@@ -97,11 +97,10 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             Log.w(TAG, "CONN>CONECT");
             conn.connect();
             Log.w(TAG, "CONN>DONE");
-            int responseCode = conn.getResponseCode();
+            //int responseCode = conn.getResponseCode();
             is = conn.getInputStream();
 
-            String contentAsString = convertStreamToString(is);
-            return contentAsString;
+            return convertStreamToString(is);
         } finally {
             if (is != null) {
                 is.close();
@@ -111,7 +110,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
     protected JSONObject getJSONObject(String result) throws JSONException {
         // remove the unnecessary parts from the response and construct a JSON
-        JSONObject table=null;
+        JSONObject table;
         int start = result.indexOf("{", 0);
         int end = result.lastIndexOf("}")+1;
         String jsonResponse = result.substring(start, end);
@@ -123,7 +122,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
 
-        String line = null;
+        String line;
         try {
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
