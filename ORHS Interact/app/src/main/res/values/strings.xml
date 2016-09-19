@@ -15,7 +15,7 @@
         and that your device has an internet connection.
     </string>
     <string name="server_client_id">948343105147-9urcqp58vj103jnd66f1g7fuq4ok6oej.apps.googleusercontent.com</string>
-    <!-- Google Play Services error for Toast -->
+    <!-- Google Play Services error for Toast -->`
     <string name="play_services_error_fmt">Google Play Services Error: %i</string>
 
     <!-- Button labels -->
