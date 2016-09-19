@@ -90,6 +90,8 @@ public class LoginActivity extends Activity implements
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
         ((SignInButton) findViewById(R.id.sign_in_button)).setSize(SignInButton.SIZE_WIDE);
+        if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.GET_ACCOUNTS) ==  PackageManager.PERMISSION_DENIED)
+            Toast.makeText(getApplicationContext(), "You need to allow Contact permission...", Toast.LENGTH_LONG).show();
         findViewById(R.id.sign_in_button).setEnabled(false);
         mStatus = (TextView) findViewById(R.id.status);
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -262,18 +264,22 @@ public class LoginActivity extends Activity implements
         if (requestCode == RC_PERM_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Log.w("AAAYY", "lfadsladkslkdaskldjsdklj");
-                if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) {
-                    showSignedInUI();
-                    Log.w(TAG,"AYy");
-                }
-                else if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")))){
-                    onDisconnectClicked();
-                    Log.w("blahblah", "blah");
-                    mStatus.setText("Not an ORHS account");
-                    Toast.makeText(getApplicationContext(), "Not an ORHS account.", Toast.LENGTH_LONG ).show();
+                try {
+                    if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) {
+                        showSignedInUI();
+                        Log.w(TAG, "AYy");
+                    } else if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")))) {
+                        onDisconnectClicked();
+                        Log.w("blahblah", "blah");
+                        mStatus.setText("Not an ORHS account");
+                        Toast.makeText(getApplicationContext(), "Not an ORHS account.", Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
                 }
             } else {
                 Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
+                Toast.makeText(getApplicationContext(), "You need Contact Permissions to login...", Toast.LENGTH_LONG).show();
+                mStatus.setText("Signed out");
             }
         }
 
@@ -398,12 +404,17 @@ public class LoginActivity extends Activity implements
     private void onSignInClicked() {
         // User clicked the sign-in button, so begin the sign-in process and automatically
         // attempt to resolve any errors that occur.
-        mShouldResolve = true;
-        mGoogleApiClient.connect();
+        if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED) {
+            mShouldResolve = true;
+            mGoogleApiClient.connect();
 
-        // Show a message to the user that we are signing in.
-        mStatus.setText(R.string.signing_in);
-        noSwitching = false;
+            // Show a message to the user that we are signing in.
+            mStatus.setText(R.string.signing_in);
+            noSwitching = false;
+        }
+        else{
+            Toast.makeText(this, "You need Contact Permissions to login...", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -446,6 +457,7 @@ public class LoginActivity extends Activity implements
             }
         } else {
             Log.e(TAG, "Error requesting people data: " + peopleData.getStatus());
+
         }
     }
 

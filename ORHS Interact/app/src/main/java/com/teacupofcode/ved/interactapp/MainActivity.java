@@ -42,21 +42,27 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
     static final String KEY2 = "hey2";
     static final String KEY3 = "oop";
     static final String TAG = "MainActivity";
+    Fragment h;
+    Fragment e;
+    Fragment i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
         emailH = intentData.getString("Email");
         //Set up the ViewPagerAdapter.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        mSectionsPagerAdapter.addFragment(HomeFrag.newInstance(1), "Home");
-        mSectionsPagerAdapter.addFragment(Events.newInstance(2), "Events");
-        mSectionsPagerAdapter.addFragment(Info.newInstance(3), "Info");
-
+        h=HomeFrag.newInstance(1);
+        e=Events.newInstance(2);
+        i=Info.newInstance(3);
+        mSectionsPagerAdapter.addFragment(h, "Home");
+        mSectionsPagerAdapter.addFragment(e, "Events");
+        mSectionsPagerAdapter.addFragment(i, "Info");
         //Set up ViewPager.
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -67,8 +73,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         tabLayout.getTabAt(0).setIcon(R.drawable.home);
         tabLayout.getTabAt(1).setIcon(R.drawable.event);
         tabLayout.getTabAt(2).setIcon(R.drawable.info);
-
         tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.background));
+
     }
 
    @Override
@@ -80,6 +86,12 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
     }
 
     public void returnClickedHome(View view) {
+        if(h != null)
+            getSupportFragmentManager().beginTransaction().remove(h).commit();
+        if(e != null)
+            getSupportFragmentManager().beginTransaction().remove(e).commit();
+        if(i != null)
+            getSupportFragmentManager().beginTransaction().remove(i).commit();
         Intent i = new Intent(this, LoginActivity.class);
         i.putExtra("Name", nameH);
         i.putExtra("Email", emailH);
@@ -138,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.home, container, false);
+
             MySpreadsheetIntegration myspreadsheetobject = new MySpreadsheetIntegration();
             myspreadsheetobject.execute("whatever");
             while(MySpreadsheetIntegration.eventList==null)

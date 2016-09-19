@@ -58,16 +58,11 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
         for(int i=1; i<namedata.length(); i++) {
             Event tempEvent = new Event();
-            Calendar tempDate;
             events.add(tempEvent);
             try {
-                tempDate = Calendar.getInstance();
-                String[] a = datetime.getJSONObject(i).getString("v").split("\\s+");
-                Date month = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(a[1]);
-                Log.w(TAG, "Day: "+Integer.valueOf(a[2]));
-
-                tempDate.set(Integer.valueOf(a[3]), month.getMonth(), Integer.valueOf(a[2]), Integer.valueOf(a[0].split(":")[0]), Integer.valueOf(a[0].split(":")[1]));
-                tempEvent.setDate(tempDate);
+                String a = datetime.getJSONObject(i).getString("v");
+                SimpleDateFormat formatter = new SimpleDateFormat("h:mma MMMM dd, yyyy");
+                tempEvent.setDate(formatter.parse(a));
                 tempEvent.setName(namedata.getJSONObject(i).getString("v"));
                 tempEvent.setLink(linkdata.getJSONObject(i).getString("v"));
                 tempEvent.setLocation(locationdata.getJSONObject(i).getString("v"));

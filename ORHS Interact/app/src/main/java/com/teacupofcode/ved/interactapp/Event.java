@@ -1,7 +1,11 @@
 package com.teacupofcode.ved.interactapp;
 
+import android.provider.ContactsContract;
+
 import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Admin on 9/15/2016.
@@ -11,7 +15,7 @@ public class Event {
     String name;
     String link;
     String location;
-    Calendar date;
+    Date date;
     String description;
 
     public String getDescription() {
@@ -31,17 +35,11 @@ public class Event {
     }
 
     public String getDate() {
-        String timeString =date.get(Calendar.HOUR_OF_DAY)%12+":"+date.get(Calendar.MINUTE);
-        if(date.get(Calendar.MINUTE)<10)
-            timeString =date.get(Calendar.HOUR_OF_DAY)%12+":0"+date.get(Calendar.MINUTE);
-        if(date.get(Calendar.HOUR_OF_DAY)>12)
-            timeString = timeString+"PM";
-        else
-            timeString = timeString+"AM";
-        return (new DateFormatSymbols().getMonths()[date.get(Calendar.MONTH)])+" " +date.get(Calendar.DAY_OF_MONTH)+" " +timeString;
+        SimpleDateFormat formatter = new SimpleDateFormat("h:mma MMMM d, y");
+        return (formatter.format(date));
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
