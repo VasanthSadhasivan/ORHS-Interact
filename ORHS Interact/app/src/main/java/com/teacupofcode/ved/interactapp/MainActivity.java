@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
