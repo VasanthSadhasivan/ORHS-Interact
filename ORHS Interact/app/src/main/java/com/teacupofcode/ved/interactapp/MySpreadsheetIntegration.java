@@ -1,5 +1,6 @@
 package com.teacupofcode.ved.interactapp;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -17,19 +18,18 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Created by VasanthSadhasivan on 10/30/2015.
+ *  Created by VasanthSadhasivan on 10/30/2015.
  */
-public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
+class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
-    public static ArrayList<Event> eventList;
+    static ArrayList<Event> eventList;
 
-    public final static String TAG = "MySpreadsheetI";
-
-    public static String url ="https://spreadsheets.google.com/tq?key=1lCS6UsbWjTD0J-M7LACeKhd42BZFn8M4QNHnGRVl_cQ";
+    private final static String TAG = "MySpreadsheetI";
 
     @Override
     protected String doInBackground(String[] a){
         try {
+            String url = "https://spreadsheets.google.com/tq?key=1lCS6UsbWjTD0J-M7LACeKhd42BZFn8M4QNHnGRVl_cQ";
             MySpreadsheetIntegration.setEvents(url);
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
     }
 
 
-    public static void setEvents(String url)  throws IOException, JSONException {
+    private static void setEvents(String url)  throws IOException, JSONException {
         MySpreadsheetIntegration data = new MySpreadsheetIntegration();
         ArrayList<Event> events = new ArrayList<>();
 
@@ -61,7 +61,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             events.add(tempEvent);
             try {
                 String a = datetime.getJSONObject(i).getString("v");
-                SimpleDateFormat formatter = new SimpleDateFormat("h:mma MMMM dd, yyyy");
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("h:mma MMMM dd, yyyy");
                 tempEvent.setDate(formatter.parse(a));
                 tempEvent.setName(namedata.getJSONObject(i).getString("v"));
                 tempEvent.setLink(linkdata.getJSONObject(i).getString("v"));
@@ -97,13 +97,13 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
 
             return convertStreamToString(is);
         } finally {
-            if (is != null) {
+            if (is != null)
+                //noinspection ThrowFromFinallyBlock
                 is.close();
-            }
         }
     }
 
-    protected JSONObject getJSONObject(String result) throws JSONException {
+    private JSONObject getJSONObject(String result) throws JSONException {
         // remove the unnecessary parts from the response and construct a JSON
         JSONObject table;
         int start = result.indexOf("{", 0);
@@ -120,7 +120,7 @@ public class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
         String line;
         try {
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();

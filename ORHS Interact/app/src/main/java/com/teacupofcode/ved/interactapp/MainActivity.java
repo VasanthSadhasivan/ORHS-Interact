@@ -1,5 +1,6 @@
 package com.teacupofcode.ved.interactapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
@@ -35,67 +36,84 @@ import java.util.ArrayList;
 /**
  * Whole ducking implementation created by Naveen Gopalan.
  */
-public class MainActivity extends AppCompatActivity implements TabLayout.OnClickListener{
+public class MainActivity extends AppCompatActivity{
 
     static SectionsPagerAdapter mSectionsPagerAdapter;
     static String nameH, emailH;
     static final String KEY2 = "hey2";
     static final String KEY3 = "oop";
     static final String TAG = "MainActivity";
-    Fragment h;
-    Fragment e;
-    Fragment i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
         super.onCreate(savedInstanceState);
+        new FragmentMaker().execute();
 
         setContentView(R.layout.activity_main);
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
         emailH = intentData.getString("Email");
-        //Set up the ViewPagerAdapter.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        h=HomeFrag.newInstance(1);
-        e=Events.newInstance(2);
-        i=Info.newInstance(3);
-        mSectionsPagerAdapter.addFragment(h, "Home");
-        mSectionsPagerAdapter.addFragment(e, "Events");
-        mSectionsPagerAdapter.addFragment(i, "Info");
-        //Set up ViewPager.
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setOffscreenPageLimit(3);
-        //Set up TabLayout.
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.home);
-        tabLayout.getTabAt(1).setIcon(R.drawable.event);
-        tabLayout.getTabAt(2).setIcon(R.drawable.info);
-        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.background));
 
     }
 
-   @Override
+    private class FragmentMaker extends AsyncTask<Void, Void, Fragment[]> {
+
+        @Override
+        protected Fragment[] doInBackground(Void... params) {
+            Fragment[] a = new Fragment[3];
+            a[0] = HomeFrag.newInstance(0);
+            a[1] = Events.newInstance(1);
+            a[2] = Info.newInstance(2);
+            return a;
+        }
+
+        @Override
+        protected void onPostExecute(Fragment[] result) {
+            //Set up the ViewPagerAdapter.
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+            mSectionsPagerAdapter.addFragment(result[0], "Home");
+            mSectionsPagerAdapter.addFragment(result[1], "Events");
+            mSectionsPagerAdapter.addFragment(result[2], "Info");
+            //Set up ViewPager.
+            ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+            mViewPager.setOffscreenPageLimit(3);
+            //Set up TabLayout.
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            tabLayout.setupWithViewPager(mViewPager);
+
+            //noinspection ConstantConditions
+            tabLayout.getTabAt(0).setIcon(R.drawable.home);
+            //noinspection ConstantConditions
+            tabLayout.getTabAt(1).setIcon(R.drawable.event);
+            //noinspection ConstantConditions
+            tabLayout.getTabAt(2).setIcon(R.drawable.info);
+
+            tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getApplicationContext(), R.color.background));
+        }
+    }
+
+
+    @Override
     protected void onSaveInstanceState(Bundle savedState){
         super.onSaveInstanceState(savedState);
-        Log.v("2", "FACK");
+        Log.v("2", "MainActivity onSaveInstanceState");
         savedState.putString(KEY2, nameH);
         savedState.putString(KEY3, emailH);
     }
 
+    @Override
+    public void onBackPressed() {
+        returnClickedHome(findViewById(R.id.returnbutton));
+    }
+
     public void returnClickedHome(View view) {
-        if(h != null)
-            getSupportFragmentManager().beginTransaction().remove(h).commit();
-        if(e != null)
-            getSupportFragmentManager().beginTransaction().remove(e).commit();
-        if(i != null)
-            getSupportFragmentManager().beginTransaction().remove(i).commit();
         Intent i = new Intent(this, LoginActivity.class);
         i.putExtra("Name", nameH);
         i.putExtra("Email", emailH);
-        i.putExtra("DontClose", "PLEASSEEE");
+        i.putExtra("Don't Close", "PLEASSEEE");
         startActivity(i);
     }
 
@@ -104,11 +122,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/13CkOpYGJA3V6fOwlli6XAu133F7TptnIW-eZjFhDZjc/"); // missing 'http://' will cause crashed
         Intent i = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(i);
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
     public static class HomeFrag extends Fragment {
@@ -124,8 +137,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         public HomeFrag() { }
 
         @Override
-        public void onActivityCreated(Bundle poop){
-            super.onActivityCreated(poop);
+        public void onActivityCreated(Bundle bund){
+            super.onActivityCreated(bund);
             new LoadProfileImage().execute();
         }
 
@@ -146,13 +159,14 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
             super.onCreate(savedInstanceState);
         }
 
-        @Override
+        @Override @SuppressLint("SetTextI18n")
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.home, container, false);
 
             MySpreadsheetIntegration myspreadsheetobject = new MySpreadsheetIntegration();
             myspreadsheetobject.execute("whatever");
+            //noinspection StatementWithEmptyBody
             while(MySpreadsheetIntegration.eventList==null)
             {
             }
@@ -168,12 +182,12 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         }
         private class LoadProfileImage extends AsyncTask<String, Void, Bitmap> {
 
-            public LoadProfileImage() {
+            LoadProfileImage() {
             }
 
             protected Bitmap doInBackground(String... urls) {
+                //noinspection StatementWithEmptyBody
                 while(LoginActivity.profilePic == null){
-
                 }
                 return LoginActivity.profilePic;
             }
@@ -213,8 +227,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.events, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.events, container, false);
         }
 
         //Later on, fix the method to have info and location
@@ -224,6 +237,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
             }
         }
 
+        @SuppressWarnings("deprecation")
         public int generateView(String Title, String Info, final String Place, String Time, final String link) {
             //Creating Relative Layout Programmatically
             RelativeLayout relativeLayout = new RelativeLayout(getActivity());
@@ -286,7 +300,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
             buttonLayout.addRule(RelativeLayout.ALIGN_PARENT_END);
             signUpButton.setGravity(Gravity.CENTER);
             signUpButton.setLayoutParams(buttonLayout);
-            signUpButton.setText("Sign Up");
+            signUpButton.setText(R.string.signing_up);
             signUpButton.setTextColor(ContextCompat.getColor(getActivity(), R.color.text));
             signUpButton.setId(View.generateViewId());
             signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -414,7 +428,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
         private ArrayList<Fragment> mFragmentList = new ArrayList<>();
         private ArrayList<String> mTitle = new ArrayList<>();
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -423,7 +437,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnClick
             return mFragmentList.get(position);
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mTitle.add(title);
         }

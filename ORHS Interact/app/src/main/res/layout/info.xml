@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="About Interact"
+            android:text="@string/title"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:textSize="35sp"
@@ -46,13 +46,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/aboutinteract"
-            android:src="@mipmap/aboutinteract"
-            />
+            tools:ignore="ContentDescription"
+            android:src="@mipmap/aboutinteract" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Started Here"
+            android:text="@string/get_started_here"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
@@ -73,34 +73,35 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Join"
+                android:text="@string/join"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/joinbutton"
-                android:onClick="joinClickedInfo"
                 android:textColor="@color/text"
-                android:background="@drawable/alternativebuttons" />
+                android:background="@drawable/alternativebuttons"
+                tools:ignore="ButtonStyle" />
 
-        <Button
+            <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Website"
+            android:text="@string/website"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="40dp"
             android:gravity="center"
             android:id="@+id/websitebutton"
             android:textColor="@color/text"
-            android:background="@drawable/alternativebuttons" />
+            android:background="@drawable/alternativebuttons"
+            tools:ignore="ButtonStyle" />
 
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Behind the Scenes"
+            android:text="@string/behind_the_scenes"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:textSize="35sp"
@@ -123,6 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/aboutWAAD"
+            tools:ignore="ContentDescription"
             android:src="@mipmap/aboutwaad1"
             />
 
@@ -148,32 +150,34 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Github"
+                android:text="@string/github"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/githubbutton"
                 android:textColor="@color/text"
-                android:background="@drawable/alternativebuttons" />
+                android:background="@drawable/alternativebuttons"
+                tools:ignore="ButtonStyle"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Resources"
+                android:text="@string/resources"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="40dp"
                 android:gravity="center"
                 android:id="@+id/rescourcesbutton"
                 android:textColor="@color/text"
-                android:background="@drawable/alternativebuttons" />
+                android:background="@drawable/alternativebuttons"
+                tools:ignore="ButtonStyle" />
 
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Developers:"
+            android:text="@string/developers"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
@@ -185,7 +189,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vasanth Sadhasivan\nNaveen Gopalan\nBernard Zhao\nDustin Nguyen\nORHS WAD Club\n"
+            android:text="@string/developers_names"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
@@ -197,7 +201,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Special Thanks to:"
+            android:text="@string/special_thanks"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
@@ -209,7 +213,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stephanie Allen\nShri Shankar\n"
+            android:text="@string/negro900"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
@@ -225,8 +229,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text"
             android:textSize="6sp"
-            android:text="Randeep 'The Beast from the East' Chana"
-            />
+            android:text="@string/randeep"
+            tools:ignore="SmallSp" />
 
     </LinearLayout>
     </ScrollView>

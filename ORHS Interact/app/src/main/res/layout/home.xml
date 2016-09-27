@@ -13,8 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="3.75"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical" >
 
         <ViewFlipper
             android:id="@+id/flipper1"
@@ -30,28 +29,32 @@
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
                 android:layout_height="fill_parent"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:src="@drawable/image2"
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:src="@drawable/image3"
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:src="@drawable/image4"
                 android:layout_width="wrap_content"
                 android:scaleType="centerCrop"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                tools:ignore="ContentDescription" />
 
 
         </ViewFlipper>
@@ -66,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="G$9"
+            android:text="@string/g_9"
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             android:textSize="50sp"
@@ -80,12 +83,12 @@
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             android:id="@+id/profilePic"
-            />
+            tools:ignore="ContentDescription" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="G$9"
+            android:text="@string/g_9"
             android:layout_marginTop="250dp"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
@@ -108,25 +111,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RETURN"
+            android:text="@string/return34"
             android:id="@+id/returnbutton"
             android:onClick="returnClickedHome"
             android:textColor="@android:color/white"
             android:padding="10dp"
             android:background="@color/bottomborder"
-            android:gravity="center" />
+            android:gravity="center"
+            tools:ignore="ButtonStyle"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="HOURS"
+            android:text="@string/hours"
             android:id="@+id/hoursbutton"
             android:onClick="hoursClickedHome"
             android:textColor="@android:color/white"
             android:padding="10dp"
             android:background="@color/bottomborder"
-            android:gravity="center" />
+            android:gravity="center"
+            tools:ignore="ButtonStyle"/>
 
     </LinearLayout>
 

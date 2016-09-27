@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.teacupofcode.ved.interactapp"
-    android:versionCode="2">
+    package="com.teacupofcode.ved.interactapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATET" />
@@ -30,7 +29,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main2"
+            android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

@@ -14,6 +14,7 @@ import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -39,7 +40,7 @@ import com.google.android.gms.plus.model.people.PersonBuffer;
 import java.io.InputStream;
 
 /**
- * Created by Vasanth Sadhasivan on 10/30/2015.
+ *  Created by Vasanth Sadhasivan on 10/30/2015.
  */
 public class LoginActivity extends Activity implements
         View.OnClickListener,
@@ -57,9 +58,7 @@ public class LoginActivity extends Activity implements
     private boolean mIsResolving = false;
     private boolean mShouldResolve = false;
     private boolean noSwitching=false;
-    private String currentAccountEmail;
-    private String currentAccount;
-    private String name;
+    //private String currentAccountEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,9 +75,9 @@ public class LoginActivity extends Activity implements
         hideShit();
         try {
             Bundle intentData = getIntent().getExtras();
-            if (intentData.containsKey("DontClose")){
+            if (intentData.containsKey("Don't Close")){
                 showShit();
-                currentAccountEmail = intentData.getString("Email");
+                //currentAccountEmail = intentData.getString("Email");
                 noSwitching=true;
             }
         }catch (Exception e){
@@ -90,8 +89,11 @@ public class LoginActivity extends Activity implements
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
         ((SignInButton) findViewById(R.id.sign_in_button)).setSize(SignInButton.SIZE_WIDE);
-        if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.GET_ACCOUNTS) ==  PackageManager.PERMISSION_DENIED)
+        if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.GET_ACCOUNTS) ==  PackageManager.PERMISSION_DENIED
+                && savedInstanceState != null) {
             Toast.makeText(getApplicationContext(), "You need to allow Contact permission...", Toast.LENGTH_LONG).show();
+            checkAccountsPermission();
+        }
         findViewById(R.id.sign_in_button).setEnabled(false);
         mStatus = (TextView) findViewById(R.id.status);
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -102,8 +104,7 @@ public class LoginActivity extends Activity implements
                 .addScope(new Scope(Scopes.EMAIL))
                 .build();
         checkAccountsPermission();
-        Log.v(TAG, "SHITTY0");
-        mStatus.setText("");
+        Log.v(TAG, "LoginActivity Created + Accounts Permission Checked");
         mStatus.setText("");
     }
 
@@ -116,14 +117,14 @@ public class LoginActivity extends Activity implements
     @Override
     protected void onPause() {
         super.onPause();
-        Log.v(TAG ,"SHITTY2");
+        Log.v(TAG ,"LoginActivity onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         mGoogleApiClient.disconnect();
-        Log.v(TAG, "SHITTY5");
+        Log.v(TAG, "LoginActivity onStop");
     }
 
     @Override
@@ -131,36 +132,35 @@ public class LoginActivity extends Activity implements
         outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
         outState.putBoolean(KEY_SHOULD_RESOLVE, mShouldResolve);
         super.onSaveInstanceState(outState);
-        Log.v(TAG, "SHITTY");
+        Log.v(TAG, "LoginActivity onSaveInstanceState");
     }
 
+    @SuppressWarnings("deprecation")
     private void updateUI(boolean isSignedIn) {
         if (isSignedIn) {
-            Log.w("poop","poop");
+            Log.w(TAG,"updateUI passed true");
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
 
-            Log.w("AYY", String.valueOf(currentPerson == null));
+            Log.w(TAG, String.valueOf(currentPerson == null));
             if ((currentPerson != null)) {
                 String personPhotoUrl = currentPerson.getImage().getUrl();
                 personPhotoUrl = personPhotoUrl.substring(0,
                         personPhotoUrl.length() - 2)
                         + 350;
                 new LoadProfileImage().execute(personPhotoUrl);
-                currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
-                name = currentPerson.getDisplayName();
                 if (checkAccountsPermission() && !(noSwitching)) {
-                    Log.w("poop","poop2");
+                    Log.w(TAG,"MainActivity started");
                     Intent i = new Intent(this, MainActivity.class);
-                    i.putExtra("Name", name);
-                    i.putExtra("Email", currentAccount);
+                    i.putExtra("Name", currentPerson.getDisplayName());
+                    i.putExtra("Email", Plus.AccountApi.getAccountName(mGoogleApiClient));
                     startActivity(i);
                 }
-                Log.w("poop", "poop1");
+                Log.w(TAG, "MainActivity started");
                 // Show signed-in user's name
 
-                mStatus.setText(getString(R.string.signed_in_fmt, name));
+                mStatus.setText(getString(R.string.signed_in_fmt, currentPerson.getDisplayName()));
 
-                ((TextView) findViewById(R.id.email)).setText(currentAccount);
+                ((TextView) findViewById(R.id.email)).setText(Plus.AccountApi.getAccountName(mGoogleApiClient));
                 // Show users' email address (which requires GET_ACCOUNTS permission)
                 /*if (checkAccountsPermission() && !(noSwitching)) {
                     Log.w("poop","poop2");
@@ -257,35 +257,38 @@ public class LoginActivity extends Activity implements
         }
     }
 
-    @Override
+    @Override @SuppressWarnings("deprecation")
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
+        boolean b = false;
         if (requestCode == RC_PERM_GET_ACCOUNTS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.w("AAAYY", "lfadsladkslkdaskldjsdklj");
+                Log.w(TAG, "onRequestPermissionsResult passed Permission Granted");
                 try {
-                    if ((Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"))) {
-                        showSignedInUI();
-                        Log.w(TAG, "AYy");
-                    } else if ((!(Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us")))) {
-                        onDisconnectClicked();
-                        Log.w("blahblah", "blah");
-                        mStatus.setText("Not an ORHS account");
-                        Toast.makeText(getApplicationContext(), "Not an ORHS account.", Toast.LENGTH_LONG).show();
-                    }
-                }catch (Exception e){
+                    b = Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us");
+                } catch (Exception e) {
+                    checkAccountsPermission();
+                }
+
+                if (b) {
+                    showSignedInUI();
+                    Log.w(TAG, "AYy");
+                } else {
+                    onDisconnectClicked();
+                    Log.w(TAG, "Fake email");
+                    mStatus.setText(R.string.not_orhs);
+                    Toast.makeText(getApplicationContext(), "Not an ORHS account.", Toast.LENGTH_LONG).show();
+                }
                 }
             } else {
                 Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
                 Toast.makeText(getApplicationContext(), "You need Contact Permissions to login...", Toast.LENGTH_LONG).show();
-                mStatus.setText("Signed out");
+                mStatus.setText(R.string.sign_out);
             }
         }
 
-    }
-
-    @Override
+    @Override @SuppressWarnings("deprecation")
     public void onConnected(Bundle bundle) {
         // onConnected indicates that an account was selected on the device, that the selected
         // account has granted any requested permissions to our app and that we were able to
@@ -295,18 +298,18 @@ public class LoginActivity extends Activity implements
             Plus.PeopleApi.loadVisible(mGoogleApiClient, null).setResultCallback(this);
             Log.d(TAG, "onConnected:" + bundle);
             mShouldResolve = false;
-            Log.w(TAG, "AYy1");
+            Log.w(TAG, "onConnected");
             boolean containsEmail = (Plus.AccountApi.getAccountName(mGoogleApiClient).contains("eduhsd.k12.ca.us"));
-            Log.w("AYYY", String.valueOf(containsEmail));
+            Log.w(TAG, String.valueOf(containsEmail));
             boolean personIsSignedIn = (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null);
-            Log.w("AYYYSHit", String.valueOf(personIsSignedIn));
+            Log.w(TAG, String.valueOf(personIsSignedIn));
             // Show the signed-in UI
             if (containsEmail && personIsSignedIn) {
                 showSignedInUI();
-                Log.w(TAG, "AYy2");
+                Log.w(TAG, "Email is good + personIsSignedIn");
             } else {
                 if (!containsEmail) {
-                    Log.w(TAG, "MIGOS");
+                    Log.w(TAG, "No eduhsd");
                     mStatus.setText("Not an ORHS account \n Signed Out");
                     Toast.makeText(getApplicationContext(), "Not an ORHS account.", Toast.LENGTH_LONG ).show();
                 } else {
@@ -314,9 +317,9 @@ public class LoginActivity extends Activity implements
                     Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                 }
                 onSignOutClicked();
-                Log.w(TAG, "AYy3");
+                Log.w(TAG, "SignIn Failed");
             }
-        }catch(SecurityException e)
+        }catch(SecurityException ignored)
         {
 
         }
@@ -336,7 +339,7 @@ public class LoginActivity extends Activity implements
         // grant permissions or resolve an error in order to sign in. Refer to the javadoc for
         // ConnectionResult to see possible error codes.
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
-        Log.w("AYYblahbklee", String.valueOf(!mIsResolving && mShouldResolve));
+        Log.w(TAG, String.valueOf(!mIsResolving && mShouldResolve));
         if (!mIsResolving && mShouldResolve) {
             if (connectionResult.hasResolution()) {
                 try {
@@ -354,7 +357,7 @@ public class LoginActivity extends Activity implements
             }
         } else {
             // Show the signed-out UI
-            Log.w(TAG, "DUSTINS garbo4");
+            Log.w(TAG, "onConnectionFailed signOutUI");
             showSignedOutUI();
         }
     }
@@ -369,7 +372,7 @@ public class LoginActivity extends Activity implements
                         new DialogInterface.OnCancelListener() {
                             @Override
                             public void onCancel(DialogInterface dialog) {
-                                Log.w(TAG, "DUSTINS garbo");
+                                Log.w(TAG, "showErrorDialog");
                                 mShouldResolve = false;
                                 showSignedOutUI();
                             }
@@ -380,7 +383,6 @@ public class LoginActivity extends Activity implements
                 Toast.makeText(this, errorString, Toast.LENGTH_SHORT).show();
 
                 mShouldResolve = false;
-                Log.w(TAG, "DUSTINS garbo1");
                 showSignedOutUI();
             }
         }
@@ -414,10 +416,14 @@ public class LoginActivity extends Activity implements
         }
         else{
             Toast.makeText(this, "You need Contact Permissions to login...", Toast.LENGTH_SHORT).show();
+            ActivityCompat.requestPermissions(LoginActivity.this,
+                    new String[]{Manifest.permission.GET_ACCOUNTS},
+                    RC_PERM_GET_ACCOUNTS);
         }
 
     }
 
+    @SuppressWarnings("deprecation")
     private void onSignOutClicked() {
         // Clear the default account so that GoogleApiClient will not automatically
         // connect in the future.
@@ -425,11 +431,12 @@ public class LoginActivity extends Activity implements
             Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
             mGoogleApiClient.disconnect();
         }
-        Log.w(TAG, "DUSTINS garbo2");
+        Log.w(TAG, "onSignOutClicked");
         mStatus.setText("");
         showSignedOutUI();
     }
 
+    @SuppressWarnings("deprecation")
     private void onDisconnectClicked() {
         // Revoke all granted permissions and clear the default account.  The user will have
         // to pass the consent screen to sign in again.
@@ -438,7 +445,7 @@ public class LoginActivity extends Activity implements
             Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient);
             mGoogleApiClient.disconnect();
         }
-        Log.w(TAG, "DUSTINS garbo3");
+        Log.w(TAG, "onDisconnectClicked");
         mStatus.setText("");
         showSignedOutUI();
     }
@@ -466,14 +473,13 @@ public class LoginActivity extends Activity implements
      * */
     private class LoadProfileImage extends AsyncTask<String, Void, Bitmap> {
 
-        public LoadProfileImage() {
+        LoadProfileImage() {
         }
 
         protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
             Bitmap mIcon11 = null;
             try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
+                InputStream in = new java.net.URL(urls[0]).openStream();
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());
@@ -481,7 +487,7 @@ public class LoginActivity extends Activity implements
             }
             return mIcon11;
         }
-        public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
+        Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
             int targetWidth = 350;
             int targetHeight = 350;
             Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,

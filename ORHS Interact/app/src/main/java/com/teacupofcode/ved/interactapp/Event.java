@@ -1,53 +1,51 @@
 package com.teacupofcode.ved.interactapp;
 
-import android.provider.ContactsContract;
+import android.annotation.SuppressLint;
 
-import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by Admin on 9/15/2016.
+ *  Created by Admin on 9/15/2016.
  */
-public class Event {
+class Event {
 
-    String name;
-    String link;
-    String location;
-    Date date;
-    String description;
+    private String name;
+    private String link;
+    private String location;
+    private Date date;
+    private String description;
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
-    public String getLocation() {
+    String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    void setLocation(String location) {
         this.location = location;
     }
 
-    public String getDate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("h:mma MMMM d, y");
+     String getDate() {
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("h:mma MMMM d, y");
         return (formatter.format(date));
     }
 
-    public void setDate(Date date) {
+    void setDate(Date date) {
         this.date = date;
     }
 
-    public String getLink() {
+    String getLink() {
         return link;
     }
 
-    public void setLink(String link) {
+    void setLink(String link) {
         this.link = link;
     }
 
