@@ -87,7 +87,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/top_margin6"
         android:visibility="visible"
         tools:visibility="gone" />
@@ -96,7 +95,6 @@
         android:id="@+id/sign_out_and_disconnect"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:orientation="horizontal"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
@@ -137,11 +135,7 @@
         android:text="@string/messageplease"
         android:id="@+id/ohShitBwoi"
         android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@id/sign_out_and_disconnect"
         android:layout_marginTop="@dimen/top_margin8"
-
         android:textColor="@android:color/white"
         android:textSize="15.69696969696969696969696969696969dp" />
     </FrameLayout>

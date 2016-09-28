@@ -168,11 +168,6 @@ public class MainActivity extends AppCompatActivity{
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.home, container, false);
-
-            //MySpreadsheetIntegration myspreadsheetobject = new MySpreadsheetIntegration();
-            //myspreadsheetobject.execute("whatever");
-            //noinspection StatementWithEmptyBody
-            while(MySpreadsheetIntegration.eventList==null) { }
             currentEvent = (TextView) rootView.findViewById(R.id.currentEvent);
             Log.v(TAG, ""+MySpreadsheetIntegration.upcoming );
             currentEvent.setText("Upcoming Event:\n" + MySpreadsheetIntegration.upcoming);
