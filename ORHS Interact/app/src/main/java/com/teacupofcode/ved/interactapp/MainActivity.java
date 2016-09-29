@@ -47,14 +47,15 @@ public class MainActivity extends AppCompatActivity{
     static final String KEY2 = "hey2";
     static final String KEY3 = "oop";
     static final String TAG = "MainActivity";
+    static FragmentMaker frag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
         super.onCreate(savedInstanceState);
-        new FragmentMaker().execute();
-
+        frag = new FragmentMaker();
+        new MySpreadsheetIntegration().execute(frag);
         setContentView(R.layout.activity_main);
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
@@ -62,7 +63,11 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    private class FragmentMaker extends AsyncTask<Void, Void, Fragment[]> {
+    public static void runFragment(FragmentMaker f) {
+        f.execute();
+    }
+
+    public class FragmentMaker extends AsyncTask<Void, Void, Fragment[]> {
 
         @Override
         protected Fragment[] doInBackground(Void... params) {
@@ -166,16 +171,9 @@ public class MainActivity extends AppCompatActivity{
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.home, container, false);
-
-            MySpreadsheetIntegration myspreadsheetobject = new MySpreadsheetIntegration();
-            myspreadsheetobject.execute("whatever");
-            //noinspection StatementWithEmptyBody
-            while(MySpreadsheetIntegration.eventList==null)
-            {
-            }
             currentEvent = (TextView) rootView.findViewById(R.id.currentEvent);
-            Log.v(TAG, ""+MySpreadsheetIntegration.eventList.get(0).getName() );
-            currentEvent.setText("Upcoming Event:\n" + MySpreadsheetIntegration.eventList.get(0).getName());
+            Log.v(TAG, ""+MySpreadsheetIntegration.upcoming );
+            currentEvent.setText("Upcoming Event:\n" + MySpreadsheetIntegration.upcoming);
             tname = (TextView) rootView.findViewById(R.id.homeTitle);
             tname.setText(nameH);
             ViewFlipper flipper = (ViewFlipper) rootView.findViewById(R.id.flipper1);

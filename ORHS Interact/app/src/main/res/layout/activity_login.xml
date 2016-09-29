@@ -18,7 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/interactlogo"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/interactbackground"
@@ -28,7 +29,8 @@
         android:layout_height="fill_parent"
         android:src="@mipmap/interactbackground_80lightness"
         android:layout_gravity="center_horizontal"
-        android:background="@color/launch" />
+        android:background="@color/launch"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,7 +59,8 @@
         android:layout_width="175dp"
         android:layout_height="175dp"
         android:layout_marginTop="@dimen/top_margin3"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/status"
@@ -84,7 +87,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/top_margin6"
         android:visibility="visible"
         tools:visibility="gone" />
@@ -93,7 +95,6 @@
         android:id="@+id/sign_out_and_disconnect"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:orientation="horizontal"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
@@ -111,7 +112,8 @@
             android:layout_weight="1"
             android:text="@string/sign_out"
             android:textColor="@android:color/white"
-            android:background="@drawable/buttons" />
+            android:background="@drawable/buttons"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/disconnect_button"
@@ -122,7 +124,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:textColor="@android:color/white"
-            android:background="@drawable/buttons" />
+            android:background="@drawable/buttons"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
     <TextView
@@ -132,11 +135,7 @@
         android:text="@string/messageplease"
         android:id="@+id/ohShitBwoi"
         android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@id/sign_out_and_disconnect"
         android:layout_marginTop="@dimen/top_margin8"
-
         android:textColor="@android:color/white"
         android:textSize="15.69696969696969696969696969696969dp" />
     </FrameLayout>

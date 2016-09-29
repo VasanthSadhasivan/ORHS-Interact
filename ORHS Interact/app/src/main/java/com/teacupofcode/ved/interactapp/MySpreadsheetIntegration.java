@@ -20,14 +20,15 @@ import java.util.*;
 /**
  *  Created by VasanthSadhasivan on 10/30/2015.
  */
-class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
+class MySpreadsheetIntegration extends AsyncTask<MainActivity.FragmentMaker, Void, MainActivity.FragmentMaker>{
 
     static ArrayList<Event> eventList;
 
     private final static String TAG = "MySpreadsheetI";
+    static String upcoming;
 
     @Override
-    protected String doInBackground(String[] a){
+    protected MainActivity.FragmentMaker doInBackground(MainActivity.FragmentMaker... a){
         try {
             String url = "https://spreadsheets.google.com/tq?key=1lCS6UsbWjTD0J-M7LACeKhd42BZFn8M4QNHnGRVl_cQ";
             MySpreadsheetIntegration.setEvents(url);
@@ -35,10 +36,13 @@ class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             e.printStackTrace();
 
         }
-        return "HI";
-
+        return a[0];
     }
 
+    @Override
+    protected void onPostExecute(MainActivity.FragmentMaker a){
+        MainActivity.runFragment(a);
+    }
 
     private static void setEvents(String url)  throws IOException, JSONException {
         MySpreadsheetIntegration data = new MySpreadsheetIntegration();
@@ -73,6 +77,7 @@ class MySpreadsheetIntegration extends AsyncTask<String, Void, String>{
             }
         }
 
+        upcoming = events.get(0).getName();
         Log.w(TAG, events.get(0) +" events.get(0)");
         Log.w(TAG,""+events.size() +" events.get(0)");
         MySpreadsheetIntegration.eventList = events;
