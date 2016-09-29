@@ -23,15 +23,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Whole ducking implementation created by Naveen Gopalan.
@@ -118,7 +122,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void hoursClickedHome(View view) {
-        //15-16 ORHS URL Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/1MI6BIaeNRsti2VtaFJGKR3HdT1P0KLVJx7Au-WhvDS8/edit"); // missing 'http://' will cause crashed
         Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/13CkOpYGJA3V6fOwlli6XAu133F7TptnIW-eZjFhDZjc/"); // missing 'http://' will cause crashed
         Intent i = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(i);
@@ -198,17 +201,33 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    public static class Events extends Fragment {
 
+
+    public static class Events extends Fragment {
+        HashMap<String, List<String>> hashMap;
+        List<String> list;
         static Intent browserIntent = new Intent();
         private static final String ARG_SECTION_NUMBER = "section_number";
-
+        ExpandableListAdapter listAdapter;
+        ExpandableListView expandableListView;
         public Events() { }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.events, container, false);
+        }
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState){
             super.onActivityCreated(savedInstanceState);
-            setAllViewInfo();
+            listAdapter = new ExpandableListAdapter(getContext(), hashMap, list);
+            hashMap = DatProvider.getInfo();
+            list = new ArrayList<String>(hashMap.keySet());
+            ExpandableListView Exp_list = ((ExpandableListView) getActivity().findViewById(R.id.exl_list));
+            //setAllViewInfo();
+            Exp_list.setAdapter(listAdapter);
+
         }
 
         public static Events newInstance(int sectionNumber) {
@@ -224,11 +243,6 @@ public class MainActivity extends AppCompatActivity{
             super.onCreate(savedInstanceState);
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.events, container, false);
-        }
 
         //Later on, fix the method to have info and location
        public void setAllViewInfo() {
@@ -330,23 +344,23 @@ public class MainActivity extends AppCompatActivity{
                                     URLEncoder.encode(Place)))));
                 }
             });
-
-
+            
             relativeLayout.setPadding(20, 10, 30, 10);
-            //////////////Combine Everything///////////
-
-            relativeLayout.addView(titleView);
+            //////////////Combine Everything//////////////
+            /*relativeLayout.addView(titleView);
             relativeLayout.addView(infoView);
             relativeLayout.addView(signUpButton);
             relativeLayout.addView(locationButton);
-            LinearLayout layout = ((LinearLayout) (getActivity().findViewById(R.id.scrollLayout)));
+            LinearLayout layout = ((LinearLayout) (getActivity().findViewById(R.id.exl_list)));
             if (layout == null)
                 return 1;
-            layout.addView(relativeLayout);
+            layout.addView(relativeLayout);*/
             return signUpButton.getId();
 
         }
     }
+
+
 
     public static class Info extends Fragment implements View.OnClickListener{
         MediaPlayer mPlayer;

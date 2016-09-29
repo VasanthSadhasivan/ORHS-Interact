@@ -10,13 +10,13 @@
         android:layout_width="fill_parent"
         android:fillViewport="true"
         android:layout_height="wrap_content">
-        <LinearLayout
+        <ExpandableListView
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:id="@+id/scrollLayout"
+            android:id="@+id/exl_list"
             android:layout_height="match_parent">
 
-        </LinearLayout>
+        </ExpandableListView>
     </ScrollView>
     <LinearLayout
         android:orientation="horizontal"
