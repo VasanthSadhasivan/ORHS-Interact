@@ -7,22 +7,25 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.design.widget.TabLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.os.CountDownTimer;
 
+import android.support.design.widget.TabLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.util.Log;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,14 +52,13 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
+        boolean isDone = false;
         super.onCreate(savedInstanceState);
         frag = new FragmentMaker();
         new MySpreadsheetIntegration().execute(frag);
-        setContentView(R.layout.activity_main);
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
         emailH = intentData.getString("Email");
-
     }
 
     public static void runFragment(FragmentMaker f) {
@@ -99,7 +101,6 @@ public class MainActivity extends AppCompatActivity{
             tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getApplicationContext(), R.color.background));
         }
     }
-
 
     @Override
     protected void onSaveInstanceState(Bundle savedState){
@@ -449,6 +450,22 @@ public class MainActivity extends AppCompatActivity{
         @Override
         public CharSequence getPageTitle(int position) {
             return mTitle.get(position);
+        }
+    }
+
+    public class Timer extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Thread.sleep(5000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void a) {
+            setContentView(R.layout.activity_main);
         }
     }
 

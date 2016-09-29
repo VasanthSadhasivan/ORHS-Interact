@@ -53,5 +53,9 @@
     <string name="special_thanks">Special Thanks to:</string>
     <string name="negro900">Stephanie Allen\nShri Shankar\n</string>
     <string name="randeep">Randeep \'The Beast from the East\' Chana</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>

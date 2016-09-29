@@ -232,15 +232,6 @@ public class LoginActivity extends Activity implements
         }
     }
 
-    private void showSignedInUI() {
-        updateUI(true);
-    }
-
-    private void showSignedOutUI() {
-        showShit();
-        updateUI(false);
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -272,7 +263,7 @@ public class LoginActivity extends Activity implements
                 }
 
                 if (b) {
-                    showSignedInUI();
+                    updateUI(true);
                     Log.w(TAG, "AYy");
                 } else {
                     onDisconnectClicked();
@@ -305,7 +296,7 @@ public class LoginActivity extends Activity implements
             Log.w(TAG, String.valueOf(personIsSignedIn));
             // Show the signed-in UI
             if (containsEmail && personIsSignedIn) {
-                showSignedInUI();
+                updateUI(true);
                 Log.w(TAG, "Email is good + personIsSignedIn");
             } else {
                 if (!containsEmail) {
@@ -358,7 +349,8 @@ public class LoginActivity extends Activity implements
         } else {
             // Show the signed-out UI
             Log.w(TAG, "onConnectionFailed signOutUI");
-            showSignedOutUI();
+            showShit();
+            updateUI(false);
         }
     }
 
@@ -374,7 +366,8 @@ public class LoginActivity extends Activity implements
                             public void onCancel(DialogInterface dialog) {
                                 Log.w(TAG, "showErrorDialog");
                                 mShouldResolve = false;
-                                showSignedOutUI();
+                                showShit();
+                                updateUI(false);
                             }
                         }).show();
             } else {
@@ -383,7 +376,8 @@ public class LoginActivity extends Activity implements
                 Toast.makeText(this, errorString, Toast.LENGTH_SHORT).show();
 
                 mShouldResolve = false;
-                showSignedOutUI();
+                showShit();
+                updateUI(false);
             }
         }
     }
@@ -433,7 +427,8 @@ public class LoginActivity extends Activity implements
         }
         Log.w(TAG, "onSignOutClicked");
         mStatus.setText("");
-        showSignedOutUI();
+        showShit();
+        updateUI(false);
     }
 
     @SuppressWarnings("deprecation")
@@ -447,8 +442,8 @@ public class LoginActivity extends Activity implements
         }
         Log.w(TAG, "onDisconnectClicked");
         mStatus.setText("");
-        showSignedOutUI();
-    }
+        showShit();
+        updateUI(false);    }
 
     @Override
     public void onResult(@NonNull People.LoadPeopleResult peopleData) {

@@ -1,13 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
-
-
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
 
     <style name="AppTabLayout" parent="Widget.Design.TabLayout">
-    <item name="tabBackground">@color/bottomborder</item>
+        <item name="tabBackground">@color/bottomborder</item>
     </style>
 
     <style name="AppTheme.Launcher" parent="AppTheme">
@@ -27,9 +25,9 @@
         <item name="colorButtonNormal">@color/blue_grey_500</item>
     </style>
 
-    <style name="Theme.AppCompat.Dark" parent="Theme.AppCompat.NoActionBar"/>
+    <style name="Theme.AppCompat.Dark" parent="Theme.AppCompat.NoActionBar" />
 
-    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.NoActionBar"/>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.NoActionBar" />
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
