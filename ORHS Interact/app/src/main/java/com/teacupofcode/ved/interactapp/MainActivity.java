@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -34,6 +35,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.os.AsyncTask.THREAD_POOL_EXECUTOR;
+
 /**
  * Whole ducking implementation created by Naveen Gopalan.
  */
@@ -45,15 +48,18 @@ public class MainActivity extends AppCompatActivity{
     static final String KEY3 = "oop";
     static final String TAG = "MainActivity";
     static FragmentMaker frag;
+    boolean isDone = false;
+    boolean isNotDone = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >20)
             setTheme(R.style.AppThemeV21);
-        boolean isDone = false;
         super.onCreate(savedInstanceState);
         frag = new FragmentMaker();
-        new MySpreadsheetIntegration().execute(frag);
+        new MySpreadsheetIntegration().executeOnExecutor(THREAD_POOL_EXECUTOR, frag);
+        new Timer().executeOnExecutor(THREAD_POOL_EXECUTOR);
+        //if (isNotDone && this.isDone)
         setContentView(R.layout.activity_main);
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
@@ -98,6 +104,7 @@ public class MainActivity extends AppCompatActivity{
             tabLayout.getTabAt(2).setIcon(R.drawable.info);
 
             tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getApplicationContext(), R.color.background));
+            isNotDone = false;
         }
     }
 
@@ -127,6 +134,7 @@ public class MainActivity extends AppCompatActivity{
         Intent i = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(i);
     }
+
 
     public static class HomeFrag extends Fragment {
         TextView tname;
@@ -196,7 +204,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-
     public static class Events extends Fragment {
         HashMap<String, List<String>> details;
         List<String> title;
@@ -260,8 +267,7 @@ public class MainActivity extends AppCompatActivity{
             }
         }
 
-        @SuppressWarnings("deprecation")
-        public int generateView(String Title, String Info, final String Place, String Time, final String link) {
+        @SuppressWarnings("deprecation") public int generateView(String Title, String Info, final String Place, String Time, final String link) {
             //Creating Relative Layout Programmatically
             RelativeLayout relativeLayout = new RelativeLayout(getActivity());
             //CHANGE LATER
@@ -370,7 +376,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-
     public static class Info extends Fragment implements View.OnClickListener{
         MediaPlayer mPlayer;
         int counter = 0;
@@ -445,6 +450,7 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 
@@ -477,19 +483,19 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+
     public class Timer extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
-            try {
-                Thread.sleep(5000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            SystemClock.sleep(3000);
             return null;
         }
         @Override
         protected void onPostExecute(Void a) {
-            setContentView(R.layout.activity_main);
+            if (isNotDone) {
+                (findViewById(R.id.main_content)).setBackgroundColor(getResources().getColor(R.color.background2));
+                (findViewById(R.id.loading_spinner)).setVisibility(View.VISIBLE);
+            }
         }
     }
 
