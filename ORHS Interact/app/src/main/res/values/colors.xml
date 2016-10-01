@@ -4,6 +4,7 @@
     <color name="blue_grey_600">#546E7A</color>
     <color name="background">#ffd966</color>
     <color name="bottomborder">#333333</color>
+    <color name="events">#FFD700</color>
     <color name="highlight">#FFFF99</color>
     <color name="background2">#D2D2D2</color>
     <color name="text">#000000</color>

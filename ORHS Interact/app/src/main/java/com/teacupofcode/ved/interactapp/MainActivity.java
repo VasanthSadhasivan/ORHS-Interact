@@ -8,32 +8,25 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.net.URLEncoder;
@@ -61,6 +54,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         frag = new FragmentMaker();
         new MySpreadsheetIntegration().execute(frag);
+        setContentView(R.layout.activity_main);
         Bundle intentData = getIntent().getExtras();
         nameH = intentData.getString("Name");
         emailH = intentData.getString("Email");
@@ -204,8 +198,8 @@ public class MainActivity extends AppCompatActivity{
 
 
     public static class Events extends Fragment {
-        HashMap<String, List<String>> hashMap;
-        List<String> list;
+        HashMap<String, List<String>> details;
+        List<String> title;
         static Intent browserIntent = new Intent();
         private static final String ARG_SECTION_NUMBER = "section_number";
         ExpandableListAdapter listAdapter;
@@ -221,13 +215,14 @@ public class MainActivity extends AppCompatActivity{
         @Override
         public void onActivityCreated(Bundle savedInstanceState){
             super.onActivityCreated(savedInstanceState);
-            listAdapter = new ExpandableListAdapter(getContext(), hashMap, list);
-            hashMap = DatProvider.getInfo();
-            list = new ArrayList<String>(hashMap.keySet());
-            ExpandableListView Exp_list = ((ExpandableListView) getActivity().findViewById(R.id.exl_list));
+            details = getInfo();
+            title = new ArrayList<>(details.keySet());
+            listAdapter = new ExpandableListAdapt(getContext(), details, title);
+            expandableListView = ((ExpandableListView) getActivity().findViewById(R.id.exl_list));
+            expandableListView.setChildDivider(getResources().getDrawable(R.color.background2));
             //setAllViewInfo();
-            Exp_list.setAdapter(listAdapter);
-
+            expandableListView.setAdapter(listAdapter);
+            // Listview Group expanded listener
         }
 
         public static Events newInstance(int sectionNumber) {
@@ -243,6 +238,20 @@ public class MainActivity extends AppCompatActivity{
             super.onCreate(savedInstanceState);
         }
 
+
+
+        public HashMap<String, List<String>> getInfo(){
+            HashMap<String, List<String>> eventDescription = new HashMap<>();
+            for (Event e: MySpreadsheetIntegration.eventList) {
+                List<String> cricket = new ArrayList<>();
+                cricket.add("Time: " + e.getDate());
+                cricket.add("Address: " + e.getLocation());
+                cricket.add("Description: " + e.getDescription());
+                eventDescription.put(e.getName(), cricket);
+                Log.v("hi", "hi");
+            }
+            return eventDescription;
+        }
 
         //Later on, fix the method to have info and location
        public void setAllViewInfo() {
